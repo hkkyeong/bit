@@ -43,6 +43,26 @@ public class MembersServiceImpl implements MembersService{
 	public List<MembersVO> teamMember(String pno) {
 		return membersDAO.teamMember(pno);
 	}
+
+	@Override
+	public int deleteMembersTeamOut(MembersVO members) {
+		return membersDAO.deleteMembersTeamOut(members);
+	}
+
+	@Override
+	public MembersVO selectMembersTno(String id) {
+		return membersDAO.selectMembersTno(id);
+	}
+
+	@Override
+	public MembersVO selectMembersPosition(MembersVO members) {
+		return membersDAO.selectMembersPosition(members);
+	}
+
+	@Override
+	public List<MembersVO> selectAllMembersTno(int tno) {
+		return membersDAO.selectAllMembersTno(tno);
+	}
 	
 
 }

@@ -12,5 +12,6 @@ public interface MemberDAO {
 	public MemberVO selectMember(String id);
 	public List<MemberVO> selectAllMember();
 	public int chkMember(MemberVO member) throws RuntimeException;
+	public int updatePassword(MemberVO member);
 
 }

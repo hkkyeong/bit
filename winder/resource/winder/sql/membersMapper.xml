@@ -29,5 +29,16 @@
 		select distinct * from members where tno=(select tno from project where pno=#{pno})
 		<!-- where state=2 추가해야 됨 승인 받은 팀원만 가지고 와야 되니까 -->
 	</select>
+	
+	<select id="selectMembersTno" parameterType="java.lang.String"	resultType="Members">
+		select * from members where id=#{id}
+	</select>
+	<select id="selectAllMembersTno" parameterType="java.lang.Integer"	resultType="Members">
+		select * from members where tno=#{value}
+	</select>
+	
+	<select id="selectMembersPosition" parameterType="Members" resultType="Members">
+		select *from members where id=#{id} and tno=#{tno}
+	</select>
 
 </mapper>

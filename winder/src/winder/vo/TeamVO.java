@@ -4,7 +4,8 @@ package winder.vo;
 public class TeamVO {
 	
 	int tno;
-	String name, code;
+	String name, code, timg;
+	
 	public int getTno() {
 		return tno;
 	}
@@ -23,6 +24,12 @@ public class TeamVO {
 	}
 	public void setCode(String code) {
 		this.code = code;
+	}
+	public String getTimg() {
+		return timg;
+	}
+	public void setTimg(String timg) {
+		this.timg = timg;
 	}
 	@Override
 	public String toString() {

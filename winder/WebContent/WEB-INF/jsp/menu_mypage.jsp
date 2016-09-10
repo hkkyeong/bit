@@ -26,8 +26,8 @@
                                     </c:forEach>
                                 </ul>
                             </li>
-                             <li><a class="menu-top" href="login.html">My Page</a></li>
-
+                             <li><a class="menu-top-active" href="mypage">My Page</a></li>
+							 <li><a href="communitylist">Community</a></li>
                         </ul>
                     </div>
                 </div>

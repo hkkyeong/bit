@@ -44,6 +44,12 @@ public class TeamDAOImpl implements TeamDAO {
 	public List<TeamVO> selectTeamList(String id) throws RuntimeException {
 		return sqlSession.selectList("winder.Team.selectTeamList", id);
 	}
+
+	@Override
+	public TeamVO selectTeamName(int tno) {
+		return sqlSession.selectOne("winder.Team.selectTeamName", tno);
+	}
+	
 	
 
 }

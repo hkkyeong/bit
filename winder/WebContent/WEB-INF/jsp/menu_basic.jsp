@@ -27,7 +27,7 @@
                                     </c:forEach>
                                 </ul>
                             </li>
-                             <li><a href="login.html">My Page</a></li>
+                             <li><a href="mypage">My Page</a></li>
 
                         </ul>
                     </div>

@@ -18,7 +18,7 @@
 	</update>
 	
 	<select id="selectProject" parameterType="java.lang.String"	resultType="Project">
-		select * from project where pno =#{value}
+		select * from project where pno =#{pno}
 	</select>
 
 	<select id="selectProjectList" parameterType="String" resultType="Project">
@@ -28,6 +28,10 @@
 	<select id="selectProjectMenu" parameterType="String" resultType="project">
 		select distinct p.pno, p.name from project p, members m where p.tno in 
 		(select m.tno from members m where id=#{id})
+	</select>
+	
+	<select id="selectProjectTno" parameterType="int" resultType="int">
+		select tno from project where pno=#{pno}
 	</select>
 
 </mapper>

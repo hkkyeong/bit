@@ -11,5 +11,6 @@ public interface TeamDAO {
 	public TeamVO selectTeam(int tno);
 	public List<TeamVO> selectAllTeam();
 	public List<TeamVO> selectTeamList(String id) throws RuntimeException;
+	public TeamVO selectTeamName(int tno);
 
 }

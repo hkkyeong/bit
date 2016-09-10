@@ -29,5 +29,9 @@
 		select distinct t.tno, t.name from team t, members m where 
 		m.tno=t.tno and m.id like #{id}
 	</select>
+	
+	<select id="selectTeamName" parameterType="java.lang.Integer" resultType="Team">
+		select *from team where tno=#{value}
+	</select>
 
 </mapper>

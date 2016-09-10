@@ -1,7 +1,7 @@
 package winder.vo;
 
 public class MemberVO {
-	String id, password, name, email, phone, joindate, mimg;
+	String id, password, name, email, phone, joindate, position, mimg;
 
 	public String getId() {
 		return id;
@@ -49,6 +49,13 @@ public class MemberVO {
 
 	public void setJoindate(String joindate) {
 		this.joindate = joindate;
+	}
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
 	}
 
 	public String getMimg() {

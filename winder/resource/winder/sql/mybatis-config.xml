@@ -13,6 +13,7 @@
 		<typeAlias type="winder.vo.TodoListVO" alias="TodoList"/>
 		<typeAlias type="winder.vo.TodoVO" alias="Todo"/>
 		<typeAlias type="winder.vo.TodoJoinVO" alias="TodoJoin"/>
+		<typeAlias type="winder.vo.ScrapVO" alias="Scrap"/>
 	</typeAliases>
 
 
@@ -23,6 +24,7 @@
 		<mapper resource="winder/sql/teamMapper.xml" />
 		<mapper resource="winder/sql/todoListMapper.xml" />
 		<mapper resource="winder/sql/todoMapper.xml" />
+		<mapper resource="winder/sql/scrapMapper.xml" />
 	</mappers>
 
 </configuration>

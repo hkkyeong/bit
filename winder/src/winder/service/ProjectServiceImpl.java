@@ -43,6 +43,11 @@ public class ProjectServiceImpl implements ProjectService{
 	public List<ProjectVO> selectProjectMenu(String id) throws RuntimeException {
 		return projectDAO.selectProjectMenu(id);
 	}
+
+	@Override
+	public int selectProjectTno(int pno) {
+		return projectDAO.selectProjectTno(pno);
+	}
 	
 
 }

@@ -43,6 +43,11 @@ public class TeamServiceImpl implements TeamService{
 	public List<TeamVO> selectTeamList(String id) throws RuntimeException {
 		return teamDAO.selectTeamList(id);
 	}
+
+	@Override
+	public TeamVO selectTeamName(int tno) {
+		return teamDAO.selectTeamName(tno);
+	}
 	
 
 }

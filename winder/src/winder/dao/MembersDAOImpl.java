@@ -45,5 +45,26 @@ public class MembersDAOImpl implements MembersDAO {
 	public List<MembersVO> teamMember(String pno) {
 		return sqlSession.selectList("winder.Members.teamMember", pno);
 	}
+
+	@Override
+	public MembersVO selectMembersTno(String id) {
+		return sqlSession.selectOne("winder.Members.selectMembersTno", id);
+	}
+
+	@Override
+	public MembersVO selectMembersPosition(MembersVO members) {
+		return sqlSession.selectOne("winder.Members.selectMembersPosition", members);
+	}
+
+	@Override
+	public List<MembersVO> selectAllMembersTno(int tno) {
+		return sqlSession.selectList("winder.Members.selectAllMembersTno",tno);
+	}
+
+	@Override
+	public int deleteMembersTeamOut(MembersVO members) {
+		return sqlSession.delete("winder.Members.deleteMembersTeamOut", members);
+	}
+	
 	
 }

@@ -1,10 +1,10 @@
 package winder.vo;
 
 public class MembersVO {
-
-	int mno, tno;
-	String state, id;
 	
+	
+	int mno, tno;
+	String state, id, position;
 	public int getMno() {
 		return mno;
 	}
@@ -29,10 +29,13 @@ public class MembersVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	@Override
-	public String toString() {
-		return "MembersVO [mno=" + mno + ", tno=" + tno + ", state=" + state + ", id=" + id + "]";
+	public String getPosition() {
+		return position;
 	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	
+	
 	
 }

@@ -45,6 +45,11 @@ public class ProjectDAOImpl implements ProjectDAO {
 	public List<ProjectVO> selectProjectMenu(String id) throws RuntimeException {
 		return sqlSession.selectList("winder.Project.selectProjectMenu", id);
 	}
+
+	@Override
+	public int selectProjectTno(int pno) {
+		return sqlSession.selectOne("winder.Project.selectProjectTno", pno);
+	}
 	
 
 }

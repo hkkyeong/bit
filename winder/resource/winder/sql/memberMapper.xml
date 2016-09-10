@@ -14,7 +14,7 @@
 
 	<update id="updateMember" parameterType="Member">
 		update member set
-		password= #{password}, name=#{name}, email=#{email}, phone=#{phone}, #{position}, #{mimg} where
+		name=#{name}, email=#{email}, phone=#{phone}, #{mimg}='aa' where
 		id=#{id}
 	</update>
 	
@@ -29,4 +29,9 @@
 	<select id="chkMember" parameterType="Member" resultType="int">
 		select count (*) from member where id=#{id} and password=#{password}
 	</select> 
+	
+	<update id="updatePassword" parameterType="Member">
+		update member set
+		password=#{password} where id=#{id}
+	</update>
 </mapper>

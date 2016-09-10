@@ -11,4 +11,10 @@ public interface MembersService {
 	public MembersVO selectMembers(int mno);
 	public List<MembersVO> selectAllMembers();
 	public List<MembersVO> teamMember(String pno);
+	public int deleteMembersTeamOut(MembersVO members);
+	public MembersVO selectMembersTno(String id); 
+	// projectmanagement의 권한을 확인하기 위해.
+	public MembersVO selectMembersPosition(MembersVO members);
+	
+	public List<MembersVO> selectAllMembersTno(int tno);
 }

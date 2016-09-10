@@ -32,7 +32,7 @@
 		<div class="panel panel-success">
 			<div class="panel-heading">Project Management</div>
 			<div class="panel-body">
-			<a href=""><img src="img/pic02.png" style=" width: 100%;"></a> 
+			<a href="projectmanagementform?pno=${pno }&tno=${tno}"><img src="img/pic02.png" style=" width: 100%;"></a> 
 <!-- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
 					lacus adipiscing, posuere lectus et, fringilla augue.
