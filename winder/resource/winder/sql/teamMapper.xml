@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="winder.Team">
+
+	<insert id="insertTeam" parameterType="Team">
+		insert into team(tno, name, timg, code) values
+		(team_seq.nextval,#{name},#{timg},#{code})
+	</insert>
+
+	<delete id="deleteTeam" parameterType="int">
+		delete team where tno=#{tno}
+	</delete>
+
+	<update id="updateTeam" parameterType="Team">
+		update team set
+		name= #{name}, timg=#{timg}, code=#{code} where	tno=#{tno}
+	</update>
+	
+	<select id="selectTeam" parameterType="java.lang.String"	resultType="Team">
+		select * from team where tno =#{value}
+	</select>
+
+	<select id="selectAllTeam" parameterType="java.lang.String" resultType="Team">
+		select * from team
+	</select>
+	
+	<select id="selectTeamList" parameterType="String" resultType="Team">
+		select distinct t.tno, t.name from team t, members m where 
+		m.tno=t.tno and m.id like #{id}
+	</select>
+
+</mapper>

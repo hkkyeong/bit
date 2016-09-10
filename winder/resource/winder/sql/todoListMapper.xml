@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="winder.TodoList">
+
+	<insert id="insertTodoList" parameterType="TodoList">
+		insert into todolist(tlno, content, state, tldate, tdno, id) values
+		(todolist_seq.nextval, #{content}, 1, #{tldate} ,#{tdno}, #{id})
+	</insert>
+
+	<delete id="deleteTodoList" parameterType="int">
+		delete todolist where tlno=#{tlno}
+	</delete>
+
+	<update id="updateTodoList" parameterType="TodoList">
+		update todolist set
+		content=#{content},tdno=#{tdno}, id=#{id}, tldate=#{tldate} where tlno=#{tlno}
+	</update>
+	
+	<select id="selectTodoList" parameterType="int"	resultType="TodoJoin">
+		select distinct tl.tlno, t.content as title, tl.content, tl.tldate, tl.id, tl.state from todo t, todolist tl where t.tdno=
+		tl.tdno and t.pno=#{pno} order by content asc
+	</select>
+
+	<select id="selectAllTodoList" parameterType="java.lang.String" resultType="TodoList">
+		select * from todolist
+	</select><!-- 이거 필요한가? -->
+	
+	<select id="selectSubtitle" parameterType="int" resultType="TodoJoin">
+	 	select tl.tlno, tl.content, tl.state, to_char(tl.tldate,'yyyy-mm-dd')tldate, tl.tdno, tl.id 
+	 	from todolist tl, todo t where tl.tdno=t.tdno and tlno=#{tlno}
+	</select>
+	
+	<update id="statedone" parameterType="String">
+		update todolist set state=2 where tlno=#{tlno}
+	</update>
+	
+	<update id="statetodo" parameterType="String">
+		update todolist set state=1 where tlno=#{tlno}
+	</update>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<typeAliases>
+		<typeAlias type="winder.vo.MemberVO" alias="Member"/>
+		<typeAlias type="winder.vo.MembersVO" alias="Members"/>
+		<typeAlias type="winder.vo.ProjectVO" alias="Project"/>
+		<typeAlias type="winder.vo.TeamVO" alias="Team"/>
+		<typeAlias type="winder.vo.TodoListVO" alias="TodoList"/>
+		<typeAlias type="winder.vo.TodoVO" alias="Todo"/>
+		<typeAlias type="winder.vo.TodoJoinVO" alias="TodoJoin"/>
+	</typeAliases>
+
+
+	<mappers>
+		<mapper resource="winder/sql/memberMapper.xml" />
+		<mapper resource="winder/sql/membersMapper.xml" />
+		<mapper resource="winder/sql/projectMapper.xml" />
+		<mapper resource="winder/sql/teamMapper.xml" />
+		<mapper resource="winder/sql/todoListMapper.xml" />
+		<mapper resource="winder/sql/todoMapper.xml" />
+	</mappers>
+
+</configuration>

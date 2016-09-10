@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="winder.Member">
+
+	<insert id="insertMember" parameterType="Member">
+		insert into member(id, password, name, email, phone, position, mimg, joindate) values
+		(#{id},#{password},#{name},#{email},#{phone}, #{position}, #{mimg} ,sysdate)
+	</insert>
+
+	<delete id="deleteMember" parameterType="java.lang.String">
+		delete member where id=#{value}
+	</delete>
+
+	<update id="updateMember" parameterType="Member">
+		update member set
+		password= #{password}, name=#{name}, email=#{email}, phone=#{phone}, #{position}, #{mimg} where
+		id=#{id}
+	</update>
+	
+	<select id="selectMember" parameterType="java.lang.String" resultType="Member">
+		select * from member where id =#{value}
+	</select>
+
+	<select id="selectAllMember" parameterType="java.lang.String" resultType="Member">
+		select * from member
+	</select>
+	
+	<select id="chkMember" parameterType="Member" resultType="int">
+		select count (*) from member where id=#{id} and password=#{password}
+	</select> 
+</mapper>
