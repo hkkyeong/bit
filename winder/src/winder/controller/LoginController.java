@@ -15,6 +15,7 @@ import winder.vo.MemberVO;
 @Controller
 public class LoginController {
 
+	//auto
 	@Autowired
 	private MemberService memberService;
 	@Autowired
