@@ -39,7 +39,7 @@
 							<c:forEach items="${todo }" var="todo">
 								<c:if test="${todo.state eq '1' }">
 									<tr draggable="true" id="${todo.tlno }" ondragstart="drag(this, event); tlnosend($(this));">
-										<td>${todo.tlno }</td>
+										<td>${todo.tldate }</td>
 										<td>${todo.title }</td>
 										<td>${todo.content }</td>
 										<td>${todo.id }</td>
@@ -81,7 +81,7 @@
 							<c:forEach items="${todo }" var="todo">
 								<c:if test="${todo.state eq '2' }">
 									<tr draggable="true" id="${todo.tlno }" ondragstart="drag2(this, event); tlnosend($(this));">
-										<td>${todo.tlno }</td>
+										<td>${todo.tldate }</td>
 										<td>${todo.title }</td>
 										<td>${todo.content }</td>
 										<td>${todo.id }</td>

@@ -124,7 +124,6 @@ public class ProjectController {
 					
 				}catch(Exception e){
 					e.printStackTrace();
-					//System.out.println("(projectController)project select error.");
 					return "redirect:/login";
 				}
 				

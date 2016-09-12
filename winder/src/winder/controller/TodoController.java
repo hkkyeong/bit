@@ -226,7 +226,6 @@ public class TodoController {
 			//수정 버튼
 			try {
 				//tlno로 검색한 todolist 리턴 받음
-				System.out.println("todolist 수정 tlno: "+request.getParameter("tlno"));
 				reatt.addFlashAttribute("todolistselect", todolistService.selectSubtitle(Integer.parseInt(request.getParameter("tlno"))));
 				reatt.addAttribute("update", "todolistupdate");
 			} catch (Exception e) {
@@ -259,7 +258,6 @@ public class TodoController {
 		try {
 			int count=todoService.updateTodo(vo);
 			if(count==1){
-				System.out.println("update 성공");
 				return url;
 			}else{
 				return url;
@@ -290,9 +288,6 @@ public class TodoController {
 	//드래그 앤 드롭 state = done 
 	@RequestMapping(value="statedone")
 	public void statedone(HttpServletRequest request, HttpServletResponse response){
-		System.out.println("tlno: "+request.getParameter("tlno"));
-		System.out.println("pno: "+request.getParameter("pno"));
-		System.out.println("done");
 		int temp=0;
 		try {
 			int count=todolistService.statedone(request.getParameter("tlno"));
@@ -308,13 +303,11 @@ public class TodoController {
 				jobj.put("size", plist.size());
 				jobj.put("done", temp);
 				jobj.put("per", (int)per);
-				System.out.println("done-done:"+temp);
 				PrintWriter pw=response.getWriter();
 				pw.print(jobj);
 				pw.flush();
 				pw.close();
 			}else{
-				System.out.println("else");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -324,9 +317,6 @@ public class TodoController {
 	//드래그 앤 드롭 state = todo
 	@RequestMapping(value="statetodo")
 	public void statetodo(HttpServletRequest request, HttpServletResponse response){
-		System.out.println("tlno: "+request.getParameter("tlno"));
-		System.out.println("pno: "+request.getParameter("pno"));
-		System.out.println("todo");
 		int temp=0;
 		//state 수정
 		try {
@@ -343,7 +333,6 @@ public class TodoController {
 				jobj.put("size", plist.size());
 				jobj.put("done", temp);
 				jobj.put("per", (int)per);
-				System.out.println("todo-done:"+temp);
 				PrintWriter pw=response.getWriter();
 				pw.print(jobj);
 				pw.flush();
@@ -352,7 +341,6 @@ public class TodoController {
 				
 				
 			}else{
-				System.out.println("else");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
