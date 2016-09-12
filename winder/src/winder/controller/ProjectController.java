@@ -54,11 +54,14 @@ public class ProjectController {
 	@RequestMapping(value="projectlist")
 	public String projectlist(Model model, HttpSession session, HttpServletRequest request){
 		String id = (String) session.getAttribute("id");
-		model.addAttribute("plist", projectService.selectProjectList(request.getParameter("tno")));
+		if(request.getParameter("tno")==null){
+		}else{
+			model.addAttribute("plist", projectService.selectProjectList(request.getParameter("tno")));
+			//추가 -- 근데 tno 왜 넘기지???
+			model.addAttribute("tno",request.getParameter("tno"));
+		}
 		model.addAttribute("teammenu", teamService.selectTeamList(id));
 		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
-		//추가
-		model.addAttribute("tno",request.getParameter("tno"));
 		return"project/projectselect";
 	}
 	//프로젝트 메인

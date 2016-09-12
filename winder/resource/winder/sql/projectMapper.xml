@@ -22,12 +22,12 @@
 	</select>
 
 	<select id="selectProjectList" parameterType="String" resultType="Project">
-		select * from project where tno=#{tno}
+		select * from project where tno=#{tno} order by tno asc
 	</select>
 	
 	<select id="selectProjectMenu" parameterType="String" resultType="project">
 		select distinct p.pno, p.name from project p, members m where p.tno in 
-		(select m.tno from members m where id=#{id})
+		(select m.tno from members m where id=#{id}) order by p.pno asc
 	</select>
 	
 	<select id="selectProjectTno" parameterType="int" resultType="int">

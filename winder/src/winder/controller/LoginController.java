@@ -1,7 +1,5 @@
 package winder.controller;
 
-//나도 마스터내놔
-//sssshhhhgfd
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +15,6 @@ import winder.vo.MemberVO;
 @Controller
 public class LoginController {
 
-	//autossss
 	@Autowired
 	private MemberService memberService;
 	@Autowired
@@ -59,7 +56,7 @@ public class LoginController {
 				if(id.equals("manager")){
 					session.setAttribute("id", id);
 					session.setAttribute("loginchk", "loginok");
-					return "redirect:/home";
+					return "redirect:/manage";
 				}else{
 					session.setAttribute("id", id);
 					session.setAttribute("loginchk", "loginok");

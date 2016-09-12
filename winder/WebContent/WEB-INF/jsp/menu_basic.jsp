@@ -11,24 +11,23 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Team<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                	<li><a href="teamList">팀 List</a></li>
-                                    <li><a href="teamCreateform">팀 생성</a></li>
+                                	<li><a href="teamList">팀 목록</a></li>
+                                	<li><a href="teamList">팀 관리</a></li>
+                                  <%--   <li><a href="teamCreateform">팀 생성</a></li>
                                     <c:forEach items="${teammenu }" var="tmenu">
                                     <li><a href="projectlist?tno=${tmenu.tno }">${tmenu.name }</a></li>
-                                    </c:forEach>
+                                    </c:forEach> --%>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
+                                    <li><a href="projectlist">프로젝트 목록</a></li>
                                     <li><a href="projectform">프로젝트 생성</a></li>
-                                    <c:forEach items="${projectmenu }" var="pmenu">
-                                    <li><a href="projectmain?pno=${pmenu.pno }">${pmenu.name }</a></li>
-                                    </c:forEach>
                                 </ul>
                             </li>
-                             <li><a href="mypage">My Page</a></li>
-
+                             <li><a class="menu-top" href="mypage">My Page</a></li>
+                             <li><a class="menu-top" href="communitylist">community</a></li>
                         </ul>
                     </div>
                 </div>
