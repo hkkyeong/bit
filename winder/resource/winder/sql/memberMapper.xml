@@ -4,8 +4,8 @@
 <mapper namespace="winder.Member">
 
 	<insert id="insertMember" parameterType="Member">
-		insert into member(id, password, name, email, phone, position, mimg, joindate) values
-		(#{id},#{password},#{name},#{email},#{phone}, #{position}, #{mimg} ,sysdate)
+		insert into member(id, password, name, email, phone, mimg, joindate) values
+		(#{id},#{password},#{name},#{email},#{phone}, #{mimg} ,sysdate)
 	</insert>
 
 	<delete id="deleteMember" parameterType="java.lang.String">

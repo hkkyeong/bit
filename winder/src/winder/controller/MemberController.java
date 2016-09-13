@@ -25,8 +25,7 @@ public class MemberController {
 	@RequestMapping(value = "/signchk", method = { RequestMethod.POST, RequestMethod.GET })
 	public String memberJoin(MemberVO vo, HttpSession session, HttpServletRequest request) throws IOException {
 		
-		//vo =new MemberVO();
-		String path ="C:\\비트\\workspace\\0901\\0830\\WebContent\\upload\\";
+		String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
 		int size = 1024*1024*5;
 		String enc ="utf-8";
 
@@ -36,7 +35,6 @@ public class MemberController {
 		String password =multi.getParameter("password");
 		String email =multi.getParameter("email");
 		String phone =multi.getParameter("phone");
-		String position =multi.getParameter("position");
 		String mimg=multi.getFilesystemName("mimg");
 
 		vo.setName(name);
@@ -44,7 +42,6 @@ public class MemberController {
 		vo.setPassword(password);
 		vo.setEmail(email);
 		vo.setPhone(phone);
-		vo.setPosition(position);
 		vo.setMimg(mimg);
 				
 		try {
@@ -52,9 +49,11 @@ public class MemberController {
 			if (count == 1) {
 				return "redirect:/home";
 			} else {
+				System.out.println("else");
 				return "redirect:/signupForm";
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			return "redirect:/signupForm";
 		}
 
@@ -63,7 +62,7 @@ public class MemberController {
 	//회원 가입 form
 	@RequestMapping(value = "/signupForm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String signup(HttpServletRequest req) {
-		return "signupForm";
+		return "user/signupForm";
 	}
 
 }
