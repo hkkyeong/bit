@@ -12,11 +12,9 @@
 </div>
 
 <div class="row">
-	<div class="col-md-6">
-		<h3>총 회원 수: ${membercount }</h3>
-	</div>
-	<div class="col-md-6">
-		<h3>오늘의 가입자 수: </h3>
+	<div class="col-md-12">
+		<h3>총 회원 수: &nbsp;${membercount }</h3>
+		<h3>오늘의 가입자 수: &nbsp;${todayjoin }</h3>
 	</div>
 </div>
 <br><br>
@@ -53,25 +51,25 @@
 	
 	<div class="col-md-6">
 		<div class="panel panel-default">
-		<div class="panel-heading">MEMBER LIST</div>
+		<div class="panel-heading">OUT MEMBER LIST</div>
 			<div class="panel-body">
 				<div class="table-responsive" style="max-height: 600px;">
 					<table class="table">
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>ID</th>
 								<th>NAME</th>
 								<th>JOIN DATE</th>
+								<th>OUT DATE</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${member }" var="member">
 								<tr id="${member.id }">
-									<td><input type="radio" name="tlno" value="${tllist.tlno }" /></td>
 									<td>${member.id }</td>
 									<td>${member.name }</td>
 									<td>${member.joindate }</td>
+									<td></td>
 								</tr>
 							</c:forEach>
 						</tbody>

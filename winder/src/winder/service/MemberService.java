@@ -13,4 +13,5 @@ public interface MemberService {
 	public int chkMember(MemberVO member) throws RuntimeException;
 	public int updatePassword(MemberVO member);
 	public int countMember() throws RuntimeException;
+	public int todayJoin() throws RuntimeException;
 }

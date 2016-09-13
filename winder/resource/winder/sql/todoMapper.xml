@@ -5,7 +5,7 @@
 
 	<insert id="insertTodo" parameterType="Todo">
 		insert into todo(tdno, content, state, tddate, pno) values
-		(todo_seq.nextval, #{content}, 1, sysdate, #{pno})
+		(todo_seq.nextval, #{content}, 1, to_date(to_char(sysdate, 'yyyy/mm/dd'), 'yyyy/mm/dd'), #{pno})
 	</insert>
 
 	<delete id="deleteTodo" parameterType="int">
@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="listTodo" parameterType="int" resultType="Todo">
-		select * from todo where pno=#{pno} order by content asc
+		select tdno, content, state, to_char(tddate, 'yyyy/mm/dd') tddate, pno from todo where pno=#{pno} order by content asc
 	</select>
 
 </mapper>

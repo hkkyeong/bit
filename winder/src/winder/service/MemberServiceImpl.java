@@ -53,5 +53,10 @@ public class MemberServiceImpl implements MemberService{
 	public int countMember() throws RuntimeException {
 		return memberDAO.countMember();
 	}
+
+	@Override
+	public int todayJoin() throws RuntimeException {
+		return memberDAO.todayJoin();
+	}
 	
 }

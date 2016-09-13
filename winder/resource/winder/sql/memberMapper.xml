@@ -23,7 +23,7 @@
 	</select>
 
 	<select id="selectAllMember" parameterType="java.lang.String" resultType="Member">
-		select * from member order by id asc
+		select id, password, name, email, phone, to_char(joindate, 'yyyy/mm/dd')joindate from member order by id asc
 	</select>
 	
 	<select id="chkMember" parameterType="Member" resultType="int">
@@ -37,5 +37,9 @@
 	
 	<select id="countMember" resultType="int">
 		select count(*) count from member
+	</select>
+	
+	<select id="todayJoin" resultType="int">
+		select count(*) from member where to_char(joindate, 'yyyy/mm/dd')=to_char(sysdate, 'yyyy/mm/dd')
 	</select>
 </mapper>

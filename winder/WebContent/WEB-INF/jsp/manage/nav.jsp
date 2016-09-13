@@ -23,9 +23,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home">
+                <%if("manager".equals((String)session.getAttribute("id"))){ %>
+                 <a class="navbar-brand" href="manage">
                     <img src="img/winder.png" />
                 </a>
+                <%} else{%>
+                 <a class="navbar-brand" href="home">
+                    <img src="img/winder.png" />
+                </a>
+                <%} %>
             </div>
             <div class="left-div">
                 <div class="user-settings-wrapper">

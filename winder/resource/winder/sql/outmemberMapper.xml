@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="winder.OutMember">
+
+	<insert id="insertOutMember" parameterType="OutMember">
+		insert into outmember(id, name, joindate, outdate, reason) values
+		(#{id}, #{name}, to_date(#{joindate}, 'yyyy/mm/dd'), sysdate, #{reason})
+	</insert>
+	
+	<select id="OutMemberList" resultType="OutMember">
+		select id, name, to_char(joindate, 'yyyy/mm/dd')joindate, 
+		to_char(outdate, 'yyyy/mm/dd')outdate, reason from outmember order by outdate asc
+	</select>
+	
+</mapper>

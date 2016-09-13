@@ -13,11 +13,24 @@ public class ManageController {
 	@Autowired
 	private MemberService memberService;
 	
-	//manage home
+	//manage member
 	@RequestMapping(value="/manage")
 	public String manage(Model model){
-		model.addAttribute("member", memberService.selectAllMember());
 		model.addAttribute("membercount", memberService.countMember());
+		model.addAttribute("todayjoin", memberService.todayJoin());
+		model.addAttribute("member", memberService.selectAllMember());
 		return "manage/manage_member";
+	}
+	
+	//manage report
+	@RequestMapping(value="/report")
+	public String report(Model model){
+		return "manage/manage_report";
+	}
+	
+	//manage notice
+	@RequestMapping(value="/notice")
+	public String notice(Model model){
+		return "manage/manage_notice";
 	}
 }

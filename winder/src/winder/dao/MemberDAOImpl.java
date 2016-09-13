@@ -56,5 +56,10 @@ public class MemberDAOImpl implements MemberDAO{
 	public int countMember() throws RuntimeException {
 		return sqlSession.selectOne("winder.Member.countMember");
 	}
+
+	@Override
+	public int todayJoin() throws RuntimeException {
+		return sqlSession.selectOne("winder.Member.todayJoin");
+	}
 	
 }
