@@ -21,6 +21,10 @@ public class ScrapServiceImpl {
 		return scrapDAO.selectScrapList(id);
 	}
 	
+	public List<ScrapVO> sharedscrapList(int pno)  throws RuntimeException {
+		return scrapDAO.sharedscrapList(pno);
+	}
+	
 	public List<ScrapVO> selectProject(String id){
 		return scrapDAO.selectProject(id);
 	}

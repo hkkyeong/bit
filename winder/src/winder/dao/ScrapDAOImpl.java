@@ -20,6 +20,9 @@ public class ScrapDAOImpl {
 	public List<ScrapVO> selectScrapList(String id)  throws RuntimeException {
 		return sqlSession.selectList("winder.Scrap.selectScrapList",id);
 	}
+	public List<ScrapVO> sharedscrapList(int pno)  throws RuntimeException {
+		return sqlSession.selectList("winder.Scrap.sharedscrapList",pno);
+	}
 	public List<ScrapVO> selectProject(String id)  throws RuntimeException {
 		return sqlSession.selectList("winder.Scrap.selectProject",id);
 	}
