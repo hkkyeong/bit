@@ -31,7 +31,6 @@ public class ManageController {
 	//manage notice
 	@RequestMapping(value="/notice")
 	public String notice(Model model){
-		//
 		return "manage/manage_notice";
 	}
 }

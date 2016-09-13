@@ -5,15 +5,19 @@
 
 	<insert id="insertScrap" parameterType="Scrap">
 		insert into scrap(sno,url, pno, id) values
-		(scrap_seq.nextval,#{url},#{pno},#{id})
+		(scrap_seq.nextval,#{url},null,#{id})
 	</insert>
 
 	<select id="selectScrapList" parameterType="java.lang.String" resultType="Scrap">
 		select * from scrap where id =#{id}
 	</select>
+	
+	<select id="sharedscrapList" parameterType="java.lang.Integer" resultType="Scrap">
+		select * from scrap where pno =#{pno}
+	</select>
  
 	<select id="selectProject" parameterType="String" resultType="Scrap">
-		select m.id, m.tno, p.pno, p.name
+		select DISTINCT  m.id, m.tno, p.pno, p.name
 		from members m, project p 
 		where m.id =#{id} 
 	</select>
