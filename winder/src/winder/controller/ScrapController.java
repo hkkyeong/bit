@@ -104,27 +104,27 @@ public class ScrapController {
 		int sno =Integer.parseInt(request.getParameter("sno"));
 		ScrapVO scrap =scrapService.selectScrapNoList(sno);		
 		String articleURL  = scrap.getUrl();
-		/*String articleURL = "http://m.blog.naver.com/sara1428/220803352441"; */
 		Document doc = Jsoup.connect(articleURL).get();     // document 객체 생성.
-
-		Elements title = doc.select("div#viewTypeSelector.post_ct");          // 아이디가 _article인 div 태그 선택
-		System.out.println("title: " + title);
-
-
-		String imgSrc = doc.select("img").attr("src");
-		System.out.println(imgSrc);
-		request.setAttribute("img",imgSrc); 
 		
 		
+		Elements title = doc.select("h3");
+		Elements content =doc.select("p.se_textarea");
+		Elements content2 =doc.select("div.post_ct");
 		
-		
-		/* Elements con = doc.select("div.se_component se_paragraph default"); */  
-		String str = title.text();                            // 값 저장
-		/*String imgs = */
-		System.out.println("str:"+str);  
+		if(){
+			
+		}else{
+			
+		}
 
-		model.addAttribute("str2", str);
-		request.setAttribute("str",str);		    
+		/*String imgSrc = doc.select("span.img img").attr("src");*/
+		
+		String titleS = title.text();                            // 값 저장
+		String contentS = content2.text();
+
+		request.setAttribute("title",titleS);		   
+		request.setAttribute("content",contentS);
+		/*request.setAttribute("img",imgSrc); */
 
 		return "scrap/scrap2";
 	}
@@ -139,7 +139,7 @@ public class ScrapController {
 		model.addAttribute("scrapList",scrapService.selectScrapList(id));
 		model.addAttribute("selectProject",scrapService.selectProject(id));
 
-		return "scrap/scrapList";
+		return "scrap/myScrap";
 	}
 
 	@RequestMapping(value="sharedscrapList")

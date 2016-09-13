@@ -15,8 +15,8 @@
 <div class="row">   
 	<div class="col-md-12">
 		<h4 class="page-head-line">Scrap</h4>
-		<%=request.getAttribute("str")%>
-		
+		제목 : <%=request.getAttribute("title")%> <br>
+		내용 : <%=request.getAttribute("content") %>
 		<img alt="" src="<%=request.getAttribute("img")%>">
 		
 		<%-- content: <%=request.getAttribute("str2")%>  --%>
