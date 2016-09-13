@@ -10,8 +10,8 @@
 		<h4 class="page-head-line">LOGIN</h4>
 	</div>
 
-	<div class="col-md-12">
-		<div class="panel panel-info">
+	<div class="col-md-12" style="padding-left: 20%;">
+		<div class="panel panel-info" style="width: 80%;">
 			<div class="panel-heading">SIGN UP!</div>
 			<div class="panel-body">
 				<form action="signchk" method="post" enctype="multipart/form-data">

@@ -15,15 +15,6 @@
 			<div class="panel-heading">Project</div>
 			<div class="panel-body">
 			<a href="todo?pno=${pno }"><img src="img/pic01.png" style=" width: 100%;"></a> 
-<!-- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
-					lacus adipiscing, posuere lectus et, fringilla augue.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
-					lacus adipiscing, posuere lectus et, fringilla augue.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
-					lacus adipiscing, posuere lectus et, fringilla augue.</p> -->
 			</div>
 			<div class="panel-footer">&nbsp;</div>
 		</div>
@@ -33,15 +24,7 @@
 			<div class="panel-heading">Project Management</div>
 			<div class="panel-body">
 			<a href="projectmanagementform?pno=${pno }&tno=${tno}"><img src="img/pic02.png" style=" width: 100%;"></a> 
-<!-- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
-					lacus adipiscing, posuere lectus et, fringilla augue.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
-					lacus adipiscing, posuere lectus et, fringilla augue.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
-					lacus adipiscing, posuere lectus et, fringilla augue.</p> -->
+
 			</div>
 			<div class="panel-footer">&nbsp;</div>
 		</div>
@@ -51,15 +34,7 @@
 			<div class="panel-heading">Scrap</div>
 			<div class="panel-body">
 			<a href=""><img src="img/pic03.png" style=" width: 100%;"></a> 
-<!-- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
-					lacus adipiscing, posuere lectus et, fringilla augue.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
-					lacus adipiscing, posuere lectus et, fringilla augue.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
-					lacus adipiscing, posuere lectus et, fringilla augue.</p> -->
+
 			</div>
 			<div class="panel-footer">&nbsp;</div>
 		</div>

@@ -48,5 +48,10 @@ public class MemberServiceImpl implements MemberService{
 	public int updatePassword(MemberVO member) {
 		return memberDAO.updatePassword(member);
 	}
+
+	@Override
+	public int countMember() throws RuntimeException {
+		return memberDAO.countMember();
+	}
 	
 }

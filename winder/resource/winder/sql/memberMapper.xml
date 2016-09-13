@@ -23,7 +23,7 @@
 	</select>
 
 	<select id="selectAllMember" parameterType="java.lang.String" resultType="Member">
-		select * from member
+		select * from member order by id asc
 	</select>
 	
 	<select id="chkMember" parameterType="Member" resultType="int">
@@ -34,4 +34,8 @@
 		update member set
 		password=#{password} where id=#{id}
 	</update>
+	
+	<select id="countMember" resultType="int">
+		select count(*) count from member
+	</select>
 </mapper>

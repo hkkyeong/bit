@@ -12,4 +12,5 @@ public interface MemberService {
 	public List<MemberVO> selectAllMember();
 	public int chkMember(MemberVO member) throws RuntimeException;
 	public int updatePassword(MemberVO member);
+	public int countMember() throws RuntimeException;
 }

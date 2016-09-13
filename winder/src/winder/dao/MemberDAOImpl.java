@@ -51,5 +51,10 @@ public class MemberDAOImpl implements MemberDAO{
 	public int updatePassword(MemberVO member) {
 		return sqlSession.update("winder.Member.updatePassword",member);
 	}
+
+	@Override
+	public int countMember() throws RuntimeException {
+		return sqlSession.selectOne("winder.Member.countMember");
+	}
 	
 }
