@@ -15,6 +15,13 @@
 		<typeAlias type="winder.vo.TodoJoinVO" alias="TodoJoin"/>
 		<typeAlias type="winder.vo.ScrapVO" alias="Scrap"/>
 		<typeAlias type="winder.vo.OutMemberVO" alias="OutMember"/>
+		<typeAlias type="winder.vo.NoteVO" alias="Note"/>
+		<typeAlias type="winder.vo.BoardVO" alias="Board"/>
+		<typeAlias type="winder.vo.ReplyVO" alias="Reply"/>
+		<typeAlias type="winder.vo.ReportVO" alias="Report"/>
+		<typeAlias type="winder.vo.ScrapVO" alias="Scrap"/>
+		<typeAlias type="winder.vo.TeamVO" alias="Team"/>
+		<typeAlias type="winder.vo.UploadfileVO" alias="Uploadfile"/>
 	</typeAliases>
 
 

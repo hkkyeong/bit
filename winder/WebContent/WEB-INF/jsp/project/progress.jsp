@@ -10,14 +10,16 @@
 	<div class="col-md-12">
 		<h4 class="page-head-line">progress</h4>
 	</div>
+<div class="col-md-12">
+<a href="todomanagepage?pno=${pno }" style=" text-align: right; margin: auto; display: block;">
+	<h4>to do list 관리 ->
+<!-- 		<button type="submit" class="btn btn-default">Submit</button> -->
+	</h4>
+	</a>
+</div>
 </div>
 <div class="row">
 	<div class="col-md-6">
-	
-	<h4> &nbsp
-<!-- 		<button type="submit" class="btn btn-default">Submit</button> -->
-	</h4>
-
 	<br>
 		<!--   Basic Table  -->
 		<div class="panel panel-default">
@@ -55,11 +57,6 @@
 	</div>
 
 	<div class="col-md-6">
-	<a href="todomanagepage?pno=${pno }" style=" text-align: right; margin: auto; display: block;">
-	<h4>to do list 관리 ->
-<!-- 		<button type="submit" class="btn btn-default">Submit</button> -->
-	</h4>
-	</a>
 	<br>
 		<!--   Basic Table  -->
 		<div class="panel panel-default">

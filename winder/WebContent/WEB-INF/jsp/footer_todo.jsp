@@ -20,6 +20,7 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/interface.js"></script>
 <script src="js/config.js"></script>
+<!-- 도넛 차트 르러그인 -->
 <script src="js/jquery.flot.min.js"></script>
 <script src="js/jquery.flot.pie.min.js"></script>
 

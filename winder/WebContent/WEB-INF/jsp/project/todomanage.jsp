@@ -7,17 +7,16 @@
 <div class="row">
 	<div class="col-md-12">
 		<h4 class="page-head-line">to do management</h4>
-		<br>
+	</div>
+	<div class="col-md-12">
+	<a href="todo?pno=${pno }"
+			style="text-align: right; margin: auto; display: block;">
+			<h4>progress -></h4> <br>
+		</a>
 	</div>
 </div>
 <div class="row">
 <div class="col-md-12">
-<a href="todo?pno=${pno }" style="text-align: right; margin: auto; display: block;">
-			<h4>
-				progress ->
-			</h4>
-			<br>
-		</a>
 		<!--   Basic Table  -->
 		<div class="panel panel-default">
 			<div class="panel-heading">TITLE LIST</div>
