@@ -39,6 +39,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public List<MemberVO> selectAllMember() {
 		List<MemberVO> selectAllMember =new ArrayList<>();
 		selectAllMember=sqlSession.selectList("winder.Member.selectAllMember");
+		for(int i=0; i<selectAllMember.size(); i++){
+			if(selectAllMember.get(i).getId().equals("manager")){
+				selectAllMember.remove(i);
+			}
+		}
 		return selectAllMember;
 	}
 

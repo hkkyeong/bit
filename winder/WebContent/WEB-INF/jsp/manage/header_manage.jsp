@@ -9,4 +9,30 @@
     <link href="css/font-awesome.css" rel="stylesheet" />
     <link href="css/style2.css" rel="stylesheet" />
 </head>
+
+<style type="text/css">
+#element_to_pop_up { 
+    background-color:#fff;
+    border-radius:15px;
+    color:#000;
+    display:none; 
+    padding:20px;
+    min-width:400px;
+    min-height: 180px;
+}
+.b-close{
+    cursor:pointer;
+    position:absolute;
+    right:10px;
+    top:5px;
+}
+a{
+ color:#000;
+}
+a:hover{
+color:#000;
+text-decoration: blink;
+}
+</style>
+
 </head>

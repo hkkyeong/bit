@@ -213,7 +213,7 @@
 					</div>
 					<div class="form-group">
 					<a href="#" style="text-align: right; margin: auto; display: block;">
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">확인</button>
 					</a>
 					</div>
 				</form>

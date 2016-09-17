@@ -251,8 +251,7 @@ public class TodoController {
 	
 	//todo 수정
 	@RequestMapping(value="todoupdate")
-	public String todoupdate(TodoVO vo, Model model, HttpSession session, HttpServletRequest request){
-		String id=(String)session.getAttribute("id");
+	public String todoupdate(TodoVO vo, Model model, HttpServletRequest request){
 		String pno=(String)request.getParameter("pno");
 		String url="redirect:/todomanagepage?pno="+pno;
 		try {
@@ -269,8 +268,7 @@ public class TodoController {
 	
 	//todolist 수정
 	@RequestMapping(value="todolistupdate")
-	public String todolistupdate(TodoListVO vo, Model model, HttpSession session, HttpServletRequest request){
-		String id=(String)session.getAttribute("id");
+	public String todolistupdate(TodoListVO vo, Model model, HttpServletRequest request){
 		String pno=(String)request.getParameter("pno");
 		String url="redirect:/todomanagepage?pno="+pno;
 		try {
