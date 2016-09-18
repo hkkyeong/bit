@@ -42,7 +42,11 @@ public class OutMemberVO {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "OutMemberVO [id=" + id + ", name=" + name + ", joindate=" + joindate + ", outdate=" + outdate
+				+ ", reason=" + reason + "]";
+	}
+	
 }

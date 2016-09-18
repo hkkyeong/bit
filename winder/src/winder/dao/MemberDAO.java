@@ -14,8 +14,11 @@ public interface MemberDAO {
 	public List<MemberVO> selectAllMember();
 	public int chkMember(MemberVO member) throws RuntimeException;
 	public int updatePassword(MemberVO member);
+	
+	//manager
 	public int countMember() throws RuntimeException;
 	public int todayJoin() throws RuntimeException;
-	//public int outMember(OutMemberVO outmember) throws RuntimeException;
+	public int outMember(OutMemberVO outmember) throws RuntimeException;
+	public List<OutMemberVO> outMemberList() throws RuntimeException;	
 
 }

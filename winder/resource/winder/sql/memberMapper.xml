@@ -19,7 +19,7 @@
 	</update>
 	
 	<select id="selectMember" parameterType="java.lang.String" resultType="Member">
-		select * from member where id =#{value}
+		select id, password, name, email, phone, to_char(joindate, 'yyyy/mm/dd')joindate from member where id =#{value}
 	</select>
 
 	<select id="selectAllMember" parameterType="java.lang.String" resultType="Member">

@@ -68,10 +68,15 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectOne("winder.Member.todayJoin");
 	}
 
-/*	@Override
+	@Override
 	public int outMember(OutMemberVO outmember) throws RuntimeException {
 		return sqlSession.insert("winder.OutMember.insertOutMember", outmember);
 	}
-	*/
+
+	@Override
+	public List<OutMemberVO> outMemberList() throws RuntimeException {
+		return sqlSession.selectList("winder.OutMember.OutMemberList");
+	}
+	
 	
 }

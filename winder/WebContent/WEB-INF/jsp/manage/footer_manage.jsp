@@ -39,7 +39,6 @@ function idsend(){
 	console.log(size);
 	for(var i=0; i<size; i++){
 		if(document.all.id[i].checked){
-			alert(document.all.id[i].value);
 			var id=document.all.id[i].value;
 			break;
 		}

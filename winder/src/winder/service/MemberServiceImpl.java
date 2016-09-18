@@ -14,7 +14,6 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
 	private MemberDAO memberDAO;
-	@Autowired
 
 	@Override
 	public int insertMember(MemberVO member) throws RuntimeException {
@@ -61,9 +60,14 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.todayJoin();
 	}
 
-/*	@Override
+	@Override
 	public int outMember(OutMemberVO outmember) throws RuntimeException {
 		return memberDAO.outMember(outmember);
-	}*/
+	}
+
+	@Override
+	public List<OutMemberVO> outMemberList() throws RuntimeException {
+		return memberDAO.outMemberList();
+	}
 	
 }

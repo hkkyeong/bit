@@ -71,15 +71,17 @@
 								<th>NAME</th>
 								<th>JOIN DATE</th>
 								<th>OUT DATE</th>
+								<th>REASON</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${member }" var="member">
-								<tr id="${member.id }">
-									<td>${member.id }</td>
-									<td>${member.name }</td>
-									<td>${member.joindate }</td>
-									<td></td>
+							<c:forEach items="${outmember }" var="outmember">
+								<tr id="${outmember.id }">
+									<td>${outmember.id }</td>
+									<td>${outmember.name }</td>
+									<td>${outmember.joindate }</td>
+									<td>${outmember.outdate }</td>
+									<td>${outmember.reason }</td>
 								</tr>
 							</c:forEach>
 						</tbody>

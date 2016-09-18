@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import winder.service.MemberService;
+import winder.vo.MemberVO;
+import winder.vo.OutMemberVO;
 
 @Controller
 public class ManageController {
@@ -21,13 +23,14 @@ public class ManageController {
 		model.addAttribute("membercount", memberService.countMember()-1);
 		model.addAttribute("todayjoin", memberService.todayJoin());
 		model.addAttribute("member", memberService.selectAllMember());
+		model.addAttribute("outmember", memberService.outMemberList());
 		return "manage/manage_member";
 	}
 	
 	//member out
 	@RequestMapping(value="/memberout")
 	public String memberOut(HttpServletRequest request){
-		/*MemberVO mvo=new MemberVO();
+		MemberVO mvo=new MemberVO();
 		OutMemberVO ovo=new OutMemberVO();
 		mvo=memberService.selectMember(request.getParameter("id"));
 		//강제 탈퇴시킬 멤버 outmember 테이블에 insert
@@ -35,23 +38,26 @@ public class ManageController {
 		ovo.setJoindate(mvo.getJoindate());
 		ovo.setName(mvo.getName());
 		ovo.setReason(request.getParameter("reason"));
+		System.out.println("ovo: "+ovo);
 		try {
 			int count=memberService.outMember(ovo);
 			if(count==1){
+				//outmember insert 성공 후 해당 멤버 삭제
 				int c=memberService.deleteMember(mvo.getId());
 				if(c==1){
 					return "redirect:/manage";
 				}else{
 					return "redirect:/manage";
 				}
-				return "redirect:/manage";
 			}else{
 				return "redirect:/manage";
 			}
 		} catch (Exception e) {
+			System.out.println("실패");
+			e.printStackTrace();
 			return "redirect:/manage";
-		}*/
-		return "d";
+		}
+
 	}
 	
 	//manage report
