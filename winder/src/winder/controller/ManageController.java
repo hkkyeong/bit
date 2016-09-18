@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import winder.service.MemberService;
-import winder.vo.MemberVO;
 
 @Controller
 public class ManageController {
@@ -27,8 +26,32 @@ public class ManageController {
 	
 	//member out
 	@RequestMapping(value="/memberout")
-	public String memberOut(MemberVO vo, HttpServletRequest request){
-		return "";
+	public String memberOut(HttpServletRequest request){
+		/*MemberVO mvo=new MemberVO();
+		OutMemberVO ovo=new OutMemberVO();
+		mvo=memberService.selectMember(request.getParameter("id"));
+		//강제 탈퇴시킬 멤버 outmember 테이블에 insert
+		ovo.setId(mvo.getId());
+		ovo.setJoindate(mvo.getJoindate());
+		ovo.setName(mvo.getName());
+		ovo.setReason(request.getParameter("reason"));
+		try {
+			int count=memberService.outMember(ovo);
+			if(count==1){
+				int c=memberService.deleteMember(mvo.getId());
+				if(c==1){
+					return "redirect:/manage";
+				}else{
+					return "redirect:/manage";
+				}
+				return "redirect:/manage";
+			}else{
+				return "redirect:/manage";
+			}
+		} catch (Exception e) {
+			return "redirect:/manage";
+		}*/
+		return "d";
 	}
 	
 	//manage report

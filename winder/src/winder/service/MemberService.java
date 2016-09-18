@@ -3,6 +3,7 @@ package winder.service;
 import java.util.List;
 
 import winder.vo.MemberVO;
+import winder.vo.OutMemberVO;
 
 public interface MemberService {
 	public int insertMember(MemberVO member) throws RuntimeException;
@@ -14,4 +15,5 @@ public interface MemberService {
 	public int updatePassword(MemberVO member);
 	public int countMember() throws RuntimeException;
 	public int todayJoin() throws RuntimeException;
+	//public int outMember(OutMemberVO outmember) throws RuntimeException;
 }

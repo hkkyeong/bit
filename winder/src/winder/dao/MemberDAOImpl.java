@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import winder.vo.MemberVO;
+import winder.vo.OutMemberVO;
 
 @Repository("memberDAO")
 public class MemberDAOImpl implements MemberDAO{
@@ -66,5 +67,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public int todayJoin() throws RuntimeException {
 		return sqlSession.selectOne("winder.Member.todayJoin");
 	}
+
+/*	@Override
+	public int outMember(OutMemberVO outmember) throws RuntimeException {
+		return sqlSession.insert("winder.OutMember.insertOutMember", outmember);
+	}
+	*/
 	
 }

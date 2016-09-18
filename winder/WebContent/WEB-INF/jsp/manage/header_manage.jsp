@@ -26,13 +26,7 @@
     right:10px;
     top:5px;
 }
-a{
- color:#000;
-}
-a:hover{
-color:#000;
-text-decoration: blink;
-}
+
 </style>
 
 </head>

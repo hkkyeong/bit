@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 
 import winder.dao.MemberDAO;
 import winder.vo.MemberVO;
+import winder.vo.OutMemberVO;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
 	private MemberDAO memberDAO;
+	@Autowired
 
 	@Override
 	public int insertMember(MemberVO member) throws RuntimeException {
@@ -58,5 +60,10 @@ public class MemberServiceImpl implements MemberService{
 	public int todayJoin() throws RuntimeException {
 		return memberDAO.todayJoin();
 	}
+
+/*	@Override
+	public int outMember(OutMemberVO outmember) throws RuntimeException {
+		return memberDAO.outMember(outmember);
+	}*/
 	
 }

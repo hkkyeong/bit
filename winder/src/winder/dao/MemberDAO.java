@@ -3,6 +3,7 @@ package winder.dao;
 import java.util.List;
 
 import winder.vo.MemberVO;
+import winder.vo.OutMemberVO;
 
 public interface MemberDAO {
 	
@@ -15,5 +16,6 @@ public interface MemberDAO {
 	public int updatePassword(MemberVO member);
 	public int countMember() throws RuntimeException;
 	public int todayJoin() throws RuntimeException;
+	//public int outMember(OutMemberVO outmember) throws RuntimeException;
 
 }

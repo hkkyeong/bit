@@ -91,13 +91,9 @@
 </div>
 
 <div id="element_to_pop_up">
-<a class="b-close" style="color: #000;">x<a/>
-<form action="memberout">
-<label name="id" value="">sssdfefㅎㅇㄹㄷㄹ</label>
-<label name="name"></label>
-<label name="joindate"></label>
-<label>강제 탈퇴 사유</label>
-<textarea class="form-control" rows="3" name="reason" ></textarea>
+<div class="b-close" style="color: #000;">x</div>
+<form action="memberout" id="out">
+
 </form>
 
 </div>
