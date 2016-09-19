@@ -17,7 +17,7 @@
 		name=#{name},content=#{content},exdate=#{exdate} where pno=#{pno}
 	</update>
 	
-	<select id="selectProject" parameterType="java.lang.String"	resultType="Project">
+	<select id="selectProject" parameterType="int"	resultType="Project">
 		select * from project where pno =#{pno}
 	</select>
 

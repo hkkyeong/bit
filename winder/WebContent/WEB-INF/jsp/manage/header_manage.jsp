@@ -8,7 +8,6 @@
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/font-awesome.css" rel="stylesheet" />
     <link href="css/style2.css" rel="stylesheet" />
-</head>
 
 <style type="text/css">
 #element_to_pop_up { 

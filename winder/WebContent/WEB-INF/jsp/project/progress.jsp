@@ -98,10 +98,10 @@
 	<!-- Donut chart -->
 	<div class="panel panel-default">
 			<div class="panel-heading">DONUT CHART</div>
-			<h4 id="per">&nbsp;&nbsp;&nbsp;진행률: ${per }</h4>
+			<h4 id="per">&nbsp;&nbsp;&nbsp;진행률: ${per } %</h4>
 
 			<div class="box-body">
-				<div id="donut-chart" style="height: 300px;"></div>
+				<div id="donut-chart" style="height: 300px;"></div><br>
 			</div>
 			<!-- /.box-body-->
 	</div>

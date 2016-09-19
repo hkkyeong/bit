@@ -52,7 +52,7 @@
 					</table>
 				</div>
 					<a href="" style="text-align: right; margin: auto; display: block;">
-					<button type="submit" id="my-button" class="btn btn-default" onclick="idsend()">강제 탈퇴</button>
+					<button type="submit" id="my-button" class="btn btn-default" onclick="idsend(${id}, )">강제 탈퇴</button>
 					</a>
 				</form>
 			</div>
@@ -97,7 +97,6 @@
 <form action="memberout" id="out">
 
 </form>
-
 </div>
 
 <jsp:include page="footer_manage.jsp" />

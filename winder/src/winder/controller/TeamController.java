@@ -54,7 +54,7 @@ public class TeamController {
 	public String teamCreate(TeamVO vo,HttpServletRequest request) throws IOException{
 
 		vo =new TeamVO();
-		String path ="C:\\비트\\workspace\\0901\\0830\\WebContent\\upload\\";
+		String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
 		int size = 1024*1024*5;
 		String enc ="utf-8";
 

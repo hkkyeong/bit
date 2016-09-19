@@ -27,7 +27,7 @@
                                 </ul>
                             </li>
                              <li><a class="menu-top" href="mypage">My Page</a></li>
-                             <li><a class="menu-top" href="communitylist">community</a></li>
+                             <li><a class="menu-top" href="community">community</a></li>
                         </ul>
                     </div>
                 </div>

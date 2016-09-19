@@ -164,7 +164,7 @@ function drop2(target, e) {		//드롭시 호출 할 함수
 			done=data.done;
 			dchart();
 			$("#per").empty();
-			$("#per").append("&nbsp;&nbsp;&nbsp;진행률: "+data.per);
+			$("#per").append("&nbsp;&nbsp;&nbsp;진행률: "+data.per+" %");
 			url="bar?pno="+${pno};
 			bar(url);
 		},

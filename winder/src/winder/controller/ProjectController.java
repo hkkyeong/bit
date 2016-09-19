@@ -26,6 +26,19 @@ public class ProjectController {
 	@Autowired
 	private MembersService membersService;
 	
+	//프로젝트 관리 form
+	@RequestMapping(value="projectmanage")
+	public String projectmanage(Model model, HttpServletRequest request){
+		System.out.println("pno: "+request.getParameter("pno"));
+		try {
+			ProjectVO vo=projectService.selectProject(Integer.parseInt(request.getParameter("pno")));
+			model.addAttribute("p", vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "project/projectmanage";
+	}
+		
 	//프로젝트 생성 form
 	@RequestMapping(value="projectform")
 	public String projectForm(Model model, HttpSession session,HttpServletRequest req){
@@ -127,7 +140,7 @@ public class ProjectController {
 					
 				}catch(Exception e){
 					e.printStackTrace();
-					return "redirect:/login";
+					return "project/projectmanagement";
 				}
 				
 			}else{	// position 값이 member라면,

@@ -5,7 +5,7 @@
 
 	<insert id="insertMembers" parameterType="Members">
 		insert into members(mno, state, id, tno) values
-		(members_seq.nextval,#{state},#{id},#{tno})
+		(members_seq.nextval,2,#{id},#{tno})
 	</insert>
 
 	<delete id="deleteMembers" parameterType="java.lang.String">
