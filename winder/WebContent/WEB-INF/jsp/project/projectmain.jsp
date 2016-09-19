@@ -33,7 +33,7 @@
 		<div class="panel panel-success">
 			<div class="panel-heading">Sharing Data</div>
 			<div class="panel-body">
-			<a href=""><img src="img/pic03.png" style=" width: 100%;"></a> 
+			<a href="sharedscrapList?pno=${pno }"><img src="img/pic03.png" style=" width: 100%;"></a> 
 
 			</div>
 			<div class="panel-footer">&nbsp;</div>

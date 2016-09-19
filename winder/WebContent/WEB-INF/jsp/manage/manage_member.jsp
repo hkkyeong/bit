@@ -24,7 +24,7 @@
 		<div class="panel-heading">MEMBER LIST</div>
 			<div class="panel-body">
 			<form action="">
-				<div class="table-responsive" style="max-height: 600px;">
+				<div class="table-responsive" style="max-height: 1000px;">
 					<table class="table">
 						<thead>
 							<tr>
@@ -63,7 +63,7 @@
 		<div class="panel panel-default">
 		<div class="panel-heading">OUT MEMBER LIST</div>
 			<div class="panel-body">
-				<div class="table-responsive" style="max-height: 600px;">
+				<div class="table-responsive" style="max-height: 1000px;">
 					<table class="table">
 						<thead>
 							<tr>

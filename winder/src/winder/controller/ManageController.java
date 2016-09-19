@@ -38,7 +38,6 @@ public class ManageController {
 		ovo.setJoindate(mvo.getJoindate());
 		ovo.setName(mvo.getName());
 		ovo.setReason(request.getParameter("reason"));
-		System.out.println("ovo: "+ovo);
 		try {
 			int count=memberService.outMember(ovo);
 			if(count==1){
