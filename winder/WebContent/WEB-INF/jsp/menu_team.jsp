@@ -13,10 +13,6 @@
                                 <ul class="dropdown-menu">
                                 	<li><a href="teamList">팀 목록</a></li>
                                 	<li><a href="teamList">팀 관리</a></li>
-                                  <%--   <li><a href="teamCreateform">팀 생성</a></li>
-                                    <c:forEach items="${teammenu }" var="tmenu">
-                                    <li><a href="projectlist?tno=${tmenu.tno }">${tmenu.name }</a></li>
-                                    </c:forEach> --%>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -27,8 +23,6 @@
                                 </ul>
                             </li>
                              <li><a href="mypage">My Page</a></li>
-                             <li><a class="menu-top" href="community">community</a></li>
-
                         </ul>
                     </div>
                 </div>

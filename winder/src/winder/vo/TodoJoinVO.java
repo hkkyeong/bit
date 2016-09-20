@@ -48,8 +48,9 @@ public class TodoJoinVO {
 	}
 	@Override
 	public String toString() {
-		return "TodoJoinVO [tlno=" + tlno + ", title=" + title + ", content=" + content + ", state=" + state
-				+ ", tldate=" + tldate + "]";
+		return "TodoJoinVO [tlno=" + tlno + ", tdno=" + tdno + ", title=" + title + ", content=" + content + ", state="
+				+ state + ", tldate=" + tldate + ", id=" + id + "]";
 	}
+	
 	
 }

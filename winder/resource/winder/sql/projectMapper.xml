@@ -18,7 +18,7 @@
 	</update>
 	
 	<select id="selectProject" parameterType="int"	resultType="Project">
-		select * from project where pno =#{pno}
+		select pno, name, content, to_char(exdate, 'yyyy-mm-dd') exdate, pdate,tno  from project where pno =#{pno}
 	</select>
 
 	<select id="selectProjectList" parameterType="String" resultType="Project">

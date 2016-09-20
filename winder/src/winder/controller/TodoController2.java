@@ -1,4 +1,4 @@
-package winder.controller;
+/*package winder.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,7 +29,7 @@ import winder.vo.TodoVO;
 
 
 @Controller
-public class TodoController {
+public class TodoController2 {
 	
 	@Autowired
 	private ProjectService projectService;
@@ -46,43 +46,21 @@ public class TodoController {
 	@RequestMapping(value="todo")
 	public String todo(Model model, HttpSession session, HttpServletRequest request){
 		String id=(String)session.getAttribute("id");
-		
-		//필요하지 않을 듯
-		//model.addAttribute("teammenu", teamService.selectTeamList(id));
-		//model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
+		model.addAttribute("teammenu", teamService.selectTeamList(id));
+		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
 		
 		//프로젝트 진행률
 		int temp=0;
 		List<TodoJoinVO> plist=todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
-		//id 별로 todolist 뽑기 위해 새 리스트 선언
-		List<TodoJoinVO> plistid = new ArrayList<>();
-		int aa=0;
 		for(int i=0; i<plist.size(); i++){
-			if(plist.get(i).getId().equals(id)){
-				plistid.add(aa, plist.get(i));
-				aa++;
-			}
-		}
-		
-		model.addAttribute("todo", plistid);
-		
-		for(int i=0; i<plistid.size(); i++){
-			if(plistid.get(i).getState().equals("2")){
-				temp++;				
-			}
-		}
-		/*for(int i=0; i<plist.size(); i++){
 			if(plist.get(i).getState().equals("2")){
 				temp++;				
 			}
-		}*/
-		double per=(double)temp/(double)plistid.size()*100.0;
+		}
+		double per=(double)temp/(double)plist.size()*100.0;
 		model.addAttribute("per", (int)per);
 		model.addAttribute("done", temp);
-		model.addAttribute("size", plistid.size());
-		
-		
-		//------------------ 여기 위까지는 됨--------
+		model.addAttribute("size", plist.size());
 		
 		//todo bar
 		HashMap<String, Integer> hm=new HashMap<>();
@@ -111,7 +89,16 @@ public class TodoController {
 		
 		
 		
+		List<TodoJoinVO> plistid = new ArrayList<>();
 		
+		int aa=0;
+		for(int i=0; i<plist.size(); i++){
+			if(plist.get(i).getId().equals(id)){
+				System.out.println("같음");
+				plistid.add(aa, plist.get(i));
+				aa++;
+			}
+		}
 		
 		
 		
@@ -123,7 +110,7 @@ public class TodoController {
 		model.addAttribute("ab", hm);
 		model.addAttribute("tdlist", tdmap);
 		
-		
+		model.addAttribute("todo", plistid);
 		//model.addAttribute("todo", plist);
 		String pno=(String)request.getParameter("pno");
 		model.addAttribute("pno", pno);
@@ -422,3 +409,4 @@ public class TodoController {
 	
 
 }
+*/

@@ -27,7 +27,6 @@
                                 </ul>
                             </li>
                              <li><a class="menu-top-active" href="mypage">My Page</a></li>
-							 <li><a href="community">Community</a></li>
                         </ul>
                     </div>
                 </div>
