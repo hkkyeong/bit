@@ -13,10 +13,10 @@
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_basic.jsp" />
 <div class="row">
+<div class="col-md-12">
+<h4 class="page-head-line">Shared Scrap</h4>
 
-	<a href="scrapForm?pno=${pno}">scrap</a>
-
-	<div class="col-md-6">
+<a href="scrapForm?pno=${pno}">scrap추가</a>
 		<!--   Basic Table  -->
 		<div class="panel panel-default">
 			<div class="panel-heading">Scrap</div>

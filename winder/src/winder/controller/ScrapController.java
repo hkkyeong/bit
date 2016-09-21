@@ -1,12 +1,9 @@
 package winder.controller;
-import java.util.List;
-import java.util.Queue;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,21 +11,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import winder.service.ScrapServiceImpl;
 import winder.vo.ScrapVO;
-import winder.vo.TeamVO;
 
 @Controller
 public class ScrapController {
 
 	@Autowired 
 	private ScrapServiceImpl scrapService;
-
-	private Queue<String> queueOfURL;
-
+	private String firstImageSrc ;
 
 	@RequestMapping(value="scrapForm")
 	public String scrapForm(HttpServletResponse resp,HttpServletRequest request,Model model) throws Exception{
 		String url= request.getParameter("url");
-
 		return "scrap/scrap";
 	}
 
@@ -38,7 +31,6 @@ public class ScrapController {
 
 	        return "scrap/scrapList";
 	}*/
-
 
 	@RequestMapping(value="scrap")
 	public String scrap(ScrapVO scrap,HttpServletRequest request,Model model,HttpSession session) throws Exception{
@@ -78,7 +70,13 @@ public class ScrapController {
 		String url= request.getParameter("url");
 		String id = (String) session.getAttribute("id");
 
-		scrap.setUrl(url);
+		StringBuffer sb = new StringBuffer();
+		sb.append(url);
+		sb.insert(7,"m.");
+		System.out.println(sb);
+
+		String url2 = sb.toString();
+		scrap.setUrl(url2);
 		scrap.setId(id);
 
 		/*String articleURL = "http://m.blog.naver.com/potter777777/220605598446"; */
@@ -105,26 +103,34 @@ public class ScrapController {
 		ScrapVO scrap =scrapService.selectScrapNoList(sno);		
 		String articleURL  = scrap.getUrl();
 		Document doc = Jsoup.connect(articleURL).get();     // document 객체 생성.
-		
-		
 		Elements title = doc.select("h3");
-		Elements content =doc.select("p.se_textarea");
-		Elements content2 =doc.select("div.post_ct");
-		
-/*		if(){
-			
-		}else{
-			
+
+
+		if("div.post_ct".contains((CharSequence) doc.toString())){
+			Elements content2 =doc.select("div.post_ct");
+			String conS = content2.text();
+			request.setAttribute("content",conS);
+
+		}else{     
+			Elements content =doc.select("div#viewTypeSelector.post_ct");  
+			String conS = content.text();
+			request.setAttribute("content",conS);
+		}
+
+  
+/*		Elements el = doc.select("div.post_ct span._img fx");  
+		for(Element element : el){
+			System.out.println(element.attr("src").toString().concat("w2"));
+			request.setAttribute("img",element.attr("src").toString());
+			System.out.println("22");
 		}*/
-
-		/*String imgSrc = doc.select("span.img img").attr("src");*/
-		
+  
 		String titleS = title.text();                            // 값 저장
-		String contentS = content2.text();
-
 		request.setAttribute("title",titleS);		   
-		request.setAttribute("content",contentS);
-		/*request.setAttribute("img",imgSrc); */
+
+
+		/*request.setAttribute("test",test2);*/
+		request.setAttribute("img",firstImageSrc); 
 
 		return "scrap/scrap2";
 	}

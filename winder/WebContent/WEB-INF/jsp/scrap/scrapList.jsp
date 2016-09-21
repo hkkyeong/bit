@@ -12,8 +12,7 @@
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_basic.jsp" />
-<div class="row">
-
+<div class="row">  
 	<a href="scrapForm?pno=${pno}">scrap</a>
 
 	<div class="col-md-6">

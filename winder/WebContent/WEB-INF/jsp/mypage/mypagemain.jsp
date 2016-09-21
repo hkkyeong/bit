@@ -19,7 +19,7 @@ ${teammenu }
 			<div class="panel-heading">Profile</div>
 			<div class="panel-body">
 			
-			<a href="profilemain"><img src="img/pic01.png"></a> 
+			<a href="profilemain"><img src="img/pic01.png" style=" width: 100%;"></a> 
 <!-- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
 					lacus adipiscing, posuere lectus et, fringilla augue.
@@ -37,7 +37,7 @@ ${teammenu }
 		<div class="panel panel-success">
 			<div class="panel-heading">Team Info</div>
 			<div class="panel-body">
-			<a href="teaminfo"><img src="img/pic02.png"></a> 
+			<a href="teaminfo"><img src="img/pic02.png" style=" width: 100%;"></a> 
 <!-- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
 					lacus adipiscing, posuere lectus et, fringilla augue.
@@ -55,7 +55,7 @@ ${teammenu }
 		<div class="panel panel-success">
 			<div class="panel-heading">Message</div>
 			<div class="panel-body">
-			<a href=""><img src="img/pic03.png"></a> 
+			<a href="noteList?rid=${sessionScope.id }"><img src="img/pic03.png" style=" width: 100%;"> </a> 
 <!-- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
 					lacus adipiscing, posuere lectus et, fringilla augue.

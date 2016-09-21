@@ -37,8 +37,7 @@
 						<a href="projectlist?tno=${members.tno }">${members.name}</a>
 					</div>
 					<br><br><br><br>
-					<div class="panel-body">
-					<img src="upload/logo.png">
+					<div class="panel-body"><img src="upload/dd.jpg"> 
 					</div>
 					<br><br><br>
 					<div class="panel-footer">

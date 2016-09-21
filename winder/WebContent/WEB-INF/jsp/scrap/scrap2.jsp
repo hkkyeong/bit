@@ -12,14 +12,14 @@
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_basic.jsp" />
+
+
 <div class="row">   
 	<div class="col-md-12">
-		<h4 class="page-head-line">Scrap</h4>
-		제목 : <%=request.getAttribute("title")%> <br>
-		내용 : <%=request.getAttribute("content") %>
-		<img alt="" src="<%=request.getAttribute("img")%>">
-		
-		<%-- content: <%=request.getAttribute("str2")%>  --%>
+		<h4 class="page-head-line">제목 : <%=request.getAttribute("title")%></h4>
+		<%=request.getAttribute("content") %>
+	<%-- 	<img src="<%=request.getAttribute("img")%>"> --%>
+
 	</div>
 </div>
  

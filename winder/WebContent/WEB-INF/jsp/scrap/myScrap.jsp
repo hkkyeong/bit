@@ -14,7 +14,8 @@
 <jsp:include page="../menu_basic.jsp" />
 <div class="row">
 
-	<a href="scrapForm?pno=${pno}">scrap</a>
+<h4 class="page-head-line">My Scrap</h4>
+	<a href="scrapForm?pno=${pno}">scrap추가</a>
 
 	<div class="col-md-6">
 		<!--   Basic Table  -->
@@ -31,7 +32,7 @@
 									<th>No</th>
 									<th>Title</th>
 									<th>ID</th>
-									<th>PNO</th>
+									<th>Proj Name</th>
 									<th>공유</th>
 								</tr>
 							</thead>
@@ -41,11 +42,11 @@
 									<tr>
 										<td>${scrap.sno}</td>
 										<td><a href="scrap1?sno=${scrap.sno}">${scrap.url}</a></td>
-										<td>${scrap.id}</td>
+										<td>${scrap.id}</td> 
 										<td>${scrap.pno}</td>
 										<td><input type="checkbox" name="sno" value="${scrap.sno}"></td>
 									</tr>
-								</c:forEach>
+									</c:forEach>
 							</tbody>
 						</table>
 					</div>
