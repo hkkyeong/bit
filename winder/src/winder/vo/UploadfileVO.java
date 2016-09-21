@@ -2,7 +2,7 @@ package winder.vo;
 
 public class UploadfileVO {
 	private int uno, pno;
-	private String upass, utitle, ucontent, udate, id;
+	private String upath, utitle, ucontent, udate, id;
 	public int getUno() {
 		return uno;
 	}
@@ -15,11 +15,11 @@ public class UploadfileVO {
 	public void setPno(int pno) {
 		this.pno = pno;
 	}
-	public String getUpass() {
-		return upass;
+	public String getUpath() {
+		return upath;
 	}
-	public void setUpass(String upass) {
-		this.upass = upass;
+	public void setUpath(String upath) {
+		this.upath = upath;
 	}
 	public String getUtitle() {
 		return utitle;

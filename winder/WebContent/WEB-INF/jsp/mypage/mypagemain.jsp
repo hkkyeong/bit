@@ -5,8 +5,6 @@
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_mypage.jsp" />
 
-${member }
-${teammenu }
 <div class="row">
 	<div class="col-md-12">
 		<h4 class="page-head-line">My page</h4>
@@ -16,10 +14,10 @@ ${teammenu }
 <div class="row">
 	<div class="col-md-4 col-sm-4">
 		<div class="panel panel-success">
-			<div class="panel-heading">Profile</div>
+			<div class="panel-heading">File Upload</div>
 			<div class="panel-body">
 			
-			<a href="profilemain"><img src="img/pic01.png" style=" width: 100%;"></a> 
+			<a href="uploadForm"><img src="img/pic01.png" style=" width: 100%;"></a> 
 <!-- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
 					lacus adipiscing, posuere lectus et, fringilla augue.
