@@ -12,32 +12,20 @@
 		<div class="panel panel-success">
 			<div class="panel-heading">${noteDetail.ntitle}</div>
 			<div class="panel-body">
-				<table class="table">
-					<thead>
+				<div class="table-responsive">
+					<table class="table">
 						<tr>
 							<th>보낸 이</th>
-							<th>받은 시간</th>
+							<td>${noteDetail.sid}</td>
+							<th>받은 날짜</th>
+							<td>${noteDetail.ndate}</td>
 						</tr>
-						<tr>
+						<tr height="250px">
 							<th>내용</th>
+							<td colspan="3">${noteDetail.ncontent}</td>
 						</tr>
-					</thead>
-					
-					<tbody>
-					<tr>
-					<td>${noteDetail.sid}</td>
-					<td>${noteDetail.ndate}</td>
-					</tr>
-					<tr>
-					<td>${noteDetail.ncontent}</td>
-					</tr>
-					</tbody>
-				</table>
-
-
-				보낸 이 : ${noteDetail.sid} <br /> 받은 시간 : ${noteDetail.ndate} <br />
-
-				${noteDetail.ncontent}
+					</table>
+				</div>
 			</div>
 
 		</div>

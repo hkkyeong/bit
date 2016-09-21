@@ -13,7 +13,7 @@
 <div class="row">   
 
 <a href="scrapForm">sc</a>
-<a href="scrap1">sc1</a>
+<a href="scrap1">sc1</a> 
 
 	<div class="col-md-12">
 		<h4 class="page-head-line">Team List</h4>
@@ -35,11 +35,9 @@
 				<div class="panel panel-success">
 					<div class="panel-heading">
 						<a href="projectlist?tno=${members.tno }">${members.name}</a>
+					</div>  
+					<div class="panel-body"><img src="img/${members.timg}" style=" width: 100%;"> 
 					</div>
-					<br><br><br><br>
-					<div class="panel-body"><img src="upload/dd.jpg"> 
-					</div>
-					<br><br><br>
 					<div class="panel-footer">
 					<center>
 						<a href="teamDelete?tno=${members.tno}">삭제 </a> 

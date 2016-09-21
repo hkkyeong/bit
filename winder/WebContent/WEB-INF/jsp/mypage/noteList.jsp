@@ -16,7 +16,7 @@
 
 <div class="row">     
 <h4 class="page-head-line">Message List</h4>
-	<div class="col-md-6">
+	<div class="col-md-12" >
 		<!--   Basic Table  -->
 		<div class="panel panel-default">
 			<div class="panel-heading">Message</div>
@@ -31,7 +31,7 @@
 									<th>No</th>
 									<th>Title</th>
 									<th>Date</th>
-									<th>보낸이</th>
+									<th>보낸이</th> 
 									<th>삭제</th>
 								</tr>
 							</thead>

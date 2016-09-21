@@ -20,7 +20,7 @@
                 <div class="col-md-6 col-sm-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Profile
+                            upload
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">

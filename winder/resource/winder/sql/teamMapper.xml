@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="selectTeamList" parameterType="String" resultType="Team">
-		select distinct t.tno, t.name from team t, members m where 
+		select distinct t.tno, t.name, t.timg from team t, members m where 
 		m.tno=t.tno and m.id like #{id}
 	</select>
 	
