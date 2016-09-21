@@ -62,8 +62,7 @@ public class TodoController {
 				plistid.add(aa, plist.get(i));
 				aa++;
 			}
-		}
-		
+		}	
 		model.addAttribute("todo", plistid);
 		
 		for(int i=0; i<plistid.size(); i++){
@@ -319,20 +318,34 @@ public class TodoController {
 	
 	//드래그 앤 드롭 state = done 
 	@RequestMapping(value="statedone")
-	public void statedone(HttpServletRequest request, HttpServletResponse response){
+	public void statedone(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+		String id=(String)session.getAttribute("id");
 		int temp=0;
 		try {
 			int count=todolistService.statedone(request.getParameter("tlno"));
 			if(count==1){
 				List<TodoJoinVO> plist=todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
+				List<TodoJoinVO> plistid = new ArrayList<>();
+				int aa=0;
 				for(int i=0; i<plist.size(); i++){
-					if(plist.get(i).getState().equals("2")){
+					if(plist.get(i).getId().equals(id)){
+						plistid.add(aa, plist.get(i));
+						aa++;
+					}
+				}
+				for(int i=0; i<plistid.size(); i++){
+					if(plistid.get(i).getState().equals("2")){
 						temp++;				
 					}
 				}
-				double per=(double)temp/(double)plist.size()*100.0;
+/*				for(int i=0; i<plist.size(); i++){
+					if(plist.get(i).getState().equals("2")){
+						temp++;				
+					}
+				}*/
+				double per=(double)temp/(double)plistid.size()*100.0;
 				JSONObject jobj=new JSONObject();
-				jobj.put("size", plist.size());
+				jobj.put("size", plistid.size());
 				jobj.put("done", temp);
 				jobj.put("per", (int)per);
 				PrintWriter pw=response.getWriter();
@@ -348,21 +361,35 @@ public class TodoController {
 	
 	//드래그 앤 드롭 state = todo
 	@RequestMapping(value="statetodo")
-	public void statetodo(HttpServletRequest request, HttpServletResponse response){
+	public void statetodo(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+		String id=(String)session.getAttribute("id");
 		int temp=0;
 		//state 수정
 		try {
 			int count=todolistService.statetodo(request.getParameter("tlno"));
 			if(count==1){
 				List<TodoJoinVO> plist=todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
+				List<TodoJoinVO> plistid = new ArrayList<>();
+				int aa=0;
 				for(int i=0; i<plist.size(); i++){
-					if(plist.get(i).getState().equals("2")){
+					if(plist.get(i).getId().equals(id)){
+						plistid.add(aa, plist.get(i));
+						aa++;
+					}
+				}
+				for(int i=0; i<plistid.size(); i++){
+					if(plistid.get(i).getState().equals("2")){
 						temp++;				
 					}
 				}
-				double per=(double)temp/(double)plist.size()*100.0;
+				/*for(int i=0; i<plist.size(); i++){
+					if(plist.get(i).getState().equals("2")){
+						temp++;				
+					}
+				}*/
+				double per=(double)temp/(double)plistid.size()*100.0;
 				JSONObject jobj=new JSONObject();
-				jobj.put("size", plist.size());
+				jobj.put("size", plistid.size());
 				jobj.put("done", temp);
 				jobj.put("per", (int)per);
 				PrintWriter pw=response.getWriter();

@@ -1,4 +1,4 @@
-/*package winder.controller;
+package winder.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
