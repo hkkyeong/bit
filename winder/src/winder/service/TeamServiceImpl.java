@@ -49,5 +49,9 @@ public class TeamServiceImpl implements TeamService{
 		return teamDAO.selectTeamName(tno);
 	}
 	
+	@Override
+	public TeamVO selectTno(String code){
+		return teamDAO.selectTno(code);
+	}
 
 }

@@ -49,7 +49,7 @@ public class TeamDAOImpl implements TeamDAO {
 	public TeamVO selectTeamName(int tno) {
 		return sqlSession.selectOne("winder.Team.selectTeamName", tno);
 	}
-	
-	
-
+	public TeamVO selectTno(String code){
+		return sqlSession.selectOne("winder.Team.selectTno",code);
+	}
 }

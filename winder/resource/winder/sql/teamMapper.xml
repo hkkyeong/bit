@@ -33,5 +33,9 @@
 	<select id="selectTeamName" parameterType="java.lang.Integer" resultType="Team">
 		select *from team where tno=#{value}
 	</select>
+	
+	<select id="selectTno" parameterType="java.lang.String" resultType="Team">
+		select * from team where code=#{code}
+	</select>
 
 </mapper>

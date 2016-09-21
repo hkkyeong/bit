@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="winder.Note">
+
+	<insert id="insertNote" parameterType="Note">
+		insert into note(nno, ntitle, ncontent, ndate, sid, rid) values
+		(note_seq.nextval,#{ntitle}, #{ncontent}, sysdate, #{sid}, #{rid})
+	</insert>
+	
+	<select id="selectNoteList" parameterType="java.lang.String" resultType="Note">
+		select *from note where rid=#{rid}
+	</select>
+	
+	<delete id="deleteNote" parameterType="int">
+		delete note where nno=#{nno}
+	</delete>
+	
+	<select id="selectNote" parameterType="java.lang.Integer" resultType="Note">
+		select * from note where nno=#{nno}   
+	</select> 
+	
+</mapper>

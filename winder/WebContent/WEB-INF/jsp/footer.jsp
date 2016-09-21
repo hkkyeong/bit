@@ -16,5 +16,22 @@
     <!-- script -->
 <script src="js/jquery-2.2.3.min.js"></script>
 <script src="js/bootstrap.js"></script>
+<script src="js/jquery.bpopup.min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+    $('#my-button').on('click', function(e) {
+        e.preventDefault();
+        $('#element_to_pop_up').bPopup({
+     	   modalClose: false,
+            opacity: 0.6,
+            positionStyle: 'fixed' //'fixed' or 'absolute'
+        });
+
+    });
+
+});  
+
+</script>
 </body>
 </html>
