@@ -1,11 +1,9 @@
 package winder.service;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public interface UploadFileService {
 	
-	void insertFile(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	boolean insertFile(MultipartHttpServletRequest mRequest) throws Exception;
 
 }

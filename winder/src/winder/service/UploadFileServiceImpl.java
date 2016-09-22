@@ -1,35 +1,53 @@
 /*package winder.service;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public class UploadFileServiceImpl implements UploadFileService {
-
-	@Autowired 
-	
-	
+ 
 	@Override
-	public void insertBoard(Map<String, Object> map, HttpServletRequest request) throws Exception {
-		sampleDAO.insertBoard(map);
+	public boolean insertFile(MultipartHttpServletRequest mRequest) throws Exception {
 
-		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
-		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
-		MultipartFile multipartFile = null;
-		while(iterator.hasNext()){
-			multipartFile = multipartHttpServletRequest.getFile(iterator.next());
-			if(multipartFile.isEmpty() == false){
-				log.debug("------------- file start -------------");
-				log.debug("name : "+multipartFile.getName());
-				log.debug("filename : "+multipartFile.getOriginalFilename());
-				log.debug("size : "+multipartFile.getSize());
-				log.debug("-------------- file end --------------\n");
-			}
+		boolean isSuccess = false;
+		String uploadPath = "/비트/file";
+		File dir = new File(uploadPath);
+
+		if (!dir.isDirectory()) {
+			dir.mkdirs();
 		}
-	}
 
+		Iterator<String> iter = mRequest.getFileNames();
+		while(iter.hasNext()) {
+
+			String uploadFileName = iter.next();
+			MultipartFile mFile = mRequest.getFile(uploadFileName);
+			String originalFileName = mFile.getOriginalFilename();
+			String saveFileName = originalFileName;
+
+			if(saveFileName != null && !saveFileName.equals("")) {
+
+				if(new File(uploadPath + saveFileName).exists()) {
+					saveFileName = saveFileName + "_" + System.currentTimeMillis();
+				}
+
+				try {
+					mFile.transferTo(new File(uploadPath + saveFileName));
+					isSuccess = true;				
+
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+					isSuccess = false;
+				} catch (IOException e) {
+					e.printStackTrace();
+					isSuccess = false;
+				}
+			} 
+		} 
+		return isSuccess;
+	}
 
 }
 */
