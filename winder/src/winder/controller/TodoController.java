@@ -3,7 +3,10 @@ package winder.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -44,9 +47,8 @@ public class TodoController {
 	
 	//메뉴 프로젝트 목록 선택
 	@RequestMapping(value="todo")
-	public String todo(Model model, HttpSession session, HttpServletRequest request){
+	public String todo(Model model, HttpSession session, HttpServletRequest request) throws ParseException{
 		String id=(String)session.getAttribute("id");
-		
 		//필요하지 않을 듯
 		//model.addAttribute("teammenu", teamService.selectTeamList(id));
 		//model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
@@ -56,9 +58,17 @@ public class TodoController {
 		List<TodoJoinVO> plist=todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
 		//id 별로 todolist 뽑기 위해 새 리스트 선언
 		List<TodoJoinVO> plistid = new ArrayList<>();
-		int aa=0;
+		List<TodoJoinVO> ddaylist = new ArrayList<>();
+		List<TodoJoinVO> pastlist = new ArrayList<>();
+		//list index 구분 위한 변수
+		int aa=0; 
+		int bb=0;
+		int cc=0;
+		
+		//날짜 계산
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
 		for(int i=0; i<plist.size(); i++){
-			if(plist.get(i).getId().equals(id)){
+			if(plist.get(i).getId().equals(id)){ //todolist 중 세션 아이디의 list만 새 리스트인 plistid에 저장
 				plistid.add(aa, plist.get(i));
 				aa++;
 			}
@@ -66,19 +76,33 @@ public class TodoController {
 		model.addAttribute("todo", plistid);
 		
 		for(int i=0; i<plistid.size(); i++){
+			Date cdate=sdf.parse(plistid.get(i).getTldate()); //todolist의 날짜
+			Date today=sdf.parse(sdf.format(new Date())); //오늘 날짜
+			long ll=cdate.getTime();
+			long l2=today.getTime();
+			long ld=(ll-l2)/(24*60*60*1000); //tldate-today 일수 계산
+			if(ld<=7){ // 기한 7일 이하로 남거나 지난 리스트
+				if(ld<0){ //기한 지남
+					pastlist.add(bb, plistid.get(i));
+				}else{ //7일 이하의 기한 남음
+					ddaylist.add(cc, plistid.get(i));
+				}
+			}else{ //기한 많이 남은 리스트
+				//System.out.println("날짜: "+plist.get(i).getTldate());
+			}
+			
+			//진행률 계산
 			if(plistid.get(i).getState().equals("2")){
 				temp++;				
 			}
 		}
-		/*for(int i=0; i<plist.size(); i++){
-			if(plist.get(i).getState().equals("2")){
-				temp++;				
-			}
-		}*/
 		double per=(double)temp/(double)plistid.size()*100.0;
 		model.addAttribute("per", (int)per);
 		model.addAttribute("done", temp);
 		model.addAttribute("size", plistid.size());
+		
+		model.addAttribute("past", pastlist);
+		model.addAttribute("dday", ddaylist);
 		
 		
 		//------------------ 여기 위까지는 됨--------

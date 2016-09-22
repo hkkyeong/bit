@@ -1,4 +1,4 @@
-package winder.service;
+/*package winder.service;
 
 import java.util.Map;
 
@@ -32,3 +32,4 @@ public class UploadFileServiceImpl implements UploadFileService {
 
 
 }
+*/

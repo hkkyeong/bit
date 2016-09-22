@@ -1,4 +1,4 @@
-package winder.controller;
+/*package winder.controller;
 
 import javax.activation.CommandMap;
 import javax.servlet.http.HttpServletRequest;
@@ -31,3 +31,4 @@ public class UploadController {
 	    return mv;
 	}
 }
+*/
