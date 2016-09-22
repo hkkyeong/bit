@@ -1,4 +1,4 @@
-/*package winder.service;
+package winder.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,4 +50,3 @@ public class UploadFileServiceImpl implements UploadFileService {
 	}
 
 }
-*/
