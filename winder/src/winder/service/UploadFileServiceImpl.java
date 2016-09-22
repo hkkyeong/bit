@@ -3,9 +3,12 @@ package winder.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+@Service
 public class UploadFileServiceImpl implements UploadFileService {
  
 	@Override

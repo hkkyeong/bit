@@ -15,7 +15,8 @@ public class UploadController {
 	UploadFileService uploadFileService;
 	
 	@RequestMapping(value="uploadForm")
-	public String uploadForm(){
+	public String uploadForm()
+	{
 		return "mypage/upload";
 	}
 	

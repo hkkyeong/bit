@@ -128,7 +128,7 @@
 			</table>
 			</div>
 			<div class="alert alert-info">
-			<strong>D-Day 7</strong><br>
+			<strong>7일 이내의 기간이 남은 목록</strong><br>
 			<table class="table">
 			<c:forEach items="${dday}" var="dday">
 			<c:if test="${dday.state eq '1' }">
