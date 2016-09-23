@@ -135,8 +135,10 @@ function drop(target, e) {		//드롭시 호출 할 함수
 			dchart();
 			$("#per").empty();
 			$("#per").append("&nbsp;&nbsp;&nbsp;진행률: "+data.per+" %");
-			url="bar?pno="+${pno};
-			bar(url);
+			url="pastlist?pno="+${pno};
+			pastlist(url);
+			url="ddaylist?pno="+${pno};
+			ddaylist(url);
 		},
 		error:function(){
 			alert("error 1");
@@ -165,8 +167,10 @@ function drop2(target, e) {		//드롭시 호출 할 함수
 			dchart();
 			$("#per").empty();
 			$("#per").append("&nbsp;&nbsp;&nbsp;진행률: "+data.per+" %");
-			url="bar?pno="+${pno};
-			bar(url);
+			url="pastlist?pno="+${pno};
+			pastlist(url);
+			url="ddaylist?pno="+${pno};
+			ddaylist(url);
 		},
 		error:function(){
 			alert("error 2");
@@ -248,21 +252,28 @@ function dchart(){
 };
 
 
-//진행률 바
-function bar(url){
+
+//past list
+function pastlist(url){
 	$.ajax({
 		type: "post",
 		url:url,
 		dataType : 'json',
 		success:function(data){		
-			$("#progressbar").empty();
+			$("#pasttable").empty();
  			 $.each(data, function(key, value){
- 				var Ca = /\+/g;
- 				 var kkey=decodeURIComponent(key.replace(Ca, " "));
- 				 var vvalue=decodeURIComponent(value);
-				$("#progressbar").append(kkey+"<div class='progress progress-striped'>"+
-						"<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow="+value+"aria-valuemin='0' aria-valuemax='100' style='width:"+
-						value+"%'></div></div>");
+ 				 $.each(value, function(key, value){
+ 					 var Ca = /\+/g;
+ 	 				 if(decodeURIComponent(value.state.replace(Ca, " "))=="1"){
+ 	 					$("#pasttable").append("<tr><td style='border-top: none;'>"+
+ 	 							decodeURIComponent(value.title.replace(Ca, " "))+"</td>"+
+ 	 							"<td style='border-top: none;'>"+
+ 	 							decodeURIComponent(value.content.replace(Ca, " "))+"</td>"+
+ 	 							"<td style='border-top: none;'>"+
+ 	 							decodeURIComponent(value.tldate)+"</td></tr>");
+ 	 				 }
+
+ 	 				 });
 				});  
 			},
 			error:function(){
@@ -270,6 +281,41 @@ function bar(url){
 		}
 	}); 
 }
+
+
+
+//dday list
+function ddaylist(url){
+	$.ajax({
+		type: "post",
+		url:url,
+		dataType : 'json',
+		success:function(data){		
+			$("#ddaytable").empty();
+ 			 $.each(data, function(key, value){
+ 				 $.each(value, function(key, value){
+ 					 var Ca = /\+/g;
+ 	 				 if(decodeURIComponent(value.state.replace(Ca, " "))=="1"){
+ 	 					$("#ddaytable").append("<tr><td style='border-top: none;'>"+
+ 	 							decodeURIComponent(value.title.replace(Ca, " "))+"</td>"+
+ 	 							"<td style='border-top: none;'>"+
+ 	 							decodeURIComponent(value.content.replace(Ca, " "))+"</td>"+
+ 	 							"<td style='border-top: none;'>"+
+ 	 							decodeURIComponent(value.tldate)+"</td></tr>");
+ 	 				 }
+
+ 	 				 });
+				});  
+			},
+			error:function(){
+				alert("error bar");
+		}
+	}); 
+}
+
+
+
+
 
 </script>
 

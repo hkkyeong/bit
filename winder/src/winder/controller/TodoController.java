@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -468,6 +469,118 @@ public class TodoController {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@RequestMapping(value="pastlist")
+	public void pastlist(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String id=(String)session.getAttribute("id");
+		JSONArray jarr=new JSONArray();
+		String cont;
+		List<TodoJoinVO> plist=todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
+		List<TodoJoinVO> plistid = new ArrayList<>();
+		List<TodoJoinVO> ddaylist = new ArrayList<>();
+		List<TodoJoinVO> pastlist = new ArrayList<>();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+		int aa=0; 
+		int bb=0;
+		int cc=0;
+
+		for(int i=0; i<plist.size(); i++){
+			if(plist.get(i).getId().equals(id)){ //todolist 중 세션 아이디의 list만 새 리스트인 plistid에 저장
+				plistid.add(aa, plist.get(i));
+				aa++;
+			}
+		}	
+		
+		for(int i=0; i<plistid.size(); i++){
+			JSONObject jobj=new JSONObject();
+			Date cdate=sdf.parse(plistid.get(i).getTldate()); //todolist의 날짜
+			Date today=sdf.parse(sdf.format(new Date())); //오늘 날짜
+			long ll=cdate.getTime();
+			long l2=today.getTime();
+			long ld=(ll-l2)/(24*60*60*1000); //tldate-today 일수 계산
+			if(ld<=7){ // 기한 7일 이하로 남거나 지난 리스트
+				if(ld<0){ //기한 지남
+					jobj.put("state", URLEncoder.encode(plistid.get(i).getState(), "UTF-8"));
+					jobj.put("title", URLEncoder.encode(plistid.get(i).getTitle(), "UTF-8"));
+					jobj.put("content", URLEncoder.encode(plistid.get(i).getContent(), "UTF-8"));
+					jobj.put("tldate", URLEncoder.encode(plistid.get(i).getTldate(), "UTF-8"));
+					//pastlist.add(bb, plistid.get(i));
+					jarr.add(jobj);
+
+				}else{ //7일 이하의 기한 남음
+					ddaylist.add(cc, plistid.get(i));
+				}
+			}else{ //기한 많이 남은 리스트
+				//System.out.println("날짜: "+plist.get(i).getTldate());
+			}
+		}
+		JSONObject obj=new JSONObject();
+		obj.put("pastlist", jarr);
+		PrintWriter prw;
+		try {
+			prw = response.getWriter();
+			prw.print(obj.toString());
+			prw.flush();
+			prw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(value="ddaylist")
+	public void ddaylist(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String id=(String)session.getAttribute("id");
+		JSONArray jarr=new JSONArray();
+		String cont;
+		List<TodoJoinVO> plist=todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
+		List<TodoJoinVO> plistid = new ArrayList<>();
+		List<TodoJoinVO> ddaylist = new ArrayList<>();
+		List<TodoJoinVO> pastlist = new ArrayList<>();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+		int aa=0; 
+		int bb=0;
+		int cc=0;
+
+		for(int i=0; i<plist.size(); i++){
+			if(plist.get(i).getId().equals(id)){ //todolist 중 세션 아이디의 list만 새 리스트인 plistid에 저장
+				plistid.add(aa, plist.get(i));
+				aa++;
+			}
+		}	
+		
+		for(int i=0; i<plistid.size(); i++){
+			JSONObject jobj=new JSONObject();
+			Date cdate=sdf.parse(plistid.get(i).getTldate()); //todolist의 날짜
+			Date today=sdf.parse(sdf.format(new Date())); //오늘 날짜
+			long ll=cdate.getTime();
+			long l2=today.getTime();
+			long ld=(ll-l2)/(24*60*60*1000); //tldate-today 일수 계산
+			if(ld<=7){ // 기한 7일 이하로 남거나 지난 리스트
+				if(ld<0){ //기한 지남
+				}else{ //7일 이하의 기한 남음
+					jobj.put("state", URLEncoder.encode(plistid.get(i).getState(), "UTF-8"));
+					jobj.put("title", URLEncoder.encode(plistid.get(i).getTitle(), "UTF-8"));
+					jobj.put("content", URLEncoder.encode(plistid.get(i).getContent(), "UTF-8"));
+					jobj.put("tldate", URLEncoder.encode(plistid.get(i).getTldate(), "UTF-8"));
+					//pastlist.add(bb, plistid.get(i));
+					jarr.add(jobj);
+				}
+			}else{ //기한 많이 남은 리스트
+				//System.out.println("날짜: "+plist.get(i).getTldate());
+			}
+		}
+		JSONObject obj=new JSONObject();
+		obj.put("ddaylist", jarr);
+		PrintWriter prw;
+		try {
+			prw = response.getWriter();
+			prw.print(obj.toString());
+			prw.flush();
+			prw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
