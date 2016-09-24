@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header_manage.jsp" />>
 <jsp:include page="nav.jsp" />
-<jsp:include page="menu_member.jsp" />
+<jsp:include page="menu_notice.jsp" />
 
 <div class="row">
 	<div class="col-md-12">

@@ -83,7 +83,6 @@ public class MypageController {
 			try{
 				member.setId((String)session.getAttribute("id"));
 				int count=memberService.updateMember(member);
-				System.out.println(member);
 				if(count==1){
 					System.out.println(session.getAttribute("id")+" profile update success");
 					return "redirect:/home";

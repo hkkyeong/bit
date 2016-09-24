@@ -49,6 +49,7 @@ public class LoginController {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		MemberVO user = memberService.selectMember(id);
+		user.setPassword(password);
 		// id 있는지 확인
 		if (user != null && user.getId() != null) {
 			// id와 패스워드 맞는지 확인
