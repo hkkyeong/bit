@@ -2,7 +2,6 @@ package winder.controller;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;

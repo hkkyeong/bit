@@ -27,7 +27,7 @@
 	
 	<select id="selectTeamList" parameterType="String" resultType="Team">
 		select distinct t.tno, t.name, t.timg from team t, members m where 
-		m.tno=t.tno and m.id like #{id}
+		m.tno=t.tno and m.id like #{id} 
 	</select>
 	
 	<select id="selectTeamName" parameterType="java.lang.Integer" resultType="Team">
