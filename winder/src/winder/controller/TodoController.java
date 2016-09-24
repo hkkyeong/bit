@@ -48,7 +48,7 @@ public class TodoController {
 	
 	//메뉴 프로젝트 목록 선택
 	@RequestMapping(value="todo")
-	public String todo(Model model, HttpSession session, HttpServletRequest request) throws ParseException{
+	public String todo(Model model, HttpSession session, HttpServletRequest request) throws Exception{
 		String id=(String)session.getAttribute("id");
 		//필요하지 않을 듯
 		//model.addAttribute("teammenu", teamService.selectTeamList(id));
@@ -84,9 +84,9 @@ public class TodoController {
 			long ld=(ll-l2)/(24*60*60*1000); //tldate-today 일수 계산
 			if(ld<=7){ // 기한 7일 이하로 남거나 지난 리스트
 				if(ld<0){ //기한 지남
-					pastlist.add(bb, plistid.get(i));
+					pastlist.add(plistid.get(i));
 				}else{ //7일 이하의 기한 남음
-					ddaylist.add(cc, plistid.get(i));
+					ddaylist.add(plistid.get(i));
 				}
 			}else{ //기한 많이 남은 리스트
 				//System.out.println("날짜: "+plist.get(i).getTldate());

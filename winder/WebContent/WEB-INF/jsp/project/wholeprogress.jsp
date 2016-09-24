@@ -29,11 +29,17 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">PROGRESS BARS</div>
 		<div class="panel-body"  id="progressbar">
-		<c:forEach items="${ab }" var="tdlist">
-			${tdlist.key }&nbsp;(${tdlist.value }%)
+		<c:forEach items="${ab }" var="ab">
+			${ab.key }&nbsp;(${ab.value }%)
 			<div class="progress progress-striped">
-			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${tdlist.value }" aria-valuemin="0" aria-valuemax="100+${tdlist.value}" style="width: ${tdlist.value}%">
-			</div>
+			<c:choose>
+			<c:when test="${ab.value eq 100 }">
+				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${ab.value }" aria-valuemin="0" aria-valuemax="100" style="width: ${ab.value}%;"></div>
+			</c:when>
+			<c:otherwise>
+				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${ab.value }" aria-valuemin="0" aria-valuemax="100" style="width: ${ab.value}%; background-color: #b5bbc8;"></div>
+			</c:otherwise>
+			</c:choose>
 			</div>
 		</c:forEach>
 		</div>
@@ -59,22 +65,59 @@
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach items="${ab }" var="tdlist">
+						<c:forEach items="${ab }" var="ab">
+							<c:forEach items="${tdlist }" var="tdlist">
+							<c:if test="${ab.key eq tdlist.content }">
+								<tr>
+									<td>${tdlist.content }</td>
+									<td>${tdlist.tddate }</td>
+									<td>&nbsp;</td>
+									<td>
+									<div class="progress" style="margin-bottom: 0px;">
+										<c:choose>
+										<c:when test="${ab.value eq 100 }">
+											<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${ab.value }" aria-valuemin="0" aria-valuemax="100" style="width: ${ab.value}%;"></div>
+										</c:when>
+										<c:otherwise>
+											<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${ab.value }" aria-valuemin="0" aria-valuemax="100" style="width: ${ab.value}%; background-color: #5bc0de;"></div>
+										</c:otherwise>
+										</c:choose>
+									</div>
+									</td>
+								</tr>
+							</c:if>
+							</c:forEach>
+							<c:forEach items="${plist }" var="plist">
+							<c:if test="${ab.key eq plist.title }">
+							<tr>
+								<td>-&nbsp;&nbsp;${plist.content }</td>
+								<td>&nbsp;&nbsp;${plist.tldate }</td>
+								<td>&nbsp;&nbsp;${plist.id }</td>
+								<td>
+								<div class="progress" style="margin-bottom: 0px; margin-left: 10px;">
+									<c:choose>
+										<c:when test="${plist.state eq '2' }">
+											<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+										</c:when>
+										<c:otherwise>
+											<c:forEach items="${past }" var="past">
+												<c:choose>
+													<c:when test="${plist.tlno eq past.tlno}">
+														<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color: #d9534f;"></div>
+													</c:when>
+													<c:otherwise>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+											<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; background-color: #f0ad4e;"></div>
+										</c:otherwise>
+									</c:choose>
+								</div>
+								</td>
+							</tr>
+							</c:if>
+							</c:forEach>
 						</c:forEach>
-						<!-- title (todo) 목록 foreach로 돌린다
-						ab돌려서 todo.content랑 ab의 key 같으면  value bar에 출력 -->
-						<tr>
-							<td>d</td>
-							<td>d</td>
-							<td>d</td>
-							<td>d</td>
-						</tr>
-						<tr>
-							<td>&nbsp;&nbsp;d</td>
-							<td>&nbsp;&nbsp;d</td>
-							<td>&nbsp;&nbsp;d</td>
-							<td>&nbsp;&nbsp;d</td>
-						</tr>
 						</tbody>
 					</table>
 				</div>

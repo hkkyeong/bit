@@ -19,7 +19,7 @@
 	
 	<select id="selectTodoList" parameterType="int"	resultType="TodoJoin">
 		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy/mm/dd')tldate, tl.id, tl.state from todo t, todolist tl where t.tdno=
-		tl.tdno and t.pno=#{pno} order by content asc
+		tl.tdno and t.pno=#{pno} order by title asc
 	</select>
 
 	<select id="selectAllTodoList" parameterType="java.lang.String" resultType="TodoList">
