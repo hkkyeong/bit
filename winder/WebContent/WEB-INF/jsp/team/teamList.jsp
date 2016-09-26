@@ -12,8 +12,8 @@
 <jsp:include page="../menu_basic.jsp" />
 <div class="row">   
 
-<!-- <a href="scrapForm">sc</a>
-<a href="scrap1">sc1</a>  -->
+<a href="scrapForm">sc</a>
+<a href="scrap1">sc1</a>  
 
 	<div class="col-md-12">
 		<h4 class="page-head-line">Team List</h4>

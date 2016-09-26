@@ -1,4 +1,6 @@
 package winder.controller;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import winder.service.ScrapServiceImpl;
+import winder.vo.AbcVO;
 import winder.vo.ScrapVO;
 
 @Controller
@@ -108,11 +111,46 @@ public class ScrapController {
 
 		if("div.post_ct".contains((CharSequence) doc.toString())){
 			Elements content2 =doc.select("div.post_ct");
+			AbcVO vo=new AbcVO();
+			String ab=content2.toString();
+			String abb;
+			//abb=ab.replaceAll("span", "img");
+			abb=ab.replaceAll("span class=\"_img _inl fx\" thumburl", "img src");
+			abb=abb.replaceAll("?type=\"></span>", "?type=w2\"></img>");
+			abb=abb.replaceAll("27일 철도와 지하철 동시 파업 돌입", "rrrrrr\"");
+			vo.setAbc(abb);
+			int count=scrapService.insertabc(vo);
+			if(count==1){
+				System.out.println("성공");
+				List<AbcVO> abc=scrapService.selectabc(36);
+				System.out.println(abc);
+				model.addAttribute("abc", abc);
+			}else{
+				System.out.println("실패");
+			}
 			String conS = content2.text();
 			request.setAttribute("content",conS);
 
 		}else{     
 			Elements content =doc.select("div#viewTypeSelector.post_ct");  
+			AbcVO vo=new AbcVO();
+			String ab=content.toString();
+			String abb;
+			abb=ab.replaceAll("span class=\"_img _inl fx\" thumburl", "img src");
+			abb=abb.replaceAll("\\?type=\"></span>", "?type=w2\"></img>");
+			abb=abb.replaceAll("27일 철도와 지하철 동시 파업 돌입", "ssssss\"");
+			//abb=abb.replaceAll("27일 철도와 지하철 동시 파업 돌입", "ss\"");
+			vo.setAbc(abb);
+			//vo.setAbc(ab);
+			int count=scrapService.insertabc(vo);
+			if(count==1){
+				System.out.println("성공");
+				List<AbcVO> abc=scrapService.selectabc(36);
+				System.out.println(abc);
+				model.addAttribute("abc", abc);
+			}else{
+				System.out.println("실패");
+			}
 			String conS = content.text();
 			request.setAttribute("content",conS);
 		}
@@ -132,7 +170,8 @@ public class ScrapController {
 		/*request.setAttribute("test",test2);*/
 		request.setAttribute("img",firstImageSrc); 
 
-		return "scrap/scrap2";
+		return "abc";
+		//return "scrap/scrap2";
 	}
 
 	@RequestMapping(value="scrapList")
