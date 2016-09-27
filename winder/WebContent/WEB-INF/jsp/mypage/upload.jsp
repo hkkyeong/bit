@@ -1,15 +1,7 @@
-
-
-
-
-
-
-
-
-
-<%@page import="winder.vo.TeamVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_team.jsp" />
@@ -36,13 +28,20 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach items="${scrapList}" var="scrap">
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>${scrap.sno }</td>
+								<td>scrap</td>
+								<td><a href="scrap1?sno=${scrap.sno }">${scrap.stitle }</a></td>
+								<c:if test="${scrap.pno eq 0 }">
+									<td>공유 x</td>
+								</c:if>
+								<c:if test="${scrap.pno ne 0 }">
+									<td>${scrap.pno }</td>
+								</c:if>
 								<td><input type="radio" name="" value="" /></td>
 							</tr>
+						</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -59,12 +58,33 @@
 	</div>
 	<div class="col-md-12" style="text-align: right;">
 	<br><br>
-		<input type="button" value="파일  올리기">
-		<input type="button" value="스크랩 올리기">
-		<!-- <form action="upload">
-	<input type="file" name="upload">
-	</form> -->
+		<input type="button" id="file" value="파일  올리기">
+		<input type="button" id="scrap" value="스크랩 올리기">
 	</div>
+</form>
+</div>
+
+
+<div id="element_to_pop_up">
+<div class="b-close" style="color: #000;">x</div>
+<form action="insertFile">
+<h3>파일 업로드</h3><br>
+title
+	<input type="text" class="form-control" name="utitle" /><br><br>
+	<input type="file" name="upload"><br>
+	<button type='submit' class='btn btn-default'>확인</button>
+</form>
+</div>
+
+<div id="element_to_pop_up2">
+<div class="b-close" style="color: #000;">x</div>
+<form action="insertScrap">
+<h3>스크랩</h3><br>
+titles
+	<input type="text" class="form-control" name="stitle" /><br>
+	url
+	<input type="text" class="form-control" name="url"><br>
+	<button type='submit' class='btn btn-default'>확인</button>
 </form>
 </div>
 

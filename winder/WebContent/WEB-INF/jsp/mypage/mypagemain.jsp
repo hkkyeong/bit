@@ -17,7 +17,7 @@
 			<div class="panel-heading">File Upload</div>
 			<div class="panel-body">
 			
-			<a href="uploadForm"><img src="img/pic01.png" style=" width: 100%;"></a> 
+			<a href="scrapList"><img src="img/pic01.png" style=" width: 100%;"></a> 
 <!-- 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare
 					lacus adipiscing, posuere lectus et, fringilla augue.

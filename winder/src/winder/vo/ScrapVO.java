@@ -1,12 +1,8 @@
 package winder.vo;
 
 public class ScrapVO {
-
-	int sno, pno;
-	String url,id;
-	String name; //프로젝트의 이믈
-	
-	
+	private int sno, pno;
+	private String url, stitle, sdate, id;
 	public int getSno() {
 		return sno;
 	}
@@ -25,24 +21,29 @@ public class ScrapVO {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	public String getStitle() {
+		return stitle;
+	}
+	public void setStitle(String stitle) {
+		this.stitle = stitle;
+	}
+	public String getSdate() {
+		return sdate;
+	}
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
+	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}	
-	
 	@Override
 	public String toString() {
-		return "ScrapVO [sno=" + sno + ", pno=" + pno + ", url=" + url + ", id=" + id + ", pname="+name+"]";
+		return "ScrapVO [sno=" + sno + ", pno=" + pno + ", url=" + url + ", stitle=" + stitle + ", sdate=" + sdate
+				+ ", id=" + id + "]";
 	}
 	
 	
-	 
 }

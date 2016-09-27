@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
      $(function() {
-       $('#my-button').on('click', function(e) {
+      /*  $('#my-button').on('click', function(e) {
            e.preventDefault();
            $('#element_to_pop_up').bPopup({
         	   modalClose: false,
@@ -28,7 +28,25 @@
                positionStyle: 'fixed' //'fixed' or 'absolute'
            });
 
-       });
+       }); */
+    	 $('#file').on('click', function(e) {
+             e.preventDefault();
+             $('#element_to_pop_up').bPopup({
+          	   modalClose: false,
+                 opacity: 0.6,
+                 positionStyle: 'fixed' //'fixed' or 'absolute'
+             });
+
+         });
+    	 $('#scrap').on('click', function(e) {
+             e.preventDefault();
+             $('#element_to_pop_up2').bPopup({
+          	   modalClose: false,
+                 opacity: 0.6,
+                 positionStyle: 'fixed' //'fixed' or 'absolute'
+             });
+
+         });
 
    });  
 

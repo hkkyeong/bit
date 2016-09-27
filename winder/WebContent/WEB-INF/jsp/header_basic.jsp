@@ -10,14 +10,14 @@
     <link href="css/style.css" rel="stylesheet" />
     
     <style type="text/css">
-#element_to_pop_up { 
+#element_to_pop_up, #element_to_pop_up2 { 
     background-color:#fff;
     border-radius:15px;
     color:#000;
     display:none; 
     padding:20px;
-    min-width:400px;
-    min-height: 180px;
+    min-width:600px;
+    min-height: 380px;
 }
 .b-close{
     cursor:pointer;

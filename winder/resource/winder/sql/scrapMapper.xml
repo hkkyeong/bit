@@ -4,8 +4,8 @@
 <mapper namespace="winder.Scrap">
 
 	<insert id="insertScrap" parameterType="Scrap">
-		insert into scrap(sno,url, pno, id) values
-		(scrap_seq.nextval,#{url},null,#{id})
+		insert into scrap(sno, url, stitle, sdate, id, pno) values
+		(scrap_seq.nextval, #{url}, #{stitle}, sysdate, #{id}, null)
 	</insert>
 
 	<select id="selectScrapList" parameterType="java.lang.String" resultType="Scrap">
