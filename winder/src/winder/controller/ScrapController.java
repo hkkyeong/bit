@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import winder.service.ProjectService;
 import winder.service.ScrapServiceImpl;
 import winder.vo.AbcVO;
 import winder.vo.ScrapVO;
@@ -20,6 +22,7 @@ public class ScrapController {
 
 	@Autowired 
 	private ScrapServiceImpl scrapService;
+	@Autowired ProjectService projectService;
 	private String firstImageSrc ;
 
 /*	@RequestMapping(value="scrapForm")
@@ -115,10 +118,12 @@ public class ScrapController {
 		String titleS = title.text();                            // 값 저장
 		request.setAttribute("title",titleS);		   
 
-
-		/*request.setAttribute("test",test2);*/
 		request.setAttribute("img",firstImageSrc); 
-
+		if(request.getParameter("kind").equals("pro")){	
+			model.addAttribute("kind", "pro");
+		}else{
+			model.addAttribute("kind", "my");
+		}
 		return "scrap/scrapcontent";
 		//return "scrap/scrap2";
 	}
@@ -132,6 +137,7 @@ public class ScrapController {
 
 		model.addAttribute("scrapList",scrapService.selectScrapList(id));
 		model.addAttribute("selectProject",scrapService.selectProject(id));
+		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
 
 		return "mypage/upload";
 		//return "scrap/myScrap";
@@ -146,7 +152,7 @@ public class ScrapController {
 
 		model.addAttribute("sharedscrapList",scrapService.sharedscrapList(pno));
 
-		return "scrap/sharedscrapList";
+		return "project/sharingdata";
 	}
 
 	@RequestMapping(value="my")
@@ -160,17 +166,11 @@ public class ScrapController {
 		return "scrap/scrapList";
 	}
 
-	/*		@RequestMapping(value="selectProject")
-		public String selectProject(Model model, HttpSession session, HttpServletRequest request){
-			String id=(String)session.getAttribute("id");
-
-			model.addAttribute("selectProject",scrapService.selectProject(id));
-			return "scrap/scrapList";
-		}*/
 
 	@RequestMapping(value="shareScrap")
+	//scrap vo 받아올 필요가 있으려나~?
 	public String shareScrap(ScrapVO scrap,HttpServletRequest request,Model model,HttpSession session) throws Exception{
-		String id=(String)session.getAttribute("id");
+		//String id=(String)session.getAttribute("id");
 		/*String[] share= request.getParameterValues("share");	*/			
 		int pno= Integer.parseInt(request.getParameter("pno")); 
 		String[] sno =request.getParameterValues("sno");
@@ -179,7 +179,6 @@ public class ScrapController {
 			ScrapVO scrapList  =scrapService.selectScrapNoList(Integer.parseInt(sno[i]));
 			scrapList.setPno(pno);
 			scrapService.shareScrap(scrapList);
-
 		}
 
 		return "redirect:/scrapList";

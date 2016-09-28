@@ -11,9 +11,9 @@
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_basic.jsp" />
 <div class="row">   
-
+<!-- 
 <a href="scrapForm">sc</a>
-<a href="scrap1">sc1</a>  
+<a href="scrap1">sc1</a>   -->
 
 	<div class="col-md-12">
 		<h4 class="page-head-line">Team List</h4>
@@ -36,7 +36,8 @@
 					<div class="panel-heading">
 						<a href="projectlist?tno=${members.tno }">${members.name}</a>
 					</div>  
-					<div class="panel-body"><img src="img/${members.timg}" style=" width: 100%;"> 
+					<div class="panel-body"><a href="projectlist?tno=${members.tno }">
+					<img src="img/${members.timg}" style=" width: 100%;"></a>
 					</div>
 					<div class="panel-footer">
 					<center>

@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
-<jsp:include page="../menu_team.jsp" />
+<jsp:include page="../menu_mypage.jsp" />
 
 <div class="row">
 	<div class="col-md-12">
@@ -12,7 +12,7 @@
 	</div>
 </div>
 <div class="row">
-<form>
+<form action="shareScrap">
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -32,14 +32,18 @@
 							<tr>
 								<td>${scrap.sno }</td>
 								<td>scrap</td>
-								<td><a href="scrap1?sno=${scrap.sno }">${scrap.stitle }</a></td>
+								<td><a href="scrap1?sno=${scrap.sno }&kind=my">${scrap.stitle }</a></td>
 								<c:if test="${scrap.pno eq 0 }">
 									<td>공유 x</td>
 								</c:if>
 								<c:if test="${scrap.pno ne 0 }">
-									<td>${scrap.pno }</td>
+								<c:forEach items="${projectmenu }" var="plist">
+									<c:if test="${plist.pno eq scrap.pno }">
+										<td>${plist.name }</td>
+									</c:if>
+								</c:forEach>
 								</c:if>
-								<td><input type="radio" name="" value="" /></td>
+								<td><input type="checkbox" name="sno" value="${scrap.sno}"></td>
 							</tr>
 						</c:forEach>
 						</tbody>
@@ -50,9 +54,9 @@
 	</div>
 	<div class="col-md-12" style="text-align: right;">
 		<select name ="pno">
-<%-- 						<c:forEach items="${selectProject}" var="scrap">
-							<option value="${scrap.pno}">${scrap.name}</option>
-						</c:forEach> --%>
+			<c:forEach items="${projectmenu }" var="plist">
+				<option value="${plist.pno }">${plist.name }</option>
+			</c:forEach>
 		</select>
 		<input type="submit" value="공유">
 	</div>

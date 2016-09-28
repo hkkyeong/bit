@@ -4,7 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
+<c:if test="${kind eq 'pro' }">
+<jsp:include page="../menu_project.jsp" />
+</c:if>
+<c:if test="${kind eq 'my' }">
 <jsp:include page="../menu_mypage.jsp" />
+</c:if>
 
 <div class="row">
 <div class="row">   
