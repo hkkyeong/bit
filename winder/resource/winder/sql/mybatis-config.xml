@@ -36,6 +36,7 @@
 		<mapper resource="winder/sql/scrapMapper.xml" />
 		<mapper resource="winder/sql/outmemberMapper.xml" />
 		<mapper resource="winder/sql/noteMapper.xml" />
+		<mapper resource="winder/sql/uploadFileMapper.xml" />
 		
 	</mappers>
 

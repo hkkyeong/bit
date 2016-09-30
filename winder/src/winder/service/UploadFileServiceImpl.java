@@ -1,55 +1,59 @@
 package winder.service;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+import first.common.common.FileUtils;
+import winder.dao.UploadDAOImpl;
 
 @Service
 public class UploadFileServiceImpl implements UploadFileService {
- 
+
+	 FileUtils fileUtils =new FileUtils();
+
+	@Autowired
+	UploadDAOImpl uploadDAO; 
+	
+
 	@Override
-	public boolean insertFile(MultipartHttpServletRequest mRequest) throws Exception {
+	public Map<String, Object> selectFileInfo(int uno) throws Exception {
+		System.out.println("Service selectFileInfo: "+ uno);
+		return uploadDAO.selectFileInfo(uno);
+	}
+	
 
-		boolean isSuccess = false;
-		String uploadPath = "/비트/file";
-		File dir = new File(uploadPath);
+	@Override
+	public void insertFile(Map<String, Object> map, HttpServletRequest request, HttpSession session) throws Exception {
+		/*uploadDAO.insertFile(map);*/
 
-		if (!dir.isDirectory()) {
-			dir.mkdirs();
+		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request, session);
+		for(int i=0, size=list.size(); i<size; i++){
+			uploadDAO.insertFile(list.get(i));
 		}
-
-		Iterator<String> iter = mRequest.getFileNames();
-		while(iter.hasNext()) {
-
-			String uploadFileName = iter.next();
-			MultipartFile mFile = mRequest.getFile(uploadFileName);
-			String originalFileName = mFile.getOriginalFilename();
-			String saveFileName = originalFileName;
-
-			if(saveFileName != null && !saveFileName.equals("")) {
-
-				if(new File(uploadPath + saveFileName).exists()) {
-					saveFileName = saveFileName + "_" + System.currentTimeMillis();
-				}
-
-				try {
-					mFile.transferTo(new File(uploadPath + saveFileName));
-					isSuccess = true;				
-
-				} catch (IllegalStateException e) {
-					e.printStackTrace();
-					isSuccess = false;
-				} catch (IOException e) {
-					e.printStackTrace();
-					isSuccess = false;
-				}
-			} 
-		} 
-		return isSuccess;
+	}
+	@Override
+	public List<Map<String, Object>> selectFileList(Map<String, Object> map) throws Exception {
+		return uploadDAO.selectFileList(map);
+		
+	}
+	
+	@Override
+	public Map<String, Object> selectFileDetail(Map<String, Object> map) throws Exception {
+		
+		Map<String, Object> resultMap = new HashMap<String,Object>();
+		Map<String, Object> tempMap = uploadDAO.selectFileDetail(map);
+		resultMap.put("map",tempMap);
+		System.out.println("tempMap"+tempMap);
+		
+		List<Map<String,Object>> list = uploadDAO.selectFileList(map);
+		System.out.println("list"+list);
+		resultMap.put("list", list);
+		  
+		return resultMap;
 	}
 
-}
+	
+} 

@@ -24,7 +24,7 @@ public class ScrapController {
 	private ScrapServiceImpl scrapService;
 	@Autowired ProjectService projectService;
 	private String firstImageSrc ;
-
+ 
 /*	@RequestMapping(value="scrapForm")
 	public String scrapForm(HttpServletResponse resp,HttpServletRequest request,Model model) throws Exception{
 		String url= request.getParameter("url");
@@ -128,7 +128,7 @@ public class ScrapController {
 		//return "scrap/scrap2";
 	}
 
-	@RequestMapping(value="scrapList")
+	@RequestMapping(value="scrapList11")
 	public String scrapList(Model model, HttpSession session, HttpServletRequest request){
 		String id=(String)session.getAttribute("id");
 
@@ -139,7 +139,7 @@ public class ScrapController {
 		model.addAttribute("selectProject",scrapService.selectProject(id));
 		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
 
-		return "mypage/upload";
+		return "mypage/uploadList2";
 		//return "scrap/myScrap";
 	}
 

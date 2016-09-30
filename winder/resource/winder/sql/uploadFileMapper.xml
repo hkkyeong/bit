@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="winder.Uploadfile">
+
+	<insert id="insertFile" parameterType="hashmap">
+		insert into uploadfile(uno, boardno, originalname, storedname, usize, udate, id, delfile) values
+		(uploadfile_seq.nextval, 0, #{originalname}, #{storedname}, #{usize}, sysdate, #{id}, 'n')
+	</insert>
+	
+	<select id="selectFileList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT uno, boardno, originalname, storedname, usize, udate, id, delfile	
+			FROM   uploadfile	
+			WHERE	delfile = 'n'  
+		]]>
+	</select>
+	
+	<select id="fileDetail" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT *  	FROM  uploadfile	WHERE 	uno = #{uno}		
+		]]>
+	</select>
+	
+	<select id="selectFileInfo" parameterType="int" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    storedname,
+			    originalname
+			FROM
+			    uploadfile
+			WHERE
+			    UNO = #{uno}
+		]]>
+	</select>
+
+</mapper>
