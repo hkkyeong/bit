@@ -5,7 +5,7 @@
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_project.jsp" />
-
+<%int flag=0; %>
 <div class="row">
 	<div class="col-md-12">
 		<h4 class="page-head-line">progress</h4>
@@ -47,7 +47,72 @@
 </div>
 </div>
 
+
+
+
+
+
 <div class="row">
+<c:forEach items="${ab }" var="ab">
+<div class="col-md-3">
+	<br>
+		<!--   Basic Table  -->
+		<div class="panel panel-default">
+			<c:choose>
+			<c:when test="${ab.value eq 100 }">
+				<div class="panel-heading" style="background: aliceblue;">${ab.key}</div>
+				<div class="panel-body" style="background: aliceblue;">
+			</c:when>
+			<c:otherwise>
+				<div class="panel-heading">${ab.key}</div>
+				<div class="panel-body">
+			</c:otherwise>
+			</c:choose>
+				<c:forEach items="${plist }" var="plist">
+					<c:if test="${ab.key eq plist.title }">
+					<%flag=0; %>
+						<c:if test="${plist.state eq '2' }">
+							<div class="alert alert-info">
+								<strong>${plist.content }</strong><br>
+								${plist.tldate }<br>
+								${plist.id }
+							</div>
+						</c:if>
+						<c:if test="${plist.state eq '1' }">
+						<c:forEach items="${past }" var="past">
+							<c:if test="${past.tlno eq plist.tlno }">
+								<div class="alert alert-danger">
+									<strong>${plist.content }</strong><br>
+									${plist.tldate }<br>
+									${plist.id }
+								</div>
+								<%flag=1; %>
+							</c:if>
+						</c:forEach>
+						<%if(flag==0){ %>
+							<div class="alert alert-warning">
+								<strong>${plist.content }</strong><br>
+								${plist.tldate }<br>
+								${plist.id }
+							</div>
+							
+						<%} %>
+						</c:if>
+					</c:if>
+				</c:forEach>
+			</div>
+		</div>
+</div>
+</c:forEach>
+</div>
+
+
+
+
+
+
+
+<%-- <div class="row">
 <div class="col-md-12">
 	<br>
 		<!--   Basic Table  -->
@@ -124,6 +189,6 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> --%>
 
 <jsp:include page="../footer_progress.jsp" />

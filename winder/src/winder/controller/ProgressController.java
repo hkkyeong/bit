@@ -1,6 +1,5 @@
 package winder.controller;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,9 +29,9 @@ public class ProgressController {
 	public String wholeProgress(Model model, HttpServletRequest request) throws Exception {
 		// 프로젝트 진행률
 		int temp = 0;
-		List<TodoJoinVO> plist = todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
+		//List<TodoJoinVO> plist = todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
+		List<TodoJoinVO> plist = todolistService.selectTdDate(Integer.parseInt(request.getParameter("pno")));
 		List<TodoJoinVO> pastlist = new ArrayList<>();
-		int a=0;
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
 		for (int i = 0; i < plist.size(); i++) {
 			Date today=sdf.parse(sdf.format(new Date()));

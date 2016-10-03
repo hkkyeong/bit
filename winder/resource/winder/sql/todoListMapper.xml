@@ -38,5 +38,10 @@
 	<update id="statetodo" parameterType="String">
 		update todolist set state=1 where tlno=#{tlno}
 	</update>
+	
+	<select id="selectTdDate" parameterType="int"	resultType="TodoJoin">
+		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy/mm/dd')tldate, tl.id, tl.state from todo t, todolist tl where t.tdno=
+		tl.tdno and t.pno=#{pno} order by tldate asc
+	</select>
 
 </mapper>

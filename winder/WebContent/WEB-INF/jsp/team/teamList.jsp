@@ -23,9 +23,9 @@
 				<div class="panel-heading">
 					<a href="teamCreateform">팀 신청</a>
 			 	</div>
-				<br> <br> <br> <br> <br>
-				<div class="panel-body"></div>
-				<br><br>
+				<div class="panel-body">
+					<a href="teamCreateform"><img src="img/tp.png" style=" width: 100%;"></a>
+				</div>
 				<div class="panel-footer">&nbsp;</div>
 			</div>
 		</div>
@@ -37,7 +37,7 @@
 						<a href="projectlist?tno=${members.tno }">${members.name}</a>
 					</div>  
 					<div class="panel-body"><a href="projectlist?tno=${members.tno }">
-					<img src="img/${members.timg}" style=" width: 100%;"></a>
+					<img src="upload/${members.timg}" style=" width: 100%;"></a>
 					</div>
 					<div class="panel-footer">
 					<center>

@@ -54,6 +54,11 @@ public class TodoListServiceImpl implements TodoListService{
 	public int statetodo(String tlno) throws RuntimeException {
 		return todolistDAO.statetodo(tlno);
 	}
+
+	@Override
+	public List<TodoJoinVO> selectTdDate(int pno) {
+		return todolistDAO.selectTdDate(pno);
+	}
 	
 
 }

@@ -14,4 +14,5 @@ public interface TodoListService {
 	public TodoJoinVO selectSubtitle(int tlno) throws RuntimeException;
 	public int statedone(String tlno) throws RuntimeException;
 	public int statetodo(String tlno) throws RuntimeException;
+	public List<TodoJoinVO> selectTdDate(int pno);
 }

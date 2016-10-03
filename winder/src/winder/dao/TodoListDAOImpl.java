@@ -61,4 +61,9 @@ public class TodoListDAOImpl implements TodoListDAO {
 		return selectAllTodoList;
 	}
 
+	@Override
+	public List<TodoJoinVO> selectTdDate(int pno) {
+		return sqlSession.selectList("winder.TodoList.selectTdDate", pno);
+	}
+
 }
