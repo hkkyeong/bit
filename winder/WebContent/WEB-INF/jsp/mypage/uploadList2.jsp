@@ -22,7 +22,7 @@
 					<div class="tab-pane fade active in" id="scrap">
 					<br>
 						<div class="table-responsive">
-							<form>
+							<form action="shareScrap">
 								<table class="table">
 									<thead>
 										<tr>
@@ -57,6 +57,29 @@
 								</table>
 							</form>
 						</div>
+						
+						
+						
+						<div class="col-md-12" style="text-align: right;">
+					<select name="pno">
+						<c:forEach items="${projectmenu }" var="plist">
+							<option value="${plist.pno }">${plist.name }</option>
+						</c:forEach>
+					</select> <input type="submit" value="공유">
+				</div>
+				<div class="col-md-12" style="text-align: right;">
+					<br>
+					 <br><input type="button" id="scrapbt" value="스크랩 올리기">
+				</div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					</div>
 
 
@@ -89,11 +112,13 @@
 								</table>
 							</form>
 						</div>
-					</div>
-				</div>
-
-
-				<div class="col-md-12" style="text-align: right;">
+						
+						
+						
+						
+						
+						
+						<div class="col-md-12" style="text-align: right;">
 					<select name="pno">
 						<c:forEach items="${projectmenu }" var="plist">
 							<option value="${plist.pno }">${plist.name }</option>
@@ -102,14 +127,54 @@
 				</div>
 				<div class="col-md-12" style="text-align: right;">
 					<br>
-					<br> <input type="button" id="file" value="파일  올리기"> <input
-						type="button" id="scrap" value="스크랩 올리기">
+				<br> <input type="button" id="filebt" value="파일  올리기">
 				</div>
+						
+						
+						
+						
+						
+						
+						
+						
+					</div>
+				</div>
+
+
+				
 
 
 			</div>
 		</div>
 	</div>
+</div>
+
+
+
+
+
+
+<div id="element_to_pop_up">
+<div class="b-close" style="color: #000;">x</div>
+<form action="insertFile">
+<h3>파일 업로드</h3><br>
+title
+	<input type="text" class="form-control" name="utitle" /><br><br>
+	<input type="file" name="upload"><br>
+	<button type='submit' class='btn btn-default'>확인</button>
+</form>
+</div>
+
+<div id="element_to_pop_up2">
+<div class="b-close" style="color: #000;">x</div>
+<form action="insertScrap">
+<h3>스크랩</h3><br>
+titles
+	<input type="text" class="form-control" name="stitle" /><br>
+	url
+	<input type="text" class="form-control" name="url"><br>
+	<button type='submit' class='btn btn-default'>확인</button>
+</form>
 </div>
 
 <jsp:include page="../footer_mypage.jsp" />
