@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_project.jsp" />
@@ -142,7 +143,7 @@
 			<input type="hidden" name="tlno" value="${ todolistselect.tlno}">
 					<div class="form-group">
 						<label>Title</label>
-						<select class="form-control" name="tdno">
+						<select class="form-control" name="tdno" onchange="selectCheck(this.form)">
  							 <c:forEach items="${tlist }" var="tlist">
  								<c:if test="${ tlist.tdno==todolistselect.tdno }">
  									<option value="${tlist.tdno }">${tlist.content }</option>
@@ -160,7 +161,7 @@
 						<label>Subtilte</label>
 						<textarea class="form-control" rows="3" name="content" >${todolistselect.content }</textarea>
 					</div>
-					<div class="form-group">
+					<div class="form-group" id="subdate">
 						<label>Date</label> <input type="date" class="form-control" name="tldate" value="${todolistselect.tldate}" />
 					</div>
 					<div class="form-group">
@@ -189,7 +190,7 @@
 				<input type="hidden" name="pno" value="${pno }">
 					<div class="form-group">
 						<label>Title</label>
-						<select class="form-control" name="tdno">
+						<select class="form-control" name="tdno" onchange="selectCheck(this.form)">
  							<c:forEach items="${tlist }" var="tlist">
 									<option value="${tlist.tdno }">${tlist.content }</option>  
 							</c:forEach> 							
@@ -200,7 +201,7 @@
 						<label>Subtilte</label>
 						<textarea class="form-control" rows="3" placeholder="subtitle" name="content"></textarea>
 					</div>
-					<div class="form-group">
+					<div class="form-group" id="subdate">
 						<label>Date</label> <input type="date" class="form-control" name="tldate" />
 					</div>
 					<div class="form-group">
@@ -223,5 +224,9 @@
 		</div>
 		</div>
 </div>
+
+
+
+
 
 <jsp:include page="../footer.jsp" />

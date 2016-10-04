@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 </div>
 </div>
 <!-- CONTENT-WRAPPER SECTION END-->
@@ -22,18 +25,6 @@
 <script src="js/common.js"></script>
 
 <script type="text/javascript">
-/* 	$(function() {
-		$('#my-button').on('click', function(e) {
-			e.preventDefault();
-			$('#element_to_pop_up').bPopup({
-				modalClose : false,
-				opacity : 0.6,
-				positionStyle : 'fixed' //'fixed' or 'absolute'
-			});
-
-		});
-
-	}); */
 
 	$(document).ready(function() {
 		$("a[name='file']").on("click", function(e) { //파일 이름
@@ -46,11 +37,33 @@
 		var uno = obj.parent().find("#UNO").val();	
 		var comSubmit = new ComSubmit();
 		comSubmit.setUrl("downloadFile");
-		//comSubmit.addParam("UNO", uno);
 		comSubmit.addParam("UNO", uno);
-		console.log("aaaa");
 		comSubmit.submit();
 	}
+	
+	
+	
+	
+	
+	//todolist date 설정 위한 함수
+	function selectCheck(forminfo){
+		var chk=forminfo.tdno.value;
+		var d;
+		var tddate;
+		<c:forEach items="${tlist }" var="tlist">
+		d=${tlist.tdno};
+		if(d==chk){
+			tddate="${tlist.tddate}";
+			tddate.replace("///g", "-");
+			console.log("date: "+"${tlist.tddate}");
+			$("#subdate").empty();
+			$("#subdate").append("<label>Date</label> <input type='date' class='form-control' name='tldate' max="+tddate+"/>");
+			
+		}
+		</c:forEach>
+	}
+	
+	
 </script>
 </body>
 </html>

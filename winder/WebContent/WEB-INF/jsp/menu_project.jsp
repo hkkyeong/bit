@@ -20,7 +20,7 @@
                                 </ul>
                             </li>
                            <li class="dropdown">
-                                <a href="#" class="menu-top-active" data-toggle="dropdown">Project<i class="fa fa-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="projectlist">프로젝트 목록</a></li>
                                     <li><a href="projectform">프로젝트 생성</a></li>
