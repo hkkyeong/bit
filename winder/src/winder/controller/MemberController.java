@@ -3,7 +3,6 @@ package winder.controller;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,13 +18,13 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	DefaultFileRenamePolicy dfrp = new DefaultFileRenamePolicy();
+	//DefaultFileRenamePolicy dfrp = new DefaultFileRenamePolicy();
 
 	//회원 가입 처리
-	@RequestMapping(value = "/signchk", method = { RequestMethod.POST, RequestMethod.GET })
-	public String memberJoin(MemberVO vo, HttpSession session, HttpServletRequest request) throws IOException {
-		
-		String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
+	@RequestMapping(value = "signchk")
+	public String memberJoin(MemberVO vo, HttpServletRequest request){
+		System.out.println("11111111");
+		/*String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
 		int size = 1024*1024*5;
 		String enc ="utf-8";
 
@@ -55,8 +54,9 @@ public class MemberController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "redirect:/signupForm";
-		}
+		}*/
 
+		return "index";
 	}
 
 	//회원 가입 form

@@ -60,14 +60,12 @@ public class TeamController {
 	public String teamCreate(TeamVO vo,HttpServletRequest request, HttpSession session) throws IOException{
 
 		vo =new TeamVO();
-		//String path="C:\\비트\\git\\bit\\bit\\winder\\WebContent\\img";
 		String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
 		int size = 1024*1024*5;
 		String enc ="utf-8";
 		
 
 		MultipartRequest multi =new MultipartRequest(request,path,size,enc,dfrp);
-		/*String timg =multi.getParameter("timg");*/ 
 		String name =multi.getParameter("name");
 		String timg =multi.getFilesystemName("timg");
 		
@@ -133,7 +131,8 @@ public class TeamController {
 	//팀 업데이트
 	@RequestMapping(value="teamUpdate")
 	public String teamUpdate(HttpServletRequest request) throws IOException{
-		String path ="C:\\비트\\workspace\\0901\\0830\\WebContent\\upload\\";
+		String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
+		//String path ="C:\\비트\\workspace\\0901\\0830\\WebContent\\upload\\";
 		int size = 1024*1024*5;
 		String enc ="utf-8";
 		MultipartRequest multi =new MultipartRequest(request,path,size,enc,dfrp);
