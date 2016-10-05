@@ -18,7 +18,7 @@
 	</update>
 	
 	<select id="selectTodoList" parameterType="int"	resultType="TodoJoin">
-		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy/mm/dd')tldate, tl.id, tl.state, to_char(tl.tlstart, 'yyyy/mm/dd')tlstart from todo t, todolist tl where t.tdno=
+		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy-mm-dd')tldate, tl.id, tl.state, to_char(tl.tlstart, 'yyyy-mm-dd')tlstart from todo t, todolist tl where t.tdno=
 		tl.tdno and t.pno=#{pno} order by title asc
 	</select>
 
@@ -40,7 +40,7 @@
 	</update>
 	
 	<select id="selectTdDate" parameterType="int"	resultType="TodoJoin">
-		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy/mm/dd')tldate, tl.id, tl.state, to_char(tl.tlstart, 'yyyy/mm/dd')tlstart from todo t, todolist tl where t.tdno=
+		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy-mm-dd')tldate, tl.id, tl.state, to_char(tl.tlstart, 'yyyy-mm-dd')tlstart from todo t, todolist tl where t.tdno=
 		tl.tdno and t.pno=#{pno} order by tldate asc
 	</select>
 

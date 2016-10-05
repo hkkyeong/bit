@@ -153,7 +153,7 @@
 			<input type="hidden" name="tlno" value="${ todolistselect.tlno}">
 					<div class="form-group">
 						<label>Title</label>
-						<select class="form-control" name="tdno" onchange="selectCheck(this.form)">
+						<select class="form-control" name="tdno" onchange="selectCheck(this.form)" onload="selectCheck(this.form)" onloadstart="selectCheck(this.form)">
  							 <c:forEach items="${tlist }" var="tlist">
  								<c:if test="${ tlist.tdno==todolistselect.tdno }">
  									<option value="${tlist.tdno }">${tlist.content }</option>
@@ -171,7 +171,7 @@
 						<label>Subtilte</label>
 						<textarea class="form-control" rows="3" name="content" >${todolistselect.content }</textarea>
 					</div>
-					<div class="form-group" id="subdate">
+					<div class="form-group" id="startdate">
 						<label>시작일</label> <input type="date" class="form-control" name="tlstart" value="${todolistselect.tlstart}" />
 					</div>
 					<div class="form-group" id="subdate">
@@ -203,7 +203,7 @@
 				<input type="hidden" name="pno" value="${pno }">
 					<div class="form-group">
 						<label>Title</label>
-						<select class="form-control" name="tdno" onchange="selectCheck(this.form)">
+						<select class="form-control" name="tdno" onchange="selectCheck(this.form)" onload="selectCheck(this.form)" onloadstart="selectCheck(this.form)">
  							<c:forEach items="${tlist }" var="tlist">
 									<option value="${tlist.tdno }">${tlist.content }</option>  
 							</c:forEach> 							
@@ -214,7 +214,7 @@
 						<label>Subtilte</label>
 						<textarea class="form-control" rows="3" placeholder="subtitle" name="content"></textarea>
 					</div>
-					<div class="form-group">
+					<div class="form-group" id="startdate">
 						<label>시작일</label> <input type="date" class="form-control" name="tlstart" />
 					</div>
 					<div class="form-group" id="subdate">
