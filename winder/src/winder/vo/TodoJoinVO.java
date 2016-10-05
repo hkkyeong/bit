@@ -2,7 +2,7 @@ package winder.vo;
 
 public class TodoJoinVO {
 	int tlno, tdno;
-	String title, content, state, tldate, id;
+	String title, content, state, tldate, id, tlstart;
 	public int getTlno() {
 		return tlno;
 	}
@@ -45,6 +45,13 @@ public class TodoJoinVO {
 	}
 	public void setTdno(int tdno) {
 		this.tdno = tdno;
+	}
+	
+	public String getTlstart() {
+		return tlstart;
+	}
+	public void setTlstart(String tlstart) {
+		this.tlstart = tlstart;
 	}
 	@Override
 	public String toString() {

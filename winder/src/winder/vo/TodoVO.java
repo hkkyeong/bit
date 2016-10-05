@@ -3,7 +3,7 @@ package winder.vo;
 public class TodoVO {
 
 	int tdno, pno;
-	String content, state, tddate;
+	String content, state, tddate, tdstart;
 	
 	public int getTdno() {
 		return tdno;
@@ -35,10 +35,16 @@ public class TodoVO {
 	public void setTddate(String tddate) {
 		this.tddate = tddate;
 	}
+	public String getTdstart() {
+		return tdstart;
+	}
+	public void setTdstart(String tdstart) {
+		this.tdstart = tdstart;
+	}
 	@Override
 	public String toString() {
 		return "TodoVO [tdno=" + tdno + ", pno=" + pno + ", content=" + content + ", state=" + state + ", tddate="
-				+ tddate + "]";
-	}
+				+ tddate + ", tdstart=" + tdstart + "]";
+	}	
 	
 }

@@ -4,8 +4,8 @@
 <mapper namespace="winder.Todo">
 
 	<insert id="insertTodo" parameterType="Todo">
-		insert into todo(tdno, content, state, tddate, pno) values
-		(todo_seq.nextval, #{content}, 1, to_date(to_char(sysdate, 'yyyy/mm/dd'), 'yyyy/mm/dd'), #{pno})
+		insert into todo(tdno, content, state, tddate, pno, tdstart) values
+		(todo_seq.nextval, #{content}, 1, #{tddate}, #{pno}, #{tdstart})
 	</insert>
 
 	<delete id="deleteTodo" parameterType="int">
@@ -14,11 +14,11 @@
 
 	<update id="updateTodo" parameterType="Todo">
 		update todo set
-		content= #{content}, tddate=#{tddate} where tdno=#{tdno}
+		content= #{content}, tddate=#{tddate}, tdstart=#{tdstart} where tdno=#{tdno}
 	</update>
 	
 	<select id="selectTodo" parameterType="int"	resultType="Todo">
-		select tdno, content, state, to_char(tddate, 'yyyy-mm-dd')tddate, pno from todo where tdno=#{tdno}
+		select tdno, content, state, to_char(tddate, 'yyyy-mm-dd')tddate, pno, to_char(tdstart, 'yyyy-mm-dd')tdstart from todo where tdno=#{tdno}
 	</select>
 
 	<select id="selectAllTodo" resultType="Todo">
@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="listTodo" parameterType="int" resultType="Todo">
-		select tdno, content, state, to_char(tddate, 'yyyy/mm/dd') tddate, pno from todo where pno=#{pno} order by content asc
+		select tdno, content, state, to_char(tddate, 'yyyy/mm/dd') tddate, pno, to_char(tdstart, 'yyyy/mm/dd') tdstart from todo where pno=#{pno} order by content asc
 	</select>
 
 </mapper>

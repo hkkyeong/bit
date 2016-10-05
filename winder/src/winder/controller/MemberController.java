@@ -18,13 +18,13 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	//DefaultFileRenamePolicy dfrp = new DefaultFileRenamePolicy();
+	DefaultFileRenamePolicy dfrp = new DefaultFileRenamePolicy();
 
 	//회원 가입 처리
 	@RequestMapping(value = "signchk")
-	public String memberJoin(MemberVO vo, HttpServletRequest request){
+	public String memberJoin(MemberVO vo, HttpServletRequest request) throws IOException{
 		System.out.println("11111111");
-		/*String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
+		String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
 		int size = 1024*1024*5;
 		String enc ="utf-8";
 
@@ -54,9 +54,7 @@ public class MemberController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "redirect:/signupForm";
-		}*/
-
-		return "index";
+		}
 	}
 
 	//회원 가입 form

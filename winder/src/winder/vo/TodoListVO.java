@@ -3,7 +3,7 @@ package winder.vo;
 public class TodoListVO {
 
 	int tlno, tdno;
-	String content, state, id, tldate;
+	String content, state, id, tldate, tlstart;
 	
 	public int getTlno() {
 		return tlno;
@@ -41,10 +41,16 @@ public class TodoListVO {
 	public void setTldate(String tldate) {
 		this.tldate = tldate;
 	}
-	
+	public String getTlstart() {
+		return tlstart;
+	}
+	public void setTlstart(String tlstart) {
+		this.tlstart = tlstart;
+	}
 	@Override
 	public String toString() {
 		return "TodoListVO [tlno=" + tlno + ", tdno=" + tdno + ", content=" + content + ", state=" + state + ", id="
-				+ id + ", tldate=" + tldate + "]";
+				+ id + ", tldate=" + tldate + ", tlstart=" + tlstart + "]";
 	}
+	
 }

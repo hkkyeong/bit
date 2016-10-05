@@ -4,8 +4,8 @@
 <mapper namespace="winder.TodoList">
 
 	<insert id="insertTodoList" parameterType="TodoList">
-		insert into todolist(tlno, content, state, tldate, tdno, id) values
-		(todolist_seq.nextval, #{content}, 1, #{tldate} ,#{tdno}, #{id})
+		insert into todolist(tlno, content, state, tldate, tdno, id, tlstart) values
+		(todolist_seq.nextval, #{content}, 1, #{tldate} ,#{tdno}, #{id}, #{tlstart})
 	</insert>
 
 	<delete id="deleteTodoList" parameterType="int">
@@ -14,11 +14,11 @@
 
 	<update id="updateTodoList" parameterType="TodoList">
 		update todolist set
-		content=#{content},tdno=#{tdno}, id=#{id}, tldate=#{tldate} where tlno=#{tlno}
+		content=#{content},tdno=#{tdno}, id=#{id}, tldate=#{tldate}, tlstart=#{tlstart} where tlno=#{tlno}
 	</update>
 	
 	<select id="selectTodoList" parameterType="int"	resultType="TodoJoin">
-		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy/mm/dd')tldate, tl.id, tl.state from todo t, todolist tl where t.tdno=
+		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy/mm/dd')tldate, tl.id, tl.state, to_char(tl.tlstart, 'yyyy/mm/dd')tlstart from todo t, todolist tl where t.tdno=
 		tl.tdno and t.pno=#{pno} order by title asc
 	</select>
 
@@ -27,7 +27,7 @@
 	</select><!-- 이거 필요한가? -->
 	
 	<select id="selectSubtitle" parameterType="int" resultType="TodoJoin">
-	 	select tl.tlno, tl.content, tl.state, to_char(tl.tldate,'yyyy-mm-dd')tldate, tl.tdno, tl.id 
+	 	select tl.tlno, tl.content, tl.state, to_char(tl.tldate,'yyyy-mm-dd')tldate, tl.tdno, tl.id, to_char(tl.tlstart, 'yyyy-mm-dd')tlstart 
 	 	from todolist tl, todo t where tl.tdno=t.tdno and tlno=#{tlno}
 	</select>
 	
@@ -40,7 +40,7 @@
 	</update>
 	
 	<select id="selectTdDate" parameterType="int"	resultType="TodoJoin">
-		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy/mm/dd')tldate, tl.id, tl.state from todo t, todolist tl where t.tdno=
+		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy/mm/dd')tldate, tl.id, tl.state, to_char(tl.tlstart, 'yyyy/mm/dd')tlstart from todo t, todolist tl where t.tdno=
 		tl.tdno and t.pno=#{pno} order by tldate asc
 	</select>
 

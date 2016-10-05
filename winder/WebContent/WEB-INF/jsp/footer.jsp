@@ -46,7 +46,7 @@
 	
 	
 	//todolist date 설정 위한 함수
-	function selectCheck(forminfo){
+/* 	function selectCheck(forminfo){
 		var chk=forminfo.tdno.value;
 		var d;
 		var tddate;
@@ -61,7 +61,7 @@
 			
 		}
 		</c:forEach>
-	}
+	} */
 	
 	
 </script>

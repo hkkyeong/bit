@@ -30,6 +30,7 @@
 							<tr>
 								<th>#</th>
 								<th>Title</th>
+								<th>Start Date</th>
 								<th>Dead Line</th>
 							</tr>
 						</thead>
@@ -38,6 +39,7 @@
 									<tr >
 										<td><input type="radio" name="tdno" value="${tlist.tdno }" /></td>
 										<td>${tlist.content }</td>
+										<td>${tlist.tdstart }</td>
 										<td>${tlist.tddate }</td>
 									</tr>
 							</c:forEach>
@@ -61,6 +63,7 @@
 								<th>#</th>
 								<th>Title</th>
 								<th>Subtitle</th>
+								<th>Start Date</th>
 								<th>Dead Line</th>
 								<th>ID</th>
 							</tr>
@@ -71,6 +74,7 @@
 										<td><input type="radio" name="tlno" value="${tllist.tlno }" /></td>
 										<td>${tllist.title }</td>
 										<td>${tllist.content }</td>
+										<td>${tllist.tlstart }</td>
 										<td>${tllist.tldate }</td>
 										<td>${tllist.id }</td>
 									</tr>
@@ -104,7 +108,10 @@
 						<input type="text" value="${todoselect.content }" class="form-control" name="content" />
 					</div>
 					<div class="form-group">
-						<label>Date</label> <input type="date" class="form-control" name="tddate" value="${todoselect.tddate }"/>
+						<label>시작일</label> <input type="date" class="form-control" name="tdstart" value="${todoselect.tdstart }"/>
+					</div>
+					<div class="form-group">
+						<label>마감일</label> <input type="date" class="form-control" name="tddate" value="${todoselect.tddate }"/>
 					</div>
 					<div class="form-group">
 					<a href="todoupdate" style="text-align: right; margin: auto; display: block;">
@@ -120,7 +127,10 @@
 						<input type="text" class="form-control" name="content" placeholder="title" />
 					</div>
 					<div class="form-group">
-						<label>Date</label> <input type="date" class="form-control" name="tddate"/>
+						<label>시작일</label> <input type="date" class="form-control" name="tdstart"/>
+					</div>
+					<div class="form-group">
+						<label>마감일</label> <input type="date" class="form-control" name="tddate"/>
 					</div>
 					<div class="form-group">
 					<a href="#" style="text-align: right; margin: auto; display: block;">
@@ -162,7 +172,10 @@
 						<textarea class="form-control" rows="3" name="content" >${todolistselect.content }</textarea>
 					</div>
 					<div class="form-group" id="subdate">
-						<label>Date</label> <input type="date" class="form-control" name="tldate" value="${todolistselect.tldate}" />
+						<label>시작일</label> <input type="date" class="form-control" name="tlstart" value="${todolistselect.tlstart}" />
+					</div>
+					<div class="form-group" id="subdate">
+						<label>마감일</label> <input type="date" class="form-control" name="tldate" value="${todolistselect.tldate}" />
 					</div>
 					<div class="form-group">
 						<label>Person in charge</label>
@@ -201,8 +214,11 @@
 						<label>Subtilte</label>
 						<textarea class="form-control" rows="3" placeholder="subtitle" name="content"></textarea>
 					</div>
+					<div class="form-group">
+						<label>시작일</label> <input type="date" class="form-control" name="tlstart" />
+					</div>
 					<div class="form-group" id="subdate">
-						<label>Date</label> <input type="date" class="form-control" name="tldate" />
+						<label>마감일</label> <input type="date" class="form-control" name="tldate" />
 					</div>
 					<div class="form-group">
 						<label>Person in charge</label>
