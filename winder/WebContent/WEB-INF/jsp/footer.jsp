@@ -45,26 +45,8 @@
 	
 	
 	
-	//todolist date 설정 위한 함수
- 	function selectCheck(forminfo){
-		var chk=forminfo.tdno.value;
-		var d;
-		var tddate;
-		var tdstart
-		<c:forEach items="${tlist }" var="tlist">
-		d=${tlist.tdno};
-		if(d==chk){
-			tddate="${tlist.tddate}";
-			tdstart="${tlist.tdstart}"
-			console.log("date: "+"${tlist.tddate}");
-			$("#subdate").empty();
-			$("#subdate").append("<label>마감일</label> <input type='date' class='form-control' name='tldate' max="+tddate+">");
-			$("#startdate").empty();
-			$("#startdate").append("<label>시작일</label> <input type='date' class='form-control' name='tlstart' min="+tdstart+">");
-		}
-		</c:forEach>
-	} 
 	
+
 	
 </script>
 </body>

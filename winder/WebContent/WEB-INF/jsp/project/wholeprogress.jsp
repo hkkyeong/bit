@@ -49,11 +49,10 @@
 
 
 
-
-
-
+<c:forEach items="${ab }" var="ab" varStatus="s">
+<c:if test="${s.index%4==0 }">
 <div class="row">
-<c:forEach items="${ab }" var="ab">
+</c:if>
 <div class="col-md-3">
 	<br>
 		<!--   Basic Table  -->
@@ -100,13 +99,15 @@
 						</c:if>
 					</c:if>
 				</c:forEach>
+				</div>
 			</div>
 		</div>
-</div>
+<c:if test="${s.index%3==0 }">
+	<c:if test="${s.index ne 0 }">
+		</div>
+	</c:if>
+</c:if>
 </c:forEach>
-</div>
-
-
 
 
 

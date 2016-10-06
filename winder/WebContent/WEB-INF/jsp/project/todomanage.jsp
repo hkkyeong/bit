@@ -153,7 +153,7 @@
 			<input type="hidden" name="tlno" value="${ todolistselect.tlno}">
 					<div class="form-group">
 						<label>Title</label>
-						<select class="form-control" name="tdno" onchange="selectCheck(this.form)" onload="selectCheck(this.form)" onloadstart="selectCheck(this.form)">
+						<select class="form-control" name="tdno" onchange="selectCheck(this.form)">
  							 <c:forEach items="${tlist }" var="tlist">
  								<c:if test="${ tlist.tdno==todolistselect.tdno }">
  									<option value="${tlist.tdno }">${tlist.content }</option>
@@ -172,10 +172,18 @@
 						<textarea class="form-control" rows="3" name="content" >${todolistselect.content }</textarea>
 					</div>
 					<div class="form-group" id="startdate">
-						<label>시작일</label> <input type="date" class="form-control" name="tlstart" value="${todolistselect.tlstart}" />
+						<c:forEach items="${tlist }" var="tlist">
+ 						<c:if test="${ tlist.tdno==todolistselect.tdno }">
+							<label>시작일</label> <input type="date" class="form-control" name="tlstart" value="${todolistselect.tlstart}" min="${tlist.tdstart }" max="${tlist.tddate }"/>
+ 						</c:if>
+ 						</c:forEach>
 					</div>
 					<div class="form-group" id="subdate">
-						<label>마감일</label> <input type="date" class="form-control" name="tldate" value="${todolistselect.tldate}" />
+						<c:forEach items="${tlist }" var="tlist">
+ 						<c:if test="${ tlist.tdno==todolistselect.tdno }">
+							<label>마감일</label> <input type="date" class="form-control" name="tldate" value="${todolistselect.tldate}" min="${tlist.tdstart }" max="${tlist.tddate }"/>
+						</c:if>
+						</c:forEach>
 					</div>
 					<div class="form-group">
 						<label>Person in charge</label>
@@ -203,7 +211,7 @@
 				<input type="hidden" name="pno" value="${pno }">
 					<div class="form-group">
 						<label>Title</label>
-						<select class="form-control" name="tdno" onchange="selectCheck(this.form)" onload="selectCheck(this.form)" onloadstart="selectCheck(this.form)">
+						<select class="form-control" name="tdno" onchange="selectCheck(this.form)">
  							<c:forEach items="${tlist }" var="tlist">
 									<option value="${tlist.tdno }">${tlist.content }</option>  
 							</c:forEach> 							
@@ -215,10 +223,18 @@
 						<textarea class="form-control" rows="3" placeholder="subtitle" name="content"></textarea>
 					</div>
 					<div class="form-group" id="startdate">
-						<label>시작일</label> <input type="date" class="form-control" name="tlstart" />
+						<c:forEach items="${tlist }" var="tlist" varStatus="s">
+						<c:if test="${s.count eq 1 }">
+							<label>시작일</label> <input type="date" class="form-control" name="tlstart" min="${tlist.tdstart }" max="${tlist.tddate }"/>
+						</c:if>
+						</c:forEach>
 					</div>
 					<div class="form-group" id="subdate">
-						<label>마감일</label> <input type="date" class="form-control" name="tldate" />
+						<c:forEach items="${tlist }" var="tlist" varStatus="s">
+						<c:if test="${s.count eq 1 }">
+							<label>마감일</label> <input type="date" class="form-control" name="tldate" min="${tlist.tdstart }" max="${tlist.tddate }"/>
+						</c:if>
+						</c:forEach>
 					</div>
 					<div class="form-group">
 						<label>Person in charge</label>
@@ -245,4 +261,4 @@
 
 
 
-<jsp:include page="../footer.jsp" />
+<jsp:include page="../footer_todo.jsp" />

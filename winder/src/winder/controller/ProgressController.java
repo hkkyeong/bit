@@ -32,7 +32,7 @@ public class ProgressController {
 		//List<TodoJoinVO> plist = todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
 		List<TodoJoinVO> plist = todolistService.selectTdDate(Integer.parseInt(request.getParameter("pno")));
 		List<TodoJoinVO> pastlist = new ArrayList<>();
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		for (int i = 0; i < plist.size(); i++) {
 			Date today=sdf.parse(sdf.format(new Date()));
 			Date cdate=sdf.parse(plist.get(i).getTldate());

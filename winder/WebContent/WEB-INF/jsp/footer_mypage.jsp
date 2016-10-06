@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
      $(function() {
-      /*  $('#my-button').on('click', function(e) {
+        $('#my-button').on('click', function(e) {
            e.preventDefault();
            $('#element_to_pop_up').bPopup({
         	   modalClose: false,
@@ -28,7 +28,7 @@
                positionStyle: 'fixed' //'fixed' or 'absolute'
            });
 
-       }); */
+       }); 
     	 $('#filebt').on('click', function(e) {
              e.preventDefault();
              $('#element_to_pop_up').bPopup({

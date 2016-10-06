@@ -67,11 +67,12 @@ public class TodoController {
 		int cc=0;
 		
 		//날짜 계산
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		for(int i=0; i<plist.size(); i++){
 			if(plist.get(i).getId().equals(id)){ //todolist 중 세션 아이디의 list만 새 리스트인 plistid에 저장
 				plistid.add(aa, plist.get(i));
 				aa++;
+				System.out.println(plist.get(i));
 			}
 		}	
 		model.addAttribute("todo", plistid);
@@ -480,7 +481,7 @@ public class TodoController {
 		List<TodoJoinVO> plistid = new ArrayList<>();
 		List<TodoJoinVO> ddaylist = new ArrayList<>();
 		List<TodoJoinVO> pastlist = new ArrayList<>();
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		int aa=0; 
 		int bb=0;
 		int cc=0;
@@ -537,7 +538,7 @@ public class TodoController {
 		List<TodoJoinVO> plistid = new ArrayList<>();
 		List<TodoJoinVO> ddaylist = new ArrayList<>();
 		List<TodoJoinVO> pastlist = new ArrayList<>();
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		int aa=0; 
 		int bb=0;
 		int cc=0;
