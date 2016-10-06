@@ -4,34 +4,57 @@
 <mapper namespace="winder.Uploadfile">
 
 	<insert id="insertFile" parameterType="hashmap">
-		insert into uploadfile(uno, boardno, originalname, storedname, usize, udate, id, delfile) values
-		(uploadfile_seq.nextval, 0, #{originalname}, #{storedname}, #{usize}, sysdate, #{id}, 'n')
+	<![CDATA[
+		insert into
+		uploadfile(uno, boardno,utitle, originalname, storedname, usize, udate, id, delfile) values
+		(uploadfile_seq.nextval, 0, #{utitle}, #{originalname},#{storedname}, #{usize}, sysdate, #{id}, 'n')
+		]]>
 	</insert>
-	
+
 	<select id="selectFileList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-			SELECT uno, boardno, originalname, storedname, usize, udate, id, delfile	
+			SELECT uno, boardno,utitle, originalname, storedname, usize, udate, id, delfile	
 			FROM   uploadfile	
-			WHERE	delfile = 'n'  
+			WHERE	delfile = 'n'  ORDER BY udate desc
 		]]>
 	</select>
-	
+
 	<select id="fileDetail" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
+		<![CDATA[ 
 			SELECT *  	FROM  uploadfile	WHERE 	uno = #{uno}		
 		]]>
 	</select>
-	
+
 	<select id="selectFileInfo" parameterType="int" resultType="hashmap">
-		<![CDATA[
+	<![CDATA[
 			SELECT
 			    storedname,
-			    originalname
+			    originalname,
+			    utitle
+			FROM
+			    uploadfile
+			WHERE
+			    UNO = #{uno} 
+			]]>    
+	</select>
+
+	<select id="selectFileNoList" parameterType="int" resultType="Uploadfile">
+			SELECT *
 			FROM
 			    uploadfile
 			WHERE
 			    UNO = #{uno}
+	</select>
+
+ 	<update id="shareFile" parameterType="Uploadfile">
+	<![CDATA[
+		update uploadfile set
+		boardno= #{boardno} where UNO=#{uno}
 		]]>
+	</update> 
+
+	<select id="sharedFileList" parameterType="java.lang.Integer" resultType="Uploadfile">
+		select * from uploadfile where boardno =#{boardno}  ORDER BY udate desc
 	</select>
 
 </mapper>
