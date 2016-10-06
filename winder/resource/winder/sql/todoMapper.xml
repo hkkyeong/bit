@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="listTodo" parameterType="int" resultType="Todo">
-		select tdno, content, state, to_char(tddate, 'yyyy-mm-dd') tddate, pno, to_char(tdstart, 'yyyy-mm-dd') tdstart from todo where pno=#{pno} order by content asc
+		select tdno, content, state, to_char(tddate, 'yyyy-mm-dd') tddate, pno, to_char(tdstart, 'yyyy-mm-dd') tdstart from todo where pno=#{pno} order by tddate asc
 	</select>
 
 </mapper>

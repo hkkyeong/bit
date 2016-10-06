@@ -29,7 +29,7 @@
            });
 
        }); 
-    	 $('#filebt').on('click', function(e) {
+    	 $('#file').on('click', function(e) {
              e.preventDefault();
              $('#element_to_pop_up').bPopup({
           	   modalClose: false,
@@ -38,7 +38,7 @@
              });
 
          });
-    	 $('#scrapbt').on('click', function(e) {
+    	 $('#scrap').on('click', function(e) {
              e.preventDefault();
              $('#element_to_pop_up2').bPopup({
           	   modalClose: false,
