@@ -5,6 +5,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import winder.vo.ScrapVO;
+import winder.vo.UploadfileVO;
+
 @Repository("uploadDAO")
 public class UploadDAOImpl implements UploadDAO {
 	
@@ -35,5 +38,18 @@ public class UploadDAOImpl implements UploadDAO {
 	public Map<String, Object> selectFileDetail(Map<String, Object> map) throws Exception{
 		return (Map<String, Object>) selectOne("winder.Uploadfile.fileDetail", map);
 	}
+	
+	public int shareFile(UploadfileVO vo)throws Exception{
+		return sqlSession.update("winder.Uploadfile.shareFile",vo);
+	}
+	
+	public UploadfileVO selectFileList(int uno)  throws RuntimeException {
+		return sqlSession.selectOne("winder.Uploadfile.selectFileNoList",uno);
+	}
+	 
+	public List<UploadfileVO> sharedFileList(int uno)  throws RuntimeException {
+		return sqlSession.selectList("winder.Uploadfile.sharedFileList",uno);
+	}
+	
 
 }

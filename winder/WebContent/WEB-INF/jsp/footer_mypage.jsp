@@ -45,10 +45,22 @@
                  opacity: 0.6,
                  positionStyle: 'fixed' //'fixed' or 'absolute'
              });
-
          });
-
    });  
+     
+     var uno;
+     function unosubmit(obj){
+    	 x=obj.attr('id');
+    	 uno=x;
+     }
+     
+     
+     $(document).ready(function() {
+ 		$("a[name='file1']").on("click", function(e) { //파일 이름
+ 			 e.preventDefault(); 
+ 			fn_downloadFile($(this));
+ 		});
+ 	});
 
 var id;
 //멤버 선택시 호출 함수

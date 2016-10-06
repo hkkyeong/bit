@@ -27,12 +27,13 @@ public class FileUtils {
     	String originalName  = null;
     	String originalFileExtension = null;
     	String storedName = null;
+    	String utitle =multipartHttpServletRequest.getParameter("utitle");
+    	System.out.println(utitle);
     	
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null; 
         
-        String uno = (String)map.get("uno");
-        
+        String uno = (String)map.get("uno");        
         
         File file = new File(upath);
         if(file.exists() == false){
@@ -52,6 +53,7 @@ public class FileUtils {
         		
         		listMap = new HashMap<String,Object>();
         		listMap.put("uno", uno);
+        		listMap.put("utitle",utitle);
         		listMap.put("originalname", originalName);
         		listMap.put("storedname", storedName);
         		listMap.put("usize", multipartFile.getSize());

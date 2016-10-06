@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import first.common.common.FileUtils;
 import winder.dao.UploadDAOImpl;
+import winder.vo.UploadfileVO;
 
 @Service
 public class UploadFileServiceImpl implements UploadFileService {
@@ -27,7 +28,7 @@ public class UploadFileServiceImpl implements UploadFileService {
 
 	@Override
 	public void insertFile(Map<String, Object> map, HttpServletRequest request, HttpSession session) throws Exception {
-		/*uploadDAO.insertFile(map);*/
+		//uploadDAO.insertFile(map);
 
 		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request, session);
 		for(int i=0, size=list.size(); i<size; i++){
@@ -46,14 +47,24 @@ public class UploadFileServiceImpl implements UploadFileService {
 		Map<String, Object> resultMap = new HashMap<String,Object>();
 		Map<String, Object> tempMap = uploadDAO.selectFileDetail(map);
 		resultMap.put("map",tempMap);
-		System.out.println("tempMap"+tempMap);
 		
 		List<Map<String,Object>> list = uploadDAO.selectFileList(map);
-		System.out.println("list"+list);
 		resultMap.put("list", list);
 		  
 		return resultMap;
 	}
+	
+	public int shareFile(UploadfileVO vo) throws Exception {
+		return uploadDAO.shareFile(vo);
+	}
+	
+	public UploadfileVO selectFileList(int uno)  throws RuntimeException {
+		return uploadDAO.selectFileList(uno);
+	}
 
+	public List<UploadfileVO> sharedFileList(int uno)  throws RuntimeException {
+		return uploadDAO.sharedFileList(uno);
+	}
+	
 	
 } 

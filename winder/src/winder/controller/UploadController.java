@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import winder.service.ProjectService;
 import winder.service.ScrapServiceImpl;
 import winder.service.UploadFileService;
+import winder.vo.UploadfileVO;
 
 @Controller
 public class UploadController {
@@ -51,6 +52,7 @@ public class UploadController {
 		commandMap.put("UNO", request.getParameter("UNO"));
 		
 		int uno =Integer.parseInt(request.getParameter("UNO"));
+		System.out.println("uno:"+uno);
 		Map<String,Object> map = uploadFileService.selectFileInfo(uno);
 		
 		String storedName = (String)map.get("STOREDNAME");
@@ -75,19 +77,22 @@ public class UploadController {
 
 	@RequestMapping(value="insertFile", method=RequestMethod.POST)
 	public ModelAndView insertFile(CommandMap commandMap, HttpServletRequest request,HttpSession session) throws Exception{	    
-		ModelAndView mv = new ModelAndView("redirect:/uploadForm");
-		uploadFileService.insertFile(commandMap.getMap(), request,session);
+		ModelAndView mv = new ModelAndView("redirect:/scrapList");
+		String utitle= request.getParameter("utitle");
+		System.out.println(utitle);
+		commandMap.put("utitle",utitle);
+		System.out.println(commandMap.getMap());
+		uploadFileService.insertFile(commandMap.getMap(), request, session);
 		return mv;
 	}
 
 	@RequestMapping(value="scrapList")
 	public ModelAndView selectFileList(Model model, HttpSession session,HttpServletRequest request,CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("/mypage/uploadList2");
+		String id=(String)session.getAttribute("id");
 
 		List<Map<String,Object>> list = uploadFileService.selectFileList(commandMap.getMap());
 		mv.addObject("list", list);
-
-		String id=(String)session.getAttribute("id");
 
 		Object pno =request.getParameter("pno");
 		request.setAttribute("pno",pno);
@@ -95,7 +100,6 @@ public class UploadController {
 		model.addAttribute("scrapList",scrapService.selectScrapList(id));
 		model.addAttribute("selectProject",scrapService.selectProject(id));
 		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
-
 		
 		return mv;
 	}
@@ -114,4 +118,33 @@ public class UploadController {
 
 		return mv;
 	}
+	
+	@RequestMapping(value="shareFile")
+	public String shareFile(HttpServletRequest request,Model model,HttpSession session) throws Exception{
+		
+		int boardno= Integer.parseInt(request.getParameter("boardno")); 
+		String[] uno =request.getParameterValues("uno");
+
+		for(int i=0; i<uno.length;i++){
+			UploadfileVO fileList  =uploadFileService.selectFileList(Integer.parseInt(uno[i]));
+			fileList.setBoardno(boardno);
+			uploadFileService.shareFile(fileList);
+		}
+
+		return "redirect:/scrapList";
+	}
+	
+	@RequestMapping(value="sharedFileList")
+	public String sharedFileList(Model model, HttpSession session, HttpServletRequest request){
+		String id=(String)session.getAttribute("id");
+
+		int boardno =Integer.parseInt(request.getParameter("pno"));
+		request.setAttribute("boardno",boardno);
+
+		model.addAttribute("sharedFileList",uploadFileService.sharedFileList(boardno));
+
+		return "project/sharingdata";
+	}
+	
+	
 }
