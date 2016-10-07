@@ -43,5 +43,10 @@
 		select distinct tl.tlno, t.content as title, tl.content, to_char(tl.tldate, 'yyyy-mm-dd')tldate, tl.id, tl.state, to_char(tl.tlstart, 'yyyy-mm-dd')tlstart from todo t, todolist tl where t.tdno=
 		tl.tdno and t.pno=#{pno} order by tldate asc
 	</select>
+	
+	<select id="dateCheck" parameterType="String" resultType="TodoList">
+		select tlno, content, state, tldate-7 tldate, tdno, id, tlstart 
+		from todolist where id=#{id} and state=1;
+	</select>
 
 </mapper>

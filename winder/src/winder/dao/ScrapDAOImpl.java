@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import winder.vo.AbcVO;
 import winder.vo.ScrapVO;
 
 @Repository("scrapDAO")
@@ -37,13 +36,5 @@ public class ScrapDAOImpl {
 		return sqlSession.selectOne("winder.Scrap.selectScrapNoList",sno);
 	}
 	
-	/* 추가 */
-	public int insertabc(AbcVO vo){
-		return sqlSession.insert("winder.Scrap.insertabc", vo);
-	}
-	
-	public List<AbcVO> selectabc(int abcno){
-		return sqlSession.selectList("winder.Scrap.selectabc", abcno);
-	}
 	
 }

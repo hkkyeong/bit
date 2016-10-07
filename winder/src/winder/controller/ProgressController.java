@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,7 +55,8 @@ public class ProgressController {
 		model.addAttribute("past", pastlist);
 
 		// todo bar
-		HashMap<String, Integer> hm = new HashMap<>();
+		HashMap<String, Integer> hm = new LinkedHashMap<>();
+		//HashMap<String, Integer> hm2 = new HashMap<>();
 		List<TodoVO> tdlist = todoService.listTodo(Integer.parseInt(request.getParameter("pno")));
 		int temp2 = 0;
 		int state = 0;

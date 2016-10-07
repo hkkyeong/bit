@@ -15,4 +15,5 @@ public interface TodoListDAO {
 	public int statedone(String tlno) throws RuntimeException;
 	public int statetodo(String tlno) throws RuntimeException;
 	public List<TodoJoinVO> selectTdDate(int pno);
+	public List<TodoListVO> dateCheck(String id);
 }

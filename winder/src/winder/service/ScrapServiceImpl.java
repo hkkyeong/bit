@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import winder.dao.ScrapDAOImpl;
-import winder.vo.AbcVO;
 import winder.vo.ScrapVO;
 
 
@@ -37,13 +36,6 @@ public class ScrapServiceImpl {
 	public ScrapVO selectScrapNoList(int sno)  throws RuntimeException {
 		return scrapDAO.selectScrapNoList(sno);
 	}
-	/*추가*/
-	public int insertabc(AbcVO vo){
-		return scrapDAO.insertabc(vo);
-	}
-	
-	public List<AbcVO> selectabc(int abcno){
-		return scrapDAO.selectabc(abcno);
-	}
+
 
 }

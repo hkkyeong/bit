@@ -22,7 +22,7 @@
 		<typeAlias type="winder.vo.ScrapVO" alias="Scrap"/>
 		<typeAlias type="winder.vo.TeamVO" alias="Team"/>
 		<typeAlias type="winder.vo.UploadfileVO" alias="Uploadfile"/>
-		<typeAlias type="winder.vo.AbcVO" alias="Abc"/>
+		<typeAlias type="winder.vo.DateCheckVO" alias="DateCheck"/>
 	</typeAliases>
 
 
@@ -37,6 +37,7 @@
 		<mapper resource="winder/sql/outmemberMapper.xml" />
 		<mapper resource="winder/sql/noteMapper.xml" />
 		<mapper resource="winder/sql/uploadFileMapper.xml" />
+		<mapper resource="winder/sql/datecheckMapper.xml" />
 		
 	</mappers>
 

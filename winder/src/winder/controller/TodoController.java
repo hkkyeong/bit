@@ -3,7 +3,6 @@ package winder.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,9 +49,6 @@ public class TodoController {
 	@RequestMapping(value="todo")
 	public String todo(Model model, HttpSession session, HttpServletRequest request) throws Exception{
 		String id=(String)session.getAttribute("id");
-		//필요하지 않을 듯
-		//model.addAttribute("teammenu", teamService.selectTeamList(id));
-		//model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
 		
 		//프로젝트 진행률
 		int temp=0;

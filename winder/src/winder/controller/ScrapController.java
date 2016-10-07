@@ -1,4 +1,4 @@
-package winder.controller;
+/*package winder.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,12 +25,12 @@ public class ScrapController {
 	@Autowired ProjectService projectService;
 	private String firstImageSrc ;
  
-/*	@RequestMapping(value="scrapForm")
+	@RequestMapping(value="scrapForm")
 	public String scrapForm(HttpServletResponse resp,HttpServletRequest request,Model model) throws Exception{
 		String url= request.getParameter("url");
 		return "scrap/scrap";
 	}
-*/
+
 	@RequestMapping(value="insertScrap")
 	public String insertScrap(HttpServletRequest request,Model model,HttpSession session) throws Exception{
 		ScrapVO scrap=new ScrapVO();
@@ -47,7 +47,7 @@ public class ScrapController {
 		scrap.setStitle(request.getParameter("stitle"));
 		scrap.setPno(0);
 
-		/*String articleURL = "http://m.blog.naver.com/potter777777/220605598446"; */
+		String articleURL = "http://m.blog.naver.com/potter777777/220605598446"; 
 		Document doc = Jsoup.connect(url).get();     // document 객체 생성.
 		Elements ele = doc.select("div.se_textView");          // 아이디가 _article인 div 태그 선택
 		String str = ele.text();                            // 값 저장
@@ -103,17 +103,17 @@ public class ScrapController {
 			//request.setAttribute("abb",abb);
 			model.addAttribute("scrapcontent", abb);
 
-/*			String conS = content.text();
-			request.setAttribute("content",conS);*/
+			String conS = content.text();
+			request.setAttribute("content",conS);
 		}
 
   
-/*		Elements el = doc.select("div.post_ct span._img fx");  
+		Elements el = doc.select("div.post_ct span._img fx");  
 		for(Element element : el){
 			System.out.println(element.attr("src").toString().concat("w2"));
 			request.setAttribute("img",element.attr("src").toString());
 			System.out.println("22");
-		}*/
+		}
   
 		String titleS = title.text();                            // 값 저장
 		request.setAttribute("title",titleS);		   
@@ -171,7 +171,7 @@ public class ScrapController {
 	//scrap vo 받아올 필요가 있으려나~?
 	public String shareScrap(ScrapVO scrap,HttpServletRequest request,Model model,HttpSession session) throws Exception{
 		//String id=(String)session.getAttribute("id");
-		/*String[] share= request.getParameterValues("share");	*/			
+		String[] share= request.getParameterValues("share");				
 		int pno= Integer.parseInt(request.getParameter("pno")); 
 		String[] sno =request.getParameterValues("sno");
 
@@ -187,3 +187,4 @@ public class ScrapController {
 
 
 }
+*/

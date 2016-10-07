@@ -66,4 +66,9 @@ public class TodoListDAOImpl implements TodoListDAO {
 		return sqlSession.selectList("winder.TodoList.selectTdDate", pno);
 	}
 
+	@Override
+	public List<TodoListVO> dateCheck(String id) {
+		return sqlSession.selectList("winder.TodoList.dateCheck", id);
+	}
+
 }

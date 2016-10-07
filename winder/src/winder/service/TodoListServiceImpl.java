@@ -59,6 +59,11 @@ public class TodoListServiceImpl implements TodoListService{
 	public List<TodoJoinVO> selectTdDate(int pno) {
 		return todolistDAO.selectTdDate(pno);
 	}
+
+	@Override
+	public List<TodoListVO> dateCheck(String id) {
+		return todolistDAO.dateCheck(id);
+	}
 	
 
 }
