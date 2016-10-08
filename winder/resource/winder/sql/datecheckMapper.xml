@@ -3,12 +3,13 @@
 
 <mapper namespace="winder.DateCheck">
 
-	<insert id="">
-	
+	<insert id="insertCheck" parameterType="TodoList">
+		insert into datecheck(tlno, tldate) values 
+		(#{tlno}, #{tldate})
 	</insert>
 	
 	<select id="countCheck" parameterType="int" resultType="int">
-		select count (*) from countcheck where tlno=#{tlno}
+		select count (*) from datecheck where tlno=#{tlno}
 	</select>
 	
 </mapper>

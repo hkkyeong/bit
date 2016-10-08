@@ -9,7 +9,7 @@
 	</insert>
 	
 	<select id="selectNoteList" parameterType="java.lang.String" resultType="Note">
-		select *from note where rid=#{rid}
+		select *from note where rid=#{rid} order by ndate desc
 	</select>
 	
 	<delete id="deleteNote" parameterType="int">
@@ -19,5 +19,10 @@
 	<select id="selectNote" parameterType="java.lang.Integer" resultType="Note">
 		select * from note where nno=#{nno}   
 	</select> 
+	
+	<insert id="insertCheck" parameterType="Note">
+		insert into note(nno, ntitle, ncontent, ndate, sid, rid) values
+		(note_seq.nextval,#{ntitle}, #{ncontent}, #{ndate}, #{sid}, #{rid})
+	</insert>
 	
 </mapper>

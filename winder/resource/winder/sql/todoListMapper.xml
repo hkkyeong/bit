@@ -45,8 +45,8 @@
 	</select>
 	
 	<select id="dateCheck" parameterType="String" resultType="TodoList">
-		select tlno, content, state, tldate-7 tldate, tdno, id, tlstart 
-		from todolist where id=#{id} and state=1;
+		select tlno, content, state, to_char(tldate-7, 'yyyy-mm-dd')tldate, tdno, id, tlstart 
+		from todolist where id=#{id} and state=1
 	</select>
 
 </mapper>

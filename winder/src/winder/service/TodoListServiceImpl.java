@@ -64,6 +64,16 @@ public class TodoListServiceImpl implements TodoListService{
 	public List<TodoListVO> dateCheck(String id) {
 		return todolistDAO.dateCheck(id);
 	}
+
+	@Override
+	public int countCheck(int tlno) throws RuntimeException {
+		return todolistDAO.countCheck(tlno);
+	}
+
+	@Override
+	public int insertCheck(TodoListVO todolist) throws RuntimeException {
+		return todolistDAO.insertCheck(todolist);
+	}
 	
 
 }

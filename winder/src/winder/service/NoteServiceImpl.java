@@ -24,4 +24,9 @@ public class NoteServiceImpl implements NoteService {
 	public NoteVO selectNote(int nno) throws RuntimeException {
 		return noteDAO.selectNote(nno);  
 	}
+	@Override
+	public int insertCheck(NoteVO vo) throws RuntimeException {
+		return noteDAO.insertCheck(vo);
+	}
+	
 }

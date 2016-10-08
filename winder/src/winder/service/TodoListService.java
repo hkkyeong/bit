@@ -16,4 +16,6 @@ public interface TodoListService {
 	public int statetodo(String tlno) throws RuntimeException;
 	public List<TodoJoinVO> selectTdDate(int pno);
 	public List<TodoListVO> dateCheck(String id);
+	public int countCheck(int tlno) throws RuntimeException;
+	public int insertCheck(TodoListVO todolist) throws RuntimeException;
 }

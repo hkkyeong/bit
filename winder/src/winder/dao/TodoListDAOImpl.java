@@ -71,4 +71,14 @@ public class TodoListDAOImpl implements TodoListDAO {
 		return sqlSession.selectList("winder.TodoList.dateCheck", id);
 	}
 
+	@Override
+	public int countCheck(int tlno) throws RuntimeException {
+		return sqlSession.selectOne("winder.DateCheck.countCheck", tlno);
+	}
+
+	@Override
+	public int insertCheck(TodoListVO todolist) throws RuntimeException {
+		return sqlSession.insert("winder.DateCheck.insertCheck", todolist);
+	}
+
 }

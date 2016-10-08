@@ -1,11 +1,11 @@
-/*package winder.controller;
-import java.util.List;
+package winder.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import winder.service.ProjectService;
 import winder.service.ScrapServiceImpl;
-import winder.vo.AbcVO;
 import winder.vo.ScrapVO;
 
 @Controller
@@ -54,8 +53,7 @@ public class ScrapController {
 
 		int count=scrapService.insertScrap(scrap);
 		if(count==1){
-			//model.addAttribute("str", str);
-			//request.setAttribute("str",str);
+
 			return "redirect:/scrapList";
 		}else{
 			return "scrap/scrap";
@@ -74,20 +72,11 @@ public class ScrapController {
 
 		if("div.post_ct".contains((CharSequence) doc.toString())){
 			Elements content2 =doc.select("div.post_ct");
-			AbcVO vo=new AbcVO();
 			String ab=content2.toString();
 			String abb;
-			//abb=ab.replaceAll("span", "img");
 			abb=ab.replaceAll("span class=\"_img _inl fx\" thumburl", "img src");
 			abb=abb.replaceAll("?type=\"></span>", "?type=w2\"></img>");
-			abb=abb.replaceAll("27일 철도와 지하철 동시 파업 돌입", "rrrrrr\"");
-			vo.setAbc(abb);
-			int count=scrapService.insertabc(vo);
-			if(count==1){
-				List<AbcVO> abc=scrapService.selectabc(36);
-				model.addAttribute("abc", abc);
-			}else{
-			}
+			
 			String conS = content2.text();
 			request.setAttribute("content",conS);
 
@@ -100,7 +89,6 @@ public class ScrapController {
 			abb=ab.replaceAll("span class=\"_img _inl fx\" thumburl", "img src");
 			abb=abb.replaceAll("\\?type=\"></span>", "?type=w2\"></img>");
 			
-			//request.setAttribute("abb",abb);
 			model.addAttribute("scrapcontent", abb);
 
 			String conS = content.text();
@@ -187,4 +175,3 @@ public class ScrapController {
 
 
 }
-*/

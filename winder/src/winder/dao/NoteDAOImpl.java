@@ -28,5 +28,9 @@ public class NoteDAOImpl implements NoteDAO {
 	public NoteVO selectNote(int nno){
 		return sqlSession.selectOne("winder.Note.selectNote", nno);
 	}
+	@Override
+	public int insertCheck(NoteVO vo) throws RuntimeException {
+		return sqlSession.insert("winder.Note.insertCheck", vo);
+	}
 
 }

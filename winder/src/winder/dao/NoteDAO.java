@@ -8,5 +8,6 @@ public interface NoteDAO {
 	public List<NoteVO> selectNoteList(String rid) throws RuntimeException;
 	public int deleteNote(int nno);
 	public NoteVO selectNote(int nno);
+	public int insertCheck(NoteVO vo) throws RuntimeException;
 }
  
