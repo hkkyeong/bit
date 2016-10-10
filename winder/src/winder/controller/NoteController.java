@@ -74,12 +74,9 @@ public class NoteController {
 					}else{//알림 안 갔을 때 알림 추가
 						System.out.println(i+" : "+tllist.get(i));
 						todolistService.insertCheck(tllist.get(i));
-						System.out.println("22222222");
 						vo.setNcontent(tllist.get(i).getContent()+" 일정이 7일 남았습니다.");
 						vo.setNdate(tllist.get(i).getTldate());
-						System.out.println("33333");
 						noteService.insertCheck(vo);
-						System.out.println("4444444");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -107,6 +104,11 @@ public class NoteController {
 		int nno =Integer.parseInt(request.getParameter("nno"));
 		model.addAttribute("noteDetail",noteService.selectNote(nno));
 		return "mypage/noteDetail";
+	}
+	
+	@RequestMapping(value="noticeDate")
+	public String noticeDate(Model model, HttpServletRequest request){
+		return "";
 	}
 
 }

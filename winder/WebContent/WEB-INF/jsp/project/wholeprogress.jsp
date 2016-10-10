@@ -80,11 +80,17 @@
 						<c:if test="${plist.state eq '1' }">
 						<c:forEach items="${past }" var="past">
 							<c:if test="${past.tlno eq plist.tlno }">
+							<%if(request.getAttribute("leaderchk").equals("leader")) {%>
+								<a href="" onclick="pop(${plist.content }); return false">
+							<%} %>
 								<div class="alert alert-danger">
 									<strong>${plist.content }</strong><br>
 									${plist.tldate }<br>
 									${plist.id }
 								</div>
+							<%if(request.getAttribute("leaderchk").equals("leader")) {%>
+								</a>
+							<%} %>
 								<%flag=1; %>
 							</c:if>
 						</c:forEach>
@@ -191,5 +197,13 @@
 		</div>
 	</div>
 </div> --%>
+
+
+<div id="element_to_pop_up">
+<div class="b-close" style="color: #000;">x</div>
+<form action="noticeDate">
+
+</form>
+</div>
 
 <jsp:include page="../footer_progress.jsp" />

@@ -68,7 +68,6 @@ public class TodoController {
 			if(plist.get(i).getId().equals(id)){ //todolist 중 세션 아이디의 list만 새 리스트인 plistid에 저장
 				plistid.add(aa, plist.get(i));
 				aa++;
-				System.out.println(plist.get(i));
 			}
 		}	
 		model.addAttribute("todo", plistid);
@@ -564,7 +563,6 @@ public class TodoController {
 					jarr.add(jobj);
 				}
 			}else{ //기한 많이 남은 리스트
-				//System.out.println("날짜: "+plist.get(i).getTldate());
 			}
 		}
 		JSONObject obj=new JSONObject();

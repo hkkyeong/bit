@@ -8,14 +8,19 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import winder.service.MembersService;
+import winder.service.ProjectService;
 import winder.service.TodoListService;
 import winder.service.TodoService;
+import winder.vo.MembersVO;
+import winder.vo.ProjectVO;
 import winder.vo.TodoJoinVO;
 import winder.vo.TodoVO;
 
@@ -25,9 +30,14 @@ public class ProgressController {
 	private TodoListService todolistService;
 	@Autowired
 	private TodoService todoService;
+	@Autowired
+	private MembersService membersService;
+	@Autowired
+	private ProjectService projectService;
 
 	@RequestMapping(value = "wholeprogress")
-	public String wholeProgress(Model model, HttpServletRequest request) throws Exception {
+	public String wholeProgress(Model model, HttpServletRequest request, HttpSession session) throws Exception {
+		String id=(String)session.getAttribute("id");
 		// 프로젝트 진행률
 		int temp = 0;
 		//List<TodoJoinVO> plist = todolistService.selectTodoList(Integer.parseInt(request.getParameter("pno")));
@@ -81,6 +91,19 @@ public class ProgressController {
 		model.addAttribute("tdlist", tdlist);
 		model.addAttribute("ab", hm);
 		model.addAttribute("plist", plist);
+		
+		//leader인지 아닌지
+		ProjectVO pvo=new ProjectVO();
+		pvo=projectService.selectProject(Integer.parseInt(request.getParameter("pno")));
+		MembersVO vo=new MembersVO();
+		vo.setId(id);
+		vo.setTno(pvo.getTno());
+		String leaderchk=membersService.selectMembersPosition(vo).getPosition();
+		if(leaderchk.equals("leader")){
+			model.addAttribute("leaderchk", leaderchk);
+		}else{
+			model.addAttribute("leaderchk", "x");
+		}
 		
 		return "project/wholeprogress";
 	}

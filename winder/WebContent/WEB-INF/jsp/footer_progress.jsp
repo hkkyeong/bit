@@ -26,6 +26,8 @@
 <!-- 차트 플러그인 -->
 <script src="js/jquery.knob.js"></script>
 
+<script src="js/jquery.bpopup.min.js"></script>
+
 <script type="text/javascript" charset="UTF-8">
 
 var count=1;
@@ -117,32 +119,17 @@ return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff;
     +"</div>";
 };
 
-
-/* 
-//진행률 바
-function bar(url){
-	$.ajax({
-		type: "post",
-		url:url,
-		dataType : 'json',
-		success:function(data){		
-			$("#progressbar").empty();
- 			 $.each(data, function(key, value){
- 				var Ca = /\+/g;
- 				 var kkey=decodeURIComponent(key.replace(Ca, " "));
- 				 var vvalue=decodeURIComponent(value);
- 				 console.log("kkey: "+kkey)
-				$("#progressbar").append(kkey+"<div class='progress progress-striped'>"+
-						"<div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow="+value+"aria-valuemin='0' aria-valuemax='100' style='width:"+
-						value+"%'></div></div>");
-				});  
-			},
-			error:function(){
-				alert("error bar");
-		}
-	}); 
-}
- */
+function pop(content){
+	var content=content;
+        $('#element_to_pop_up').bPopup({
+     	   modalClose: false,
+            opacity: 0.6,
+            positionStyle: 'fixed' //'fixed' or 'absolute'
+        });
+        
+        $("#out").empty();
+        $("#out").append("<lablel> 버튼을 누르면 ");
+};
 
 </script>
 
