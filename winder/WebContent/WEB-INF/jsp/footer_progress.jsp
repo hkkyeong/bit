@@ -119,16 +119,22 @@ return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff;
     +"</div>";
 };
 
-function pop(content){
+function pop(content, id, pno){
 	var content=content;
-        $('#element_to_pop_up').bPopup({
+	var sid=id;
+	//var pno=pno;
+        $('#element_to_pop_up3').bPopup({
      	   modalClose: false,
             opacity: 0.6,
             positionStyle: 'fixed' //'fixed' or 'absolute'
         });
-        
+        console.log(content);
+        console.log(id)
         $("#out").empty();
-        $("#out").append("<lablel> 버튼을 누르면 ");
+        $("#out").append("<lablel> 버튼을 누르면  해당 멤버에게 알림 메시지가 갑니다. <label><br><button type='submit' class='btn btn-default'>확인</button>"+
+        		"<input type='hidden' name='content' value="+content+
+        		//"<input type='hidden' name='pno' value="+pno+
+        		"<input type='hidden' name='sid' value="+sid+">");
 };
 
 </script>

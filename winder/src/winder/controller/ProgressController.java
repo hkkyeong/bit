@@ -105,6 +105,7 @@ public class ProgressController {
 			model.addAttribute("leaderchk", "x");
 		}
 		
+		model.addAttribute("pno",Integer.parseInt(request.getParameter("pno")));
 		return "project/wholeprogress";
 	}
 
