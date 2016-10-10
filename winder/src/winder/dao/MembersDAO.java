@@ -1,6 +1,7 @@
 package winder.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import winder.vo.MembersVO;
 
@@ -28,4 +29,6 @@ public interface MembersDAO {
 	public List<MembersVO> selectAllMembersTno(int tno);
 	
 	public int deleteMembersTeamOut(MembersVO members);
+	public List<MembersVO> selectTeamMember(int tno);
+	/*public List<Map<String,Object>> selectTeamMember(int tno);*/
 }

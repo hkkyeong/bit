@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import winder.service.ProjectService;
 import winder.service.ScrapServiceImpl;
+import winder.service.UploadFileService;
 import winder.vo.ScrapVO;
 
 @Controller
@@ -23,6 +24,8 @@ public class ScrapController {
 	private ScrapServiceImpl scrapService;
 	@Autowired ProjectService projectService;
 	private String firstImageSrc ;
+	@Autowired
+	UploadFileService uploadFileService; 
  
 	@RequestMapping(value="scrapForm")
 	public String scrapForm(HttpServletResponse resp,HttpServletRequest request,Model model) throws Exception{
@@ -133,12 +136,15 @@ public class ScrapController {
 
 	@RequestMapping(value="sharedscrapList")
 	public String sharedscrapList(Model model, HttpSession session, HttpServletRequest request){
-		String id=(String)session.getAttribute("id");
-
 		int pno =Integer.parseInt(request.getParameter("pno"));
 		request.setAttribute("pno",pno);
-
 		model.addAttribute("sharedscrapList",scrapService.sharedscrapList(pno));
+		
+		int boardno =Integer.parseInt(request.getParameter("pno"));
+		System.out.println(boardno);
+		request.setAttribute("boardno",boardno);
+		model.addAttribute("sharedFileList",uploadFileService.sharedFileList(boardno));
+		System.out.println(uploadFileService.sharedFileList(boardno));
 
 		return "project/sharingdata";
 	}

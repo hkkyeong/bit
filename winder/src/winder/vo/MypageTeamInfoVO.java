@@ -4,10 +4,17 @@ import java.util.List;
 
 public class MypageTeamInfoVO {
 	
-
-	String name,leader;
+	String name,leader, timg;
 	List<MembersVO> members;
 	int tno;
+	
+	public String getTimg() {
+		return timg;
+	}
+	
+	public void setTimg(String timg) {
+		this.timg = timg;
+	}
 	
 	public String getName() {
 		return name;
@@ -32,6 +39,12 @@ public class MypageTeamInfoVO {
 	}
 	public void setTno(int tno) {
 		this.tno = tno;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
 	}
 	
 }
