@@ -2,6 +2,7 @@ package winder.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,20 @@ public class MembersDAOImpl implements MembersDAO {
 	public int deleteMembersTeamOut(MembersVO members) {
 		return sqlSession.delete("winder.Members.deleteMembersTeamOut", members);
 	}
+	
+	@Override
+	public List<MembersVO> selectTeamMember(int tno) {
+		return sqlSession.selectList("winder.Members.selectTeamMember", tno);
+	}
+	
+/*	public List selectList(String queryId, Object params){
+		return sqlSession.selectList(queryId,params);
+	}
+	
+	@Override
+	public List<Map<String,Object>> selectTeamMember(int tno) {
+		return (List<Map<String, Object>>)selectList("winder.Members.selectTeamMember", tno);
+	}*/
 	
 	
 }

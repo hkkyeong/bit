@@ -1,6 +1,8 @@
 package winder.service;
 
 import java.util.List;
+import java.util.Map;
+
 import winder.vo.MembersVO;
 
 public interface MembersService {
@@ -17,4 +19,6 @@ public interface MembersService {
 	public MembersVO selectMembersPosition(MembersVO members);
 	
 	public List<MembersVO> selectAllMembersTno(int tno);
+	public List<MembersVO> selectTeamMember(int tno);
+	/*public List<Map<String, Object>> selectTeamMember(int tno);*/
 }

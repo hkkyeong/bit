@@ -136,7 +136,7 @@ public class UploadController {
 	
 	@RequestMapping(value="sharedFileList")
 	public String sharedFileList(Model model, HttpSession session, HttpServletRequest request){
-		String id=(String)session.getAttribute("id");
+		//String id=(String)session.getAttribute("id");
 
 		int boardno =Integer.parseInt(request.getParameter("pno"));
 		request.setAttribute("boardno",boardno);

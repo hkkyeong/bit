@@ -4,12 +4,16 @@
 <mapper namespace="winder.Members">
 
 	<insert id="insertMembers" parameterType="Members">
-		insert into members(mno, state, id, tno) values
-		(members_seq.nextval,2,#{id},#{tno})
+		insert into members(mno, state, id,position, tno) values
+		(members_seq.nextval,2,#{id},#{position},#{tno})
 	</insert>
 
 	<delete id="deleteMembers" parameterType="java.lang.String">
 		delete members where mno=#{value}
+	</delete>
+	
+	<delete id="deleteMembersTeamOut" parameterType="Members">
+		delete members where tno=#{tno} and id=#{id}
 	</delete>
 
 	<update id="updateMembers" parameterType="Members">
@@ -28,6 +32,10 @@
 	<select id="teamMember" parameterType="String" resultType="Members">
 		select distinct * from members where tno=(select tno from project where pno=#{pno})
 		<!-- where state=2 추가해야 됨 승인 받은 팀원만 가지고 와야 되니까 -->
+	</select>
+	
+		<select id="selectTeamMember" parameterType="int" resultType="Members">
+		 select distinct m.id, m.tno from team t, members m where m.tno=#{tno} and m.position ='member'
 	</select>
 	
 	<select id="selectMembersTno" parameterType="java.lang.String"	resultType="Members">

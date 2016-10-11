@@ -26,15 +26,20 @@
 
 <script type="text/javascript">
 
+var uno;
+function unosubmit(obj){
+	 x=obj.attr('id');
+	 uno=x;
+}
+
 	$(document).ready(function() {
-		$("a[name='file']").on("click", function(e) { //파일 이름
+		$("a[name='file1']").on("click", function(e) { //파일 이름
 			 e.preventDefault(); 
 			fn_downloadFile($(this));
 		});
 	});
 
 	function fn_downloadFile(obj) {
-		var uno = obj.parent().find("#UNO").val();	
 		var comSubmit = new ComSubmit();
 		comSubmit.setUrl("downloadFile");
 		comSubmit.addParam("UNO", uno);
