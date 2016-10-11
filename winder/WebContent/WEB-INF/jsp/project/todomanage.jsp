@@ -153,7 +153,7 @@
 			<input type="hidden" name="tlno" value="${ todolistselect.tlno}">
 					<div class="form-group">
 						<label>Title</label>
-						<select class="form-control" name="tdno" onchange="selectCheck(this.form)">
+						<select class="form-control" name="tdno" onchange="selectCheck(this.value)">
  							 <c:forEach items="${tlist }" var="tlist">
  								<c:if test="${ tlist.tdno==todolistselect.tdno }">
  									<option value="${tlist.tdno }">${tlist.content }</option>
@@ -211,7 +211,7 @@
 				<input type="hidden" name="pno" value="${pno }">
 					<div class="form-group">
 						<label>Title</label>
-						<select class="form-control" name="tdno" onchange="selectCheck(this.form)">
+						<select class="form-control" onchange="selectCheck(this.value)" name="tdno">
  							<c:forEach items="${tlist }" var="tlist">
 									<option value="${tlist.tdno }">${tlist.content }</option>  
 							</c:forEach> 							
@@ -260,5 +260,4 @@
 
 
 
-
-<jsp:include page="../footer_todo.jsp" />
+<jsp:include page="../footer_todo2.jsp" />

@@ -316,8 +316,9 @@ function ddaylist(url){
 
 
 //todolist date 설정 위한 함수
-	function selectCheck(forminfo){
-	var chk=forminfo.tdno.value;
+	function selectCheck(){
+	var chk=document.getElementsByName("tdno").value;
+	//var chk=forminfo.tdno.value;
 	var d;
 	var tddate;
 	var tdstart
