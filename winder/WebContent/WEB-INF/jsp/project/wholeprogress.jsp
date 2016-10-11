@@ -9,6 +9,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<h4 class="page-head-line">progress</h4>
+		${pno }
 	</div>
 </div>
 <div class="row">
@@ -81,7 +82,7 @@
 						<c:forEach items="${past }" var="past">
 							<c:if test="${past.tlno eq plist.tlno }">
 							<%if(request.getAttribute("leaderchk").equals("leader")) {%>
-								<a href="#" onclick="pop('${plist.content }','${plist.id }'); return false">
+								<a href="" onclick="pop('${plist.content }','${plist.id }','${pno }'); return false">
 							<%} %>
 								<div class="alert alert-danger">
 									<strong>${plist.content }</strong><br>
