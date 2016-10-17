@@ -19,6 +19,15 @@
     min-width:600px;
     min-height: 380px;
 }
+#element_to_pop_up3 { 
+    background-color:#fff;
+    border-radius:15px;
+    color:#000;
+    display:none; 
+    padding:20px;
+    min-width:400px;
+    min-height: 160px;
+}
 .b-close{
     cursor:pointer;
     position:absolute;

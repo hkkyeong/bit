@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +50,6 @@ public class NoteController {
 
 	@RequestMapping(value="noteList")
 	public String teamList(Model model, HttpSession session, HttpServletRequest request) throws Exception{
-		System.out.println("notelist");
 		String rid=(String)session.getAttribute("id");
 		
 		
@@ -107,8 +107,28 @@ public class NoteController {
 	}
 	
 	@RequestMapping(value="noticeDate")
-	public String noticeDate(Model model, HttpServletRequest request){
-		return "";
+	public String noticeDate(HttpSession session, Model model, HttpServletRequest request){
+		String pno=request.getParameter("pno");
+		NoteVO vo=new NoteVO();
+		vo.setSid((String)session.getAttribute("id"));
+		vo.setNcontent(request.getParameter("content")+" 기간이 지났습니다. 빨리 완료해 주세요.");
+		vo.setNtitle("팀장 알림");
+		vo.setRid(request.getParameter("sid"));
+		
+		try {
+			int count=noteService.insertNote(vo);
+			if(count==1){
+				System.out.println("성공");
+				//return "redirect:/noteList";
+				return "redirect:/wholeprogress?pno="+pno;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			//return "redirect:/noteList";
+			return "redirect:/wholeprogress?pno="+pno;
+		}
+		//return "redirect:/noteList";
+		return "redirect:/wholeprogress?pno="+pno;
 	}
 
 }
