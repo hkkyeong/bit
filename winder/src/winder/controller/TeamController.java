@@ -93,7 +93,7 @@ public class TeamController {
 
 
 				int result = membersService.insertMembers(members);
-				
+				 
 				if(result ==1){			
 					System.out.println("members 추가 완료");
 					return "redirect:/teamList";

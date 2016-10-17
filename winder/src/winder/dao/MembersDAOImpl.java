@@ -72,14 +72,9 @@ public class MembersDAOImpl implements MembersDAO {
 		return sqlSession.selectList("winder.Members.selectTeamMember", tno);
 	}
 	
-/*	public List selectList(String queryId, Object params){
-		return sqlSession.selectList(queryId,params);
-	}
-	
 	@Override
-	public List<Map<String,Object>> selectTeamMember(int tno) {
-		return (List<Map<String, Object>>)selectList("winder.Members.selectTeamMember", tno);
-	}*/
-	
+	public int inviteM(MembersVO members) throws RuntimeException {
+		return sqlSession.insert("winder.Members.inviteM", members);
+	}
 	
 }

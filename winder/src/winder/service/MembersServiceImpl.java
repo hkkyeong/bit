@@ -70,9 +70,10 @@ public class MembersServiceImpl implements MembersService{
 		return membersDAO.selectTeamMember(tno);
 	}
 	
-/*	@Override
-	public List<Map<String, Object>> selectTeamMember(int tno) {
-		return membersDAO.selectTeamMember(tno);
-	}*/
+	@Override
+	public int inviteM(MembersVO members) throws RuntimeException {
+		return membersDAO.insertMembers(members);
+	}
+
 
 }

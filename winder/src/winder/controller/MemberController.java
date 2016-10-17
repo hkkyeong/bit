@@ -21,9 +21,10 @@ public class MemberController {
 	DefaultFileRenamePolicy dfrp = new DefaultFileRenamePolicy();
 
 	//회원 가입 처리
-	@RequestMapping(value = "signchk")
+	@RequestMapping(value = "signchk" , method = { RequestMethod.POST, RequestMethod.GET })
 	public String memberJoin(MemberVO vo, HttpServletRequest request) throws IOException{
-		System.out.println("11111111");
+
+		vo =new MemberVO();
 		String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
 		int size = 1024*1024*5;
 		String enc ="utf-8";

@@ -2,14 +2,15 @@ package winder.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.plaf.synth.SynthSeparatorUI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import winder.service.MemberService;
 import winder.service.MembersService;
 import winder.service.ProjectService;
@@ -38,17 +39,7 @@ public class MypageController {
 		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
 		vo=memberService.selectMember(id);
 		model.addAttribute("member", vo);
-		/*List<MembersVO> memberslist = membersService.selectAllMembersTno(id);
-			List<TeamVO> teamlist = new ArrayList<>();
-			for (MembersVO members : memberslist) {
-				System.out.println("##"+members.getTno());
-				for(int i=0; i<memberslist.size(); i++){
-					 TeamVO team = teamService.selectTeamName(members.getTno());
-					 System.out.println("## name value : "+team.getName());
-					//System.out.println("##"+ teamService.selectTeamName(members.getTno()));
-					//System.out.println(i+"## teamlist value : "+teamlist.get(i));
-				}		
-			}*/
+ 
 		return "mypage/mypagemain";
 	}
 	@RequestMapping(value="/profilemain")
@@ -236,6 +227,29 @@ public class MypageController {
 			e.printStackTrace();
 		}
 		return "redirect:/mypage";
+	}
+	
+	@RequestMapping(value="inviteMember")
+	public String inviteMember(HttpServletRequest req,HttpSession session,Model model){
+		
+		String id=req.getParameter("id");
+		int tno = Integer.parseInt(req.getParameter("tno"));
+		//String member =req.getParameter("member");
+		
+		MembersVO members = new MembersVO();
+		members.setId(id);
+		members.setTno(tno);
+		members.setPosition("member");
+
+		int result = membersService.inviteM(members);
+		
+		if(result ==1){			
+			System.out.println("members 추가 완료");
+			return "redirect:/teaminfo";
+		}
+		
+		return "redirect:/teaminfo";
+		
 	}
 
 }

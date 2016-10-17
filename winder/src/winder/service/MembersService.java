@@ -21,4 +21,5 @@ public interface MembersService {
 	public List<MembersVO> selectAllMembersTno(int tno);
 	public List<MembersVO> selectTeamMember(int tno);
 	/*public List<Map<String, Object>> selectTeamMember(int tno);*/
+	public int inviteM(MembersVO members) throws RuntimeException;
 }

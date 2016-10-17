@@ -35,7 +35,7 @@
 	</select>
 	
 		<select id="selectTeamMember" parameterType="int" resultType="Members">
-		 select distinct m.id, m.tno from team t, members m where m.tno=#{tno} and m.position ='member'
+		 select distinct m.id, m.tno, m.position from team t, members m where m.tno=#{tno} and m.position ='member'
 	</select>
 	
 	<select id="selectMembersTno" parameterType="java.lang.String"	resultType="Members">
@@ -48,5 +48,10 @@
 	<select id="selectMembersPosition" parameterType="Members" resultType="Members">
 		select *from members where id=#{id} and tno=#{tno}
 	</select>
+	
+		<insert id="inviteM" parameterType="Members">
+		insert into members(mno, state, id, position, tno) values
+		(members_seq.nextval, 2, #{id}, #{position}, #{tno})
+	</insert>
 
 </mapper>

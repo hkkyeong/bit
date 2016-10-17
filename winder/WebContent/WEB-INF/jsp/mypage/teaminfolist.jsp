@@ -18,10 +18,10 @@
 
 			<div class="panel-body">
 				<table class="table">
-					<thead>  
+					<thead>
 					</thead>
-					<tr> 
-						 <td rowspan="5" width="30%" ><img src="img/${tinfo.timg}"> </td>
+					<tr>
+						<td rowspan="5" width="30%"><img src="img/${tinfo.timg}"></td>
 					</tr>
 					<tr>
 						<td><b>Team name</b></td>
@@ -30,33 +30,60 @@
 					</tr>
 					<tr>
 						<td><b>Team leader</b></td>
-						<td>${tinfo.leader}</td>
-						<td></td> 
+						<td><c:if test="${sessionScope.id eq tinfo.leader }">
+								<b> ${tinfo.leader} (ME) </b>
+							</c:if> <c:if test="${sessionScope.id != tinfo.leader }">
+								<b>${tinfo.leader}</b>
+							</c:if></td>
+						<td></td>
 
 					</tr>
 					<tr>
 						<td><b>Team member</b></td>
-						<td>
-							<c:forEach items="${memberslist }" var="members">
+						<td><c:forEach items="${memberslist }" var="members">
 								<c:if test="${members.tno eq tinfo.tno }">  
 									${members.id}
-									<a href="teamout?tno=${tinfo.tno}&id=${members.id}"	class="btn btn-danger btn-xs"  >Member out</a><br>
+									
+									
+									<c:choose>
+										<c:when test="${sessionScope.id eq tinfo.leader }">
+											<a href="teamout?tno=${tinfo.tno}&id=${members.id}"
+												class="btn btn-danger btn-sm">Member out</a>
+										</c:when>
+
+									</c:choose>
+
+									<br>
 								</c:if>
-							</c:forEach>
-						</td>
-						<td></td> 
+							</c:forEach></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td><b>Team delete</b></td>
-						<td><a href="teamdelete?tno=${tinfo.tno }"
-							class="btn btn-danger btn-xs">Team delete</a></td>
+						<td><c:choose>
+								<c:when test="${sessionScope.id eq tinfo.leader }">
+									<a href="teamdelete?tno=${tinfo.tno }"
+										class="btn btn-danger btn-sm">Team delete</a>
+								</c:when>
+								<c:otherwise>
+							권한 X
+							</c:otherwise>
+							</c:choose></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<form action="inviteMember" >
+							<c:choose>
+								<c:when test="${sessionScope.id eq tinfo.leader }">
+									<td><b>Add member</b></td>
+									<td><input type="text" name="id" class="form-control" placeholder="input id.."> 
+									<input type="hidden" value="${tinfo.tno }" name="tno">
+									</td>
+									<td><input type="submit" class="btn btn-danger btn-sm"	value="Add"></td>
+									<td></td>
+								</c:when>
+							</c:choose>
+						</form>
 					</tr>
 				</table>
 			</div>

@@ -23,8 +23,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputFile">Team Img</label> <input type="file"
-							name="timg" />
+						<label for="exampleInputFile">Team Img</label> <input type="file" name="timg" />
 						<!-- <input type="text" class="form-control" name="timg" placeholder="Input timg" /> -->
 						<!-- <input type="text" class="form-control" name="code" placeholder="Input code" /> -->
 					</div>
