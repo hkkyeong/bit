@@ -1,11 +1,13 @@
 package winder.controller;
 
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 import winder.service.MembersService;
 import winder.service.ProjectService;
@@ -108,5 +113,43 @@ public class ProgressController {
 		model.addAttribute("pno",Integer.parseInt(request.getParameter("pno")));
 		return "project/wholeprogress";
 	}
+	
+	@RequestMapping(value="imageCreate.ajax")
+    public ModelAndView createImage (HttpServletRequest request) throws Exception{
+		String pno=(String)request.getParameter("pno");
+		String url="redirect:/wholeprogress?pno="+pno;
+        String binaryData = request.getParameter("imgSrc");
+        FileOutputStream stream = null;
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName(url);        
+        try{
+            System.out.println("binary file   "  + binaryData);
+            if(binaryData == null || binaryData=="") {
+                throw new Exception();    
+            }
+            
+         
+            binaryData = binaryData.replaceAll("data:image/png;base64,", "");
+            byte[] file = Base64.decode(binaryData);
+            //byte[] file = Base64.decodeBase64(binaryData);
+            System.out.println("file  :::::::: " + file + " || " + file.length);
+            String fileName=  UUID.randomUUID().toString();
+            
+            stream = new FileOutputStream("c:\\bit\\"+fileName+".png");
+            stream.write(file);
+            stream.close();
+            System.out.println("파일 작성 완료");
+            mav.addObject("msg","ok");
+            
+        }catch(Exception e){
+            System.out.println("파일이 정상적으로 넘어오지 않았습니다");
+            mav.addObject("msg","no");
+            return mav;
+        }finally{
+            stream.close();
+        }
+        return mav;
+        
+    }
 
 }

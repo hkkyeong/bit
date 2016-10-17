@@ -6,13 +6,15 @@
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_project.jsp" />
 <%int flag=0; %>
+<form class="rr">
+<input type="hidden" name="imgSrc" id="imgSrc" />
 <div class="row">
 	<div class="col-md-12">
 		<h4 class="page-head-line">progress</h4>
-		${pno }
 	</div>
 </div>
 <div class="row">
+<input type="button" onclick="capture()" value="캡쳐">
 <div class="col-md-6">
 	<!-- Donut chart -->
 	<div class="panel panel-default">
@@ -116,8 +118,7 @@
 </c:if>
 </c:forEach>
 
-
-
+</form>
 
 
 <%-- <div class="row">
