@@ -3,7 +3,8 @@
 <jsp:include page="header_basic.jsp" />
 <jsp:include page="nav.jsp" />
 <jsp:include page="menu_basic.jsp" />
-
+<form class="rr">
+<input type="hidden" name="imgSrc" id="imgSrc" />
 <div class="row">
 	<div class="col-md-4" style="text-align: center;">
 	<img src="img/m1.png" style="width: 90%;">
@@ -27,5 +28,6 @@
 	<img src="img/m6.png" style="width: 90%;">
 	</div>
 </div>
-
+<input type="button" onclick="capture()">
+</form>
 <jsp:include page="footer.jsp" />

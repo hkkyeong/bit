@@ -5,16 +5,16 @@
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_project.jsp" />
-<%int flag=0; %>
 <form class="rr">
 <input type="hidden" name="imgSrc" id="imgSrc" />
+<%int flag=0; %>
+
 <div class="row">
 	<div class="col-md-12">
 		<h4 class="page-head-line">progress</h4>
 	</div>
 </div>
 <div class="row">
-<input type="button" onclick="capture()" value="캡쳐">
 <div class="col-md-6">
 	<!-- Donut chart -->
 	<div class="panel panel-default">
@@ -31,10 +31,10 @@
 <div class="col-md-6">
 	<div class="panel panel-default">
 		<div class="panel-heading">PROGRESS BARS</div>
-		<div class="panel-body"  id="progressbar">
+		<div class="panel-body">
 		<c:forEach items="${ab }" var="ab">
 			${ab.key }&nbsp;(${ab.value }%)
-			<div class="progress progress-striped">
+			<div class="progress">
 			<c:choose>
 			<c:when test="${ab.value eq 100 }">
 				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="${ab.value }" aria-valuemin="0" aria-valuemax="100" style="width: ${ab.value}%;"></div>
@@ -49,6 +49,7 @@
 	</div>
 </div>
 </div>
+
 
 
 
@@ -113,14 +114,21 @@
 		</div>
 <c:if test="${s.index%3==0 }">
 	<c:if test="${s.index ne 0 }">
-		</div>
+</div>
+	</c:if>
+</c:if>
+<c:if test="${s.index%3 ne 0 }">
+	<c:if test="${s.index ne 0 }">
+		<c:if test="${s.last }">
+</div>
+		</c:if>
 	</c:if>
 </c:if>
 </c:forEach>
 
+
+<input type="button" onclick="capture()" >
 </form>
-
-
 <%-- <div class="row">
 <div class="col-md-12">
 	<br>

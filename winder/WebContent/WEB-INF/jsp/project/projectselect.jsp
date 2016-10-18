@@ -4,6 +4,8 @@
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_project.jsp" />
+<form class="rr">
+<input type="hidden" name="imgSrc" id="imgSrc" />
 <div class="row">
 	<div class="col-md-12">
 		<h4 class="page-head-line">project</h4>
@@ -40,5 +42,8 @@
 	</c:forEach>
 	<%} %>
 </div>
+
+<input type="button" onclick="capture()">
+</form>
 
 <jsp:include page="../footer.jsp" />
