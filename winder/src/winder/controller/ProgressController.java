@@ -114,7 +114,7 @@ public class ProgressController {
 		return "project/wholeprogress";
 	}
 	
-	/*@RequestMapping(value="imageCreate.ajax")
+	@RequestMapping(value="imageCreate.ajax")
     public ModelAndView createImage (HttpServletRequest request) throws Exception{
 		String pno=(String)request.getParameter("pno");
 		String url="redirect:/wholeprogress?pno="+pno;
@@ -150,6 +150,6 @@ public class ProgressController {
         }
         return mav;
         
-    }*/
+    }
 
 }

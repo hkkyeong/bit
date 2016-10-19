@@ -87,7 +87,7 @@ public class LoginController {
 		return "redirect:/home";
 	}
 	
-	@RequestMapping(value="imageCreate.ajax")
+	/*@RequestMapping(value="imageCreate.ajax")
     public ModelAndView createImage (HttpServletRequest request) throws Exception{
         
         String binaryData = request.getParameter("imgSrc");
@@ -123,5 +123,5 @@ public class LoginController {
         return mav;
         
     }
-
+*/
 }

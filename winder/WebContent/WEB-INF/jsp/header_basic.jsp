@@ -15,7 +15,7 @@
     <script type="text/javascript">
         
         function capture() {
- 
+        	var vurl="imageCreate.ajax?pno="+${pno};
             html2canvas($(".rr"), {
                   onrendered: function(canvas) {
                     //document.body.appendChild(canvas);
@@ -26,7 +26,7 @@
                     $.ajax({
                         type:     "post",
                         data : $("form").serialize(),
-                        url:     "imageCreate.ajax",
+                        url:     vurl,
                         error: function(a, b, c){        
                             alert("fail!!");
                         },
