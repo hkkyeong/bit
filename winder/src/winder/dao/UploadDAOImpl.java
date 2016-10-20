@@ -50,6 +50,10 @@ public class UploadDAOImpl implements UploadDAO {
 	public List<UploadfileVO> sharedFileList(int uno)  throws RuntimeException {
 		return sqlSession.selectList("winder.Uploadfile.sharedFileList",uno);
 	}
+
+	public List<UploadfileVO> listFile() throws RuntimeException {
+		return sqlSession.selectList("winder.Uploadfile.listFile");
+	}
 	
 
 }

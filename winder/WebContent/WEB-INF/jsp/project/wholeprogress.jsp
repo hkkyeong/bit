@@ -5,7 +5,7 @@
 <jsp:include page="../header_basic.jsp" />
 <jsp:include page="../nav.jsp" />
 <jsp:include page="../menu_project.jsp" />
-<form class="rr">
+<form class="rr" style="background: white;">
 <input type="hidden" name="imgSrc" id="imgSrc" />
 <%int flag=0; %>
 
@@ -125,10 +125,8 @@
 	</c:if>
 </c:if>
 </c:forEach>
-
-
-<input type="button" onclick="capture()" >
 </form>
+<input type="button" onclick="capture()" value="Capture">
 <%-- <div class="row">
 <div class="col-md-12">
 	<br>

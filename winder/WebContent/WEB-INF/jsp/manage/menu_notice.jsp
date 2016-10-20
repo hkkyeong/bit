@@ -8,7 +8,7 @@
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a class="menu-top" href="manage">회원 관리</a></li>
-                            <li><a class="menu-top" href="report">신고 관리</a></li>
+                            <li><a class="menu-top" href="check">검사 관리</a></li>
                             <li><a class="menu-top-active" href="notice">알림 관리</a></li>
                         </ul>
                     </div>

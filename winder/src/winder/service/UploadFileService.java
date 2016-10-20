@@ -17,5 +17,6 @@ public interface UploadFileService {
 	public int shareFile(UploadfileVO vo) throws Exception;
 	public UploadfileVO selectFileList(int uno)  throws RuntimeException;
 	public List<UploadfileVO> sharedFileList(int uno)  throws RuntimeException;
+	public List<UploadfileVO> listFile() throws RuntimeException;
 }
 

@@ -56,5 +56,9 @@
 	<select id="sharedFileList" parameterType="java.lang.Integer" resultType="Uploadfile">
 		select * from uploadfile where boardno =#{boardno}  ORDER BY udate desc
 	</select>
+	
+	<select id="listFile" resultType="Uploadfile">
+		select * from uploadfile
+	</select>
 
 </mapper>

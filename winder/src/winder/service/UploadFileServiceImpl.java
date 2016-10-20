@@ -65,6 +65,10 @@ public class UploadFileServiceImpl implements UploadFileService {
 	public List<UploadfileVO> sharedFileList(int uno)  throws RuntimeException {
 		return uploadDAO.sharedFileList(uno);
 	}
+
+	public List<UploadfileVO> listFile() throws RuntimeException {
+		return uploadDAO.listFile();
+	}
 	
 	
 } 
