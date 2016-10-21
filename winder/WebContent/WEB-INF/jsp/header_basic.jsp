@@ -9,6 +9,47 @@
     <link href="css/font-awesome.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     
+    
+    
+    <script src="js/html2canvas.js"></script>
+    <script type="text/javascript">
+        
+        function capture() {
+        	var vurl="imageCreate.ajax?pno="+${pno};
+            html2canvas($(".rr"), {
+                  onrendered: function(canvas) {
+                    //document.body.appendChild(canvas);
+                    //alert(canvas.toDataURL("image/png"));
+                    
+                    $("#imgSrc").val(canvas.toDataURL("image/png"));
+                    
+                    $.ajax({
+                        type:     "post",
+                        data : $("form").serialize(),
+                        url:     vurl,
+                        error: function(a, b, c){        
+                            alert("fail!!");
+                        },
+                        success: function (data) {
+                            try{
+                                
+                            }catch(e){                
+                                alert('server Error!!');
+                            }
+                        }
+                    });
+                  }
+            
+            
+            });
+ 
+        }     
+   </script>
+    
+    
+    
+    
+    
     <style type="text/css">
 #element_to_pop_up, #element_to_pop_up2 { 
     background-color:#fff;

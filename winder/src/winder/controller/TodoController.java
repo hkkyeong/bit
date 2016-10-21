@@ -100,10 +100,7 @@ public class TodoController {
 		
 		model.addAttribute("past", pastlist);
 		model.addAttribute("dday", ddaylist);
-		
-		
-		//------------------ 여기 위까지는 됨--------
-		
+				
 		//todo bar
 		HashMap<String, Integer> hm=new HashMap<>();
 		List<TodoVO> tdlist=todoService.listTodo(Integer.parseInt(request.getParameter("pno")));

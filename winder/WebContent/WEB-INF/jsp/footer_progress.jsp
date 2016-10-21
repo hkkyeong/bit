@@ -8,9 +8,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				&copy; 2015 YourCompany | By : <a
-					href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
-			</div>
+                    &copy; 2016 Winder
+                </div>
+
 
 		</div>
 	</div>
@@ -27,6 +27,7 @@
 <script src="js/jquery.knob.js"></script>
 
 <script src="js/jquery.bpopup.min.js"></script>
+<!-- <script src="js/html2canvas.js"></script> -->
 
 <script type="text/javascript" charset="UTF-8">
 
@@ -134,6 +135,7 @@ function pop(content, id, pno){
 };
 
 </script>
+
 
 
 </body>

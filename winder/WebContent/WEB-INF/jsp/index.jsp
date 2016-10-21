@@ -3,7 +3,6 @@
 <jsp:include page="header_basic.jsp" />
 <jsp:include page="nav.jsp" />
 <jsp:include page="menu_basic.jsp" />
-
 <div class="row">
 	<div class="col-md-4" style="text-align: center;">
 	<img src="img/m1.png" style="width: 90%;">
@@ -27,5 +26,4 @@
 	<img src="img/m6.png" style="width: 90%;">
 	</div>
 </div>
-
 <jsp:include page="footer.jsp" />

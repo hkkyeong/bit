@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import winder.service.MemberService;
+import winder.service.ScrapServiceImpl;
+import winder.service.UploadFileService;
 import winder.vo.MemberVO;
 import winder.vo.OutMemberVO;
 
@@ -16,6 +18,10 @@ public class ManageController {
 	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private UploadFileService uploadFileService; 
+	@Autowired 
+	private ScrapServiceImpl scrapService;
 	
 	//manage member
 	@RequestMapping(value="/manage")
@@ -59,10 +65,12 @@ public class ManageController {
 
 	}
 	
-	//manage report
-	@RequestMapping(value="/report")
+	//manage check
+	@RequestMapping(value="/check")
 	public String report(Model model){
-		return "manage/manage_report";
+		model.addAttribute("filelist", uploadFileService.listFile());
+		
+		return "manage/manage_check";
 	}
 	
 	//manage notice
