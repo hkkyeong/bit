@@ -58,7 +58,7 @@
 	</select>
 	
 	<select id="listFile" resultType="Uploadfile">
-		select * from uploadfile
+		select uno, utitle, originalname, usize, to_char(udate, 'yyyy/mm/dd') udate, id from uploadfile
 	</select>
 
 </mapper>

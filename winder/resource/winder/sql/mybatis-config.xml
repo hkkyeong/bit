@@ -38,7 +38,7 @@
 		<mapper resource="winder/sql/noteMapper.xml" />
 		<mapper resource="winder/sql/uploadFileMapper.xml" />
 		<mapper resource="winder/sql/datecheckMapper.xml" />
-		
+		<mapper resource="winder/sql/filtercheckMapper.xml" />
 	</mappers>
 
 </configuration>
