@@ -77,4 +77,14 @@ public class MembersDAOImpl implements MembersDAO {
 		return sqlSession.insert("winder.Members.inviteM", members);
 	}
 	
+	@Override
+	public List<MembersVO> selectMembers2(String id) throws RuntimeException {
+		return sqlSession.selectList("winder.Members.selectMembers2", id);
+	}
+	
+	@Override
+	public MembersVO selectMembersTnoS(String id) {
+		return sqlSession.selectOne("winder.Members.selectMembersTnoS", id);
+	}
+	
 }

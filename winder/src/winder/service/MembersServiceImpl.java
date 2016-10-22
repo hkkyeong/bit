@@ -72,8 +72,16 @@ public class MembersServiceImpl implements MembersService{
 	
 	@Override
 	public int inviteM(MembersVO members) throws RuntimeException {
-		return membersDAO.insertMembers(members);
+		return membersDAO.inviteM(members);
+	}
+	
+	public List<MembersVO> selectMembers2(String id){
+		return membersDAO.selectMembers2(id);
 	}
 
+	@Override
+	public MembersVO selectMembersTnoS(String id) {
+		return membersDAO.selectMembersTnoS(id);
+	}
 
 }

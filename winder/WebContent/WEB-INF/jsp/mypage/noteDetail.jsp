@@ -20,11 +20,19 @@
 							<th>받은 날짜</th>
 							<td>${noteDetail.ndate}</td>
 						</tr>
-						<tr height="250px">
+					 	<tr height="250px">
 							<th>내용</th>
 							<td colspan="3">${noteDetail.ncontent}</td>
 						</tr>
-					</table>
+						      
+					</table> 
+						<div align="right">
+						<c:if test="${noteDetail.ntitle eq '초대 메시지가 도착하였습니다' }">
+						
+						<a href="acceptMember?sid=${noteDetail.sid}" >수락</a>
+						<a href="">거절</a>
+						</c:if>
+						</div> 
 				</div>
 			</div>
 

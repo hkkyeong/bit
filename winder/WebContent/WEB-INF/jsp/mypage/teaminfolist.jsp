@@ -41,19 +41,21 @@
 					<tr>
 						<td><b>Team member</b></td>
 						<td><c:forEach items="${memberslist }" var="members">
-								<c:if test="${members.tno eq tinfo.tno }">  
+								<c:if test="${members.state eq '2' }">
+									<c:if test="${members.tno eq tinfo.tno }">
 									${members.id}
-									
+									  
 									
 									<c:choose>
-										<c:when test="${sessionScope.id eq tinfo.leader }">
-											<a href="teamout?tno=${tinfo.tno}&id=${members.id}"
-												class="btn btn-danger btn-sm">Member out</a>
-										</c:when>
+											<c:when test="${sessionScope.id eq tinfo.leader }">
+												<a href="teamout?tno=${tinfo.tno}&id=${members.id}"
+													class="btn btn-danger btn-sm">Member out</a>
+											</c:when>
 
-									</c:choose>
+										</c:choose>
 
-									<br>
+										<br>
+									</c:if>
 								</c:if>
 							</c:forEach></td>
 						<td></td>
@@ -72,14 +74,16 @@
 						<td></td>
 					</tr>
 					<tr>
-						<form action="inviteMember" >
+						<form action="inviteMember">
 							<c:choose>
 								<c:when test="${sessionScope.id eq tinfo.leader }">
 									<td><b>Add member</b></td>
-									<td><input type="text" name="id" class="form-control" placeholder="input id.."> 
-									<input type="hidden" value="${tinfo.tno }" name="tno">
-									</td>
-									<td><input type="submit" class="btn btn-danger btn-sm"	value="Add"></td>
+									<td><input type="text" name="id" class="form-control"
+										placeholder="input id.."> <input type="hidden"
+										value="${tinfo.tno }" name="tno"> <input type="hidden"
+										value="${tinfo.name }" name="tname"></td>
+									<td><input type="submit" class="btn btn-danger btn-sm"
+										value="Add"></td>
 									<td></td>
 								</c:when>
 							</c:choose>

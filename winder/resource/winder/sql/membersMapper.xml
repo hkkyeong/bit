@@ -5,7 +5,7 @@
 
 	<insert id="insertMembers" parameterType="Members">
 		insert into members(mno, state, id,position, tno) values
-		(members_seq.nextval,2,#{id},#{position},#{tno})
+		(members_seq.nextval,'2',#{id},#{position},#{tno})
 	</insert>
 
 	<delete id="deleteMembers" parameterType="java.lang.String">
@@ -35,12 +35,13 @@
 	</select>
 	
 		<select id="selectTeamMember" parameterType="int" resultType="Members">
-		 select distinct m.id, m.tno, m.position from team t, members m where m.tno=#{tno} and m.position ='member'
+		 select distinct m.id, m.tno, m.position, m.state from team t, members m where m.tno=#{tno} and m.position ='member'
 	</select>
 	
 	<select id="selectMembersTno" parameterType="java.lang.String"	resultType="Members">
 		select * from members where id=#{id}
 	</select>
+	
 	<select id="selectAllMembersTno" parameterType="java.lang.Integer"	resultType="Members">
 		select * from members where tno=#{value}
 	</select>
@@ -49,9 +50,18 @@
 		select *from members where id=#{id} and tno=#{tno}
 	</select>
 	
-		<insert id="inviteM" parameterType="Members">
+	<insert id="inviteM" parameterType="Members">
 		insert into members(mno, state, id, position, tno) values
-		(members_seq.nextval, 2, #{id}, #{position}, #{tno})
+		(members_seq.nextval, #{state}, #{id}, #{position}, #{tno})
 	</insert>
+	
+	<select id="selectMembers2" parameterType="String" resultType="Members">
+		select *from members where id=#{id} and position ='leader'
+	</select>
+	
+		<select id="selectMembersTnoS" parameterType="java.lang.String"	resultType="Members">
+		select * from members where id=#{id} and state ='1'
+	</select>
+	
 
 </mapper>

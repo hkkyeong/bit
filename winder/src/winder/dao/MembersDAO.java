@@ -30,6 +30,10 @@ public interface MembersDAO {
 	
 	public int deleteMembersTeamOut(MembersVO members);
 	public List<MembersVO> selectTeamMember(int tno);
-	/*public List<Map<String,Object>> selectTeamMember(int tno);*/
+
 	public int inviteM(MembersVO members) throws RuntimeException;
+	
+	public List<MembersVO> selectMembers2(String id) throws RuntimeException;
+	
+	public MembersVO selectMembersTnoS(String id);
 }
