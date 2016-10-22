@@ -77,16 +77,29 @@ public class ManageController {
 	public String report(Model model){
 		List<UploadfileVO> filelist=uploadFileService.listFile();
 		List<String> filter=filterService.listFilster();
-		//filtering 된 리스트 따로 뽑기
+		//필터링 된 리스트 따로 뽑기
 		List<UploadfileVO> ulist=new ArrayList<>();
 		for(int i=0; i<filelist.size(); i++){
 			for(int j=0; j<filter.size(); j++){
-				if(filelist.get(i).getOriginalname()==filter.get(j) || filelist.get(i).getUtitle()==filter.get(j)){
-					//여기 마저 하기
+				if(filelist.get(i).getOriginalname().matches(".*"+filter.get(j)+".*") || filelist.get(i).getUtitle().matches(".*"+filter.get(j)+".*")){
+					System.out.println("");
+					ulist.add(filelist.get(i));
+				//	filelist.remove(i);
 				}
-				
 			}
 		}
+		
+		for(int i=0; i<filelist.size(); i++){
+			for(int j=0; j<ulist.size(); j++){
+				if(filelist.get(i)==ulist.get(j)){
+					filelist.remove(i);
+				}
+			}
+		}
+
+		model.addAttribute("filter", filter);
+		model.addAttribute("filelist", filelist);
+		model.addAttribute("filterfile", ulist);
 		return "manage/manage_check";
 	}
 	
@@ -94,7 +107,7 @@ public class ManageController {
 	@RequestMapping(value="/filter")
 	public String filter(HttpServletRequest request){
 		try {
-			int count=filterService.insertFilter(request.getParameter("fword"));
+			filterService.insertFilter(request.getParameter("fword"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

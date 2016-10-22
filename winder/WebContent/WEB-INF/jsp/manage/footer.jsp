@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    &copy; 2015 YourCompany | Manager
+                    &copy; 2016 Winder | Manager
                 </div>
 
             </div>

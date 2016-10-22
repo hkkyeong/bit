@@ -27,9 +27,11 @@
 	<a href="filter" style="text-align: right; margin: auto; display: block;">
 	<button type="submit" class="btn btn-default">추가</button>
 	</a>
+	<br>
 	</form>
 	</div>
-	<br>
+</div>
+<div class="row">
 	<div class="col-md-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">FILE LIST</div>
@@ -42,12 +44,22 @@
 								<th>#</th>
 								<th>TITLE</th>
 								<th>FILE NAME</th>
-								<th>SIZE</th>
+								<th>SIZE(byte)</th>
 								<th>ID</th>
 								<th>DATE</th>
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach items="${filterfile }" var="file">
+								<tr style="background-color: #f2dede">
+									<td><input type="radio" name="uno" value="${file.uno }"/></td>
+									<td>${file.utitle }</td>
+									<td>${file.originalname }</td>
+									<td>${file.usize }</td>
+									<td>${file.id }</td>
+									<td>${file.udate }</td>
+								</tr>
+							</c:forEach>
 							<c:forEach items="${filelist }" var="file">
 								<tr>
 									<td><input type="radio" name="uno" value="${file.uno }"/></td>
