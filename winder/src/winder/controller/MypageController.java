@@ -272,7 +272,7 @@ public class MypageController {
 			System.out.println("members state 1로 추가 완료");
 			return "redirect:/teaminfo";
 		}
-
+ 
 		return "redirect:/teaminfo";
 
 	}
