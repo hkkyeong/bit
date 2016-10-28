@@ -18,10 +18,10 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	DefaultFileRenamePolicy dfrp = new DefaultFileRenamePolicy();
+	//DefaultFileRenamePolicy dfrp = new DefaultFileRenamePolicy();
 
 	//회원 가입 처리
-	@RequestMapping(value = "signchk" , method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "signchk", method = RequestMethod.POST)
 	public String memberJoin(MemberVO vo, HttpServletRequest request) throws IOException{
 
 		vo =new MemberVO();
@@ -29,7 +29,8 @@ public class MemberController {
 		int size = 1024*1024*5;
 		String enc ="utf-8";
 
-		MultipartRequest multi =new MultipartRequest(request,path,size,enc,dfrp);
+		MultipartRequest multi=null;
+		multi =new MultipartRequest(request,path,size,enc,new DefaultFileRenamePolicy());
 		String name =multi.getParameter("name");
 		String id =multi.getParameter("id");
 		String password =multi.getParameter("password");

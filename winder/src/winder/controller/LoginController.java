@@ -10,13 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
+import first.common.common.CommandMap;
 import winder.service.MemberService;
 import winder.service.ProjectService;
 import winder.service.TeamService;
+import winder.service.UploadFileService;
 import winder.vo.MemberVO;
 
 @Controller
@@ -28,6 +31,8 @@ public class LoginController {
 	private ProjectService projectService;
 	@Autowired
 	private TeamService teamService;
+	@Autowired
+	UploadFileService uploadFileService; 
 
 	// home
 	@RequestMapping(value = { "/", "/home" })
@@ -87,41 +92,24 @@ public class LoginController {
 		return "redirect:/home";
 	}
 	
-	/*@RequestMapping(value="imageCreate.ajax")
-    public ModelAndView createImage (HttpServletRequest request) throws Exception{
-        
-        String binaryData = request.getParameter("imgSrc");
-        FileOutputStream stream = null;
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("index");        
-        try{
-            System.out.println("binary file   "  + binaryData);
-            if(binaryData == null || binaryData=="") {
-                throw new Exception();    
-            }
-            
-         
-            binaryData = binaryData.replaceAll("data:image/png;base64,", "");
-            byte[] file = Base64.decode(binaryData);
-            //byte[] file = Base64.decodeBase64(binaryData);
-            System.out.println("file  :::::::: " + file + " || " + file.length);
-            String fileName=  UUID.randomUUID().toString();
-            
-            stream = new FileOutputStream("c:\\bit\\"+fileName+".png");
-            stream.write(file);
-            stream.close();
-            System.out.println("파일 작성 완료");
-            mav.addObject("msg","ok");
-            
-        }catch(Exception e){
-            System.out.println("파일이 정상적으로 넘어오지 않았습니다");
-            mav.addObject("msg","no");
-            return mav;
-        }finally{
-            stream.close();
-        }
-        return mav;
-        
-    }
-*/
+	
+	
+	
+	
+	
+	@RequestMapping(value="abc", method=RequestMethod.POST)
+	public ModelAndView insertFile(CommandMap commandMap, HttpServletRequest request,HttpSession session) throws Exception{	    
+		ModelAndView mv = new ModelAndView("redirect:/home");
+		String utitle= request.getParameter("utitle");
+		commandMap.put("utitle",utitle);
+		System.out.println(commandMap.getMap());
+		uploadFileService.insertFile2(commandMap.getMap(), request, session);
+		return mv;
+	}
+	
+	
+	
+	
+	
+
 }

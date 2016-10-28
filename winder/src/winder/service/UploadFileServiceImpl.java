@@ -70,5 +70,14 @@ public class UploadFileServiceImpl implements UploadFileService {
 		return uploadDAO.listFile();
 	}
 	
+	@Override
+	public void insertFile2(Map<String, Object> map, HttpServletRequest request, HttpSession session) throws Exception {
+		//uploadDAO.insertFile(map);
+
+		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request, session);
+		for(int i=0, size=list.size(); i<size; i++){
+			uploadDAO.insertFile(list.get(i));
+		}
+	}
 	
 } 

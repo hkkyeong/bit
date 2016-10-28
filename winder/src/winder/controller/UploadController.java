@@ -2,6 +2,8 @@ package winder.controller;
 import first.common.common.CommandMap;
 import java.io.File;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import winder.service.ProjectService;
 import winder.service.ScrapServiceImpl;
@@ -58,7 +62,7 @@ public class UploadController {
 		String storedName = (String)map.get("STOREDNAME");
 		String originalName = (String)map.get("ORIGINALNAME");
 		
-		byte fileByte[] = FileUtils.readFileToByteArray(new File("C:\\비트\\file\\"+storedName));
+		byte fileByte[] = FileUtils.readFileToByteArray(new File("C:\\bit\\file\\"+storedName));
 		
 		response.setContentType("application/octet-stream");
 		response.setContentLength(fileByte.length);
@@ -145,6 +149,61 @@ public class UploadController {
 
 		return "project/sharingdata";
 	}
+	
+	
+	
+	
+	
+	
+	
+	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request, HttpSession session) throws Exception{
+		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
+    	Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
+
+    	MultipartFile multipartFile = null;
+    	String originalName  = null;
+    	String originalFileExtension = null;
+    	String storedName = null;
+    	String utitle =multipartHttpServletRequest.getParameter("utitle");
+    	System.out.println(utitle);
+    	
+    	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+        Map<String, Object> listMap = null; 
+        
+        String uno = (String)map.get("uno");        
+        
+        File file = new File(upath);
+        if(file.exists() == false){
+        	file.mkdirs(); 
+        }
+        
+        while(iterator.hasNext()){
+        	multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+        	if(multipartFile.isEmpty() == false){
+        		originalName = multipartFile.getOriginalFilename();
+        		originalFileExtension = originalName.substring(originalName.lastIndexOf("."));
+        		storedName = getRandomString() + originalFileExtension;
+        		String id=(String) session.getAttribute("id");
+        		
+        		file = new File(upath +storedName);
+        		multipartFile.transferTo(file);
+        		
+        		listMap = new HashMap<String,Object>();
+        		listMap.put("uno", uno);
+        		listMap.put("utitle",utitle);
+        		listMap.put("originalname", originalName);
+        		listMap.put("storedname", storedName);
+        		listMap.put("usize", multipartFile.getSize());
+        		listMap.put("id",id);
+        		//utitle 추가
+        		
+        		list.add(listMap);
+        	}
+        }
+		return list;
+	}
+	
+	
 	
 	
 }

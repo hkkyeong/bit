@@ -26,4 +26,18 @@
 	<img src="img/m6.png" style="width: 90%;">
 	</div>
 </div>
+
+<form action="abc" method="post" enctype="multipart/form-data">
+<div class="form-group">
+<input type="text" class="form-control" name="utitle" /><br>
+						<label for="Input Position">Img</label> <label
+							for="exampleInputFile">File input</label> 
+							<input type="file"	name="mimg" /> 
+					</div>
+
+					<button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+
+
 <jsp:include page="footer.jsp" />
