@@ -21,10 +21,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import winder.service.MembersService;
 import winder.service.ProjectService;
 import winder.service.ScrapServiceImpl;
 import winder.service.TeamService;
 import winder.service.UploadFileService;
+import winder.vo.MembersVO;
 import winder.vo.TeamVO;
 import winder.vo.UploadfileVO;
 
@@ -39,6 +42,8 @@ public class UploadController {
 	ProjectService projectService;
 	@Autowired 
 	private TeamService teamService;
+	@Autowired
+	private MembersService membersService;
 	
 	@RequestMapping(value="testMapArgumentResolver")
 	public ModelAndView testMapArgumentResolver(CommandMap commandMap) throws Exception{
@@ -174,14 +179,29 @@ public class UploadController {
 		ModelAndView mv = new ModelAndView("redirect:/home");
 		TeamVO vo=new TeamVO();
 		Date d= new Date(); 
-		int code = (int) d.getTime();
-		
+		int co = (int) d.getTime();
+		String code=String.valueOf(co);
 		commandMap.put("code",code);
 		commandMap.put("name",request.getParameter("name"));
 		uploadFileService.insertFile3(commandMap.getMap(), request, session);
 		
 		//members 추가
-		vo=teamService.selectTno(Integer.toString(code));
+		vo=teamService.selectTno(code);
+		int getTno =vo.getTno();
+
+		MembersVO members = new MembersVO();
+		members.setId((String)session.getAttribute("id"));
+		members.setPosition("leader");
+		members.setTno(getTno);
+
+
+		int result = membersService.insertMembers(members);
+		 
+		if(result ==1){			
+			System.out.println("members 추가 완료");
+			mv.setViewName("redirect:/teamList");
+		}
+		
 		return mv;
 	}
 }

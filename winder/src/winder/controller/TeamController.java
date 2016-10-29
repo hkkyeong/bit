@@ -55,7 +55,7 @@ public class TeamController {
 		return "team/teamCreateform";
 	}
   
-	//팀 생성
+	/*//팀 생성
 	@RequestMapping(value="teamCreate",method = { RequestMethod.POST, RequestMethod.GET } )
 	public String teamCreate(TeamVO vo,HttpServletRequest request, HttpSession session) throws IOException{
 
@@ -106,7 +106,7 @@ public class TeamController {
 			return "redirect:/signupForm";
 		}
 		return "";
-	}
+	}*/
 
 	//팀 삭제
 	@RequestMapping(value="teamDelete")
