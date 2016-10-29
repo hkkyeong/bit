@@ -31,8 +31,6 @@ public class LoginController {
 	private ProjectService projectService;
 	@Autowired
 	private TeamService teamService;
-	@Autowired
-	UploadFileService uploadFileService; 
 
 	// home
 	@RequestMapping(value = { "/", "/home" })
@@ -91,25 +89,5 @@ public class LoginController {
 		session.removeAttribute("id");
 		return "redirect:/home";
 	}
-	
-	
-	
-	
-	
-	
-	@RequestMapping(value="abc", method=RequestMethod.POST)
-	public ModelAndView insertFile(CommandMap commandMap, HttpServletRequest request,HttpSession session) throws Exception{	    
-		ModelAndView mv = new ModelAndView("redirect:/home");
-		String utitle= request.getParameter("utitle");
-		commandMap.put("utitle",utitle);
-		System.out.println(commandMap.getMap());
-		uploadFileService.insertFile2(commandMap.getMap(), request, session);
-		return mv;
-	}
-	
-	
-	
-	
-	
 
 }

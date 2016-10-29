@@ -3,6 +3,7 @@ import first.common.common.CommandMap;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,7 +23,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import winder.service.ProjectService;
 import winder.service.ScrapServiceImpl;
+import winder.service.TeamService;
 import winder.service.UploadFileService;
+import winder.vo.TeamVO;
 import winder.vo.UploadfileVO;
 
 @Controller
@@ -34,6 +37,8 @@ public class UploadController {
 	private ScrapServiceImpl scrapService;
 	@Autowired 
 	ProjectService projectService;
+	@Autowired 
+	private TeamService teamService;
 	
 	@RequestMapping(value="testMapArgumentResolver")
 	public ModelAndView testMapArgumentResolver(CommandMap commandMap) throws Exception{
@@ -82,10 +87,10 @@ public class UploadController {
 	@RequestMapping(value="insertFile", method=RequestMethod.POST)
 	public ModelAndView insertFile(CommandMap commandMap, HttpServletRequest request,HttpSession session) throws Exception{	    
 		ModelAndView mv = new ModelAndView("redirect:/scrapList");
-		String utitle= request.getParameter("utitle");
-		System.out.println(utitle);
-		commandMap.put("utitle",utitle);
-		System.out.println(commandMap.getMap());
+		//String utitle= request.getParameter("utitle");
+		//System.out.println(utitle);
+		commandMap.put("utitle",request.getParameter("utitle"));
+		//System.out.println(commandMap.getMap());
 		uploadFileService.insertFile(commandMap.getMap(), request, session);
 		return mv;
 	}
@@ -150,60 +155,33 @@ public class UploadController {
 		return "project/sharingdata";
 	}
 	
-	
-	
-	
-	
-	
-	
-	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request, HttpSession session) throws Exception{
-		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
-    	Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
-
-    	MultipartFile multipartFile = null;
-    	String originalName  = null;
-    	String originalFileExtension = null;
-    	String storedName = null;
-    	String utitle =multipartHttpServletRequest.getParameter("utitle");
-    	System.out.println(utitle);
-    	
-    	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
-        Map<String, Object> listMap = null; 
-        
-        String uno = (String)map.get("uno");        
-        
-        File file = new File(upath);
-        if(file.exists() == false){
-        	file.mkdirs(); 
-        }
-        
-        while(iterator.hasNext()){
-        	multipartFile = multipartHttpServletRequest.getFile(iterator.next());
-        	if(multipartFile.isEmpty() == false){
-        		originalName = multipartFile.getOriginalFilename();
-        		originalFileExtension = originalName.substring(originalName.lastIndexOf("."));
-        		storedName = getRandomString() + originalFileExtension;
-        		String id=(String) session.getAttribute("id");
-        		
-        		file = new File(upath +storedName);
-        		multipartFile.transferTo(file);
-        		
-        		listMap = new HashMap<String,Object>();
-        		listMap.put("uno", uno);
-        		listMap.put("utitle",utitle);
-        		listMap.put("originalname", originalName);
-        		listMap.put("storedname", storedName);
-        		listMap.put("usize", multipartFile.getSize());
-        		listMap.put("id",id);
-        		//utitle 추가
-        		
-        		list.add(listMap);
-        	}
-        }
-		return list;
+	@RequestMapping(value="insertFile2", method=RequestMethod.POST)
+	public ModelAndView insertFile2(CommandMap commandMap, HttpServletRequest request,HttpSession session) throws Exception{	    
+		ModelAndView mv = new ModelAndView("redirect:/home");
+		commandMap.put("id",request.getParameter("id"));
+		commandMap.put("password",request.getParameter("password"));
+		commandMap.put("name",request.getParameter("name"));
+		commandMap.put("email",request.getParameter("email"));
+		commandMap.put("phone",request.getParameter("phone"));
+		System.out.println("###### "+commandMap.getMap());
+		uploadFileService.insertFile2(commandMap.getMap(), request, session);
+		return mv;
 	}
 	
-	
-	
-	
+	//팀 생성
+	@RequestMapping(value="teamCreate",method = { RequestMethod.POST, RequestMethod.GET } )
+	public ModelAndView teamCreate(CommandMap commandMap, HttpServletRequest request,HttpSession session) throws Exception{	    
+		ModelAndView mv = new ModelAndView("redirect:/home");
+		TeamVO vo=new TeamVO();
+		Date d= new Date(); 
+		int code = (int) d.getTime();
+		
+		commandMap.put("code",code);
+		commandMap.put("name",request.getParameter("name"));
+		uploadFileService.insertFile3(commandMap.getMap(), request, session);
+		
+		//members 추가
+		vo=teamService.selectTno(Integer.toString(code));
+		return mv;
+	}
 }

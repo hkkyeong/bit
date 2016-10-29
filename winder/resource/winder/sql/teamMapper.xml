@@ -37,5 +37,13 @@
 	<select id="selectTno" parameterType="java.lang.String" resultType="Team">
 		select * from team where code=#{code}
 	</select>
-
+	
+	<insert id="teamInsert" parameterType="hashmap">
+	<![CDATA[
+		insert into
+		team(tno, name, timg, code) values
+		(team_seq.nextval,#{name},#{timg},#{code})
+		]]>
+	</insert>
+	
 </mapper>

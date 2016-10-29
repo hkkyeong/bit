@@ -14,7 +14,7 @@
 		<div class="panel panel-info" style="width: 80%;">
 			<div class="panel-heading">SIGN UP!</div>
 			<div class="panel-body">
-				<form action="signchk" method="post" enctype="multipart/form-data">
+				<form action="insertFile2" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="Input Email">Id</label> <input type="text"
 							class="form-control" name="id" placeholder="Enter id" />

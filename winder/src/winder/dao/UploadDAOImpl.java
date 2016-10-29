@@ -54,6 +54,11 @@ public class UploadDAOImpl implements UploadDAO {
 	public List<UploadfileVO> listFile() throws RuntimeException {
 		return sqlSession.selectList("winder.Uploadfile.listFile");
 	}
-	
+	public int insertFile2(Map<String, Object> map) throws Exception{
+		return sqlSession.insert("winder.Member.insertMem", map);
+	}
+	public int insertFile3(Map<String, Object> map) throws Exception{
+		return sqlSession.insert("winder.Team.teamInsert", map);
+	}
 
 }

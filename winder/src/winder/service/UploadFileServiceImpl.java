@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import first.common.common.FileUtils;
 import winder.dao.UploadDAOImpl;
+import winder.vo.TeamVO;
 import winder.vo.UploadfileVO;
 
 @Service
@@ -72,12 +73,21 @@ public class UploadFileServiceImpl implements UploadFileService {
 	
 	@Override
 	public void insertFile2(Map<String, Object> map, HttpServletRequest request, HttpSession session) throws Exception {
-		//uploadDAO.insertFile(map);
-
-		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request, session);
+		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo2(map, request, session);
 		for(int i=0, size=list.size(); i<size; i++){
-			uploadDAO.insertFile(list.get(i));
+			uploadDAO.insertFile2(list.get(i));
 		}
 	}
-	
+	@Override
+	public void insertFile3(Map<String, Object> map, HttpServletRequest request, HttpSession session) throws Exception {
+		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo3(map, request, session);
+		for(int i=0, size=list.size(); i<size; i++){
+			int count=uploadDAO.insertFile3(list.get(i));
+		}
+	}
 } 
+
+
+
+
+

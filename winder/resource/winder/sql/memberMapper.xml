@@ -42,4 +42,12 @@
 	<select id="todayJoin" resultType="int">
 		select count(*) from member where to_char(joindate, 'yyyy/mm/dd')=to_char(sysdate, 'yyyy/mm/dd')
 	</select>
+	
+	<insert id="insertMem" parameterType="hashmap">
+	<![CDATA[
+		insert into
+		member(id, password, name, email, phone, mimg, joindate) values
+		(#{id}, #{password}, #{name}, #{email},#{phone}, #{mimg}, sysdate)
+		]]>
+	</insert>
 </mapper>

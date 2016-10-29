@@ -20,5 +20,6 @@ public interface UploadFileService {
 	public List<UploadfileVO> listFile() throws RuntimeException;
 	
 	void insertFile2(Map<String, Object> map, HttpServletRequest request, HttpSession session) throws Exception;
+	void insertFile3(Map<String, Object> map, HttpServletRequest request, HttpSession session) throws Exception;
 }
 

@@ -75,25 +75,25 @@ public class FileUtils {
 	
 	
 	
-	/*public List<Map<String,Object>> parseInsertFileInfo2(Map<String,Object> map, HttpServletRequest request, HttpSession session) throws Exception{
+	public List<Map<String,Object>> parseInsertFileInfo2(Map<String,Object> map, HttpServletRequest request, HttpSession session) throws Exception{
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
     	Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
 
     	MultipartFile multipartFile = null;
-    	String id =multipartHttpServletRequest.getParameter("id");
-    	String password =multipartHttpServletRequest.getParameter("password");
-    	String name =multipartHttpServletRequest.getParameter("name");
-    	String email =multipartHttpServletRequest.getParameter("email");
-    	String phone =multipartHttpServletRequest.getParameter("phone");
-    	String mimg =null;
-    	String joindate =multipartHttpServletRequest.getParameter("joindate");
+    	String originalName  = null;
+    	String originalFileExtension = null;
+    	String storedName = null;
+
    
-    	System.out.println(utitle);
     	
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null; 
-        
-        String uno = (String)map.get("uno");        
+
+        String id =(String)map.get("id");
+    	String password =(String)map.get("password");
+    	String name =(String)map.get("name");
+    	String email =(String)map.get("email");
+    	String phone =(String)map.get("phone");
         
         File file = new File(upath);
         if(file.exists() == false){
@@ -106,19 +106,17 @@ public class FileUtils {
         		originalName = multipartFile.getOriginalFilename();
         		originalFileExtension = originalName.substring(originalName.lastIndexOf("."));
         		storedName = getRandomString() + originalFileExtension;
-        		String id=(String) session.getAttribute("id");
         		
-        		file = new File(upath +storedName);
+        		file = new File(upath +originalName);
         		multipartFile.transferTo(file);
         		
         		listMap = new HashMap<String,Object>();
-        		listMap.put("id", uno);
-        		listMap.put("password",utitle);
-        		listMap.put("originalname", originalName);
-        		listMap.put("storedname", storedName);
-        		listMap.put("usize", multipartFile.getSize());
-        		listMap.put("id",id);
-        		//utitle 추가
+        		listMap.put("id", id);
+        		listMap.put("password",password);
+        		listMap.put("name", name);
+        		listMap.put("email", email);
+        		listMap.put("phone",phone);
+        		listMap.put("mimg", originalName);
         		
         		list.add(listMap);
         	}
@@ -126,9 +124,50 @@ public class FileUtils {
 		return list;
 	}
 	
-	*/
 	
 	
+	public List<Map<String,Object>> parseInsertFileInfo3(Map<String,Object> map, HttpServletRequest request, HttpSession session) throws Exception{
+		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
+    	Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
+
+    	MultipartFile multipartFile = null;
+    	String originalName  = null;
+    	String originalFileExtension = null;
+    	String storedName = null;
+
+   
+    	
+    	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+        Map<String, Object> listMap = null; 
+
+    	String name =(String)map.get("name");
+    	String code =(String)map.get("code");
+        
+        File file = new File(upath);
+        if(file.exists() == false){
+        	file.mkdirs(); 
+        }
+        
+        while(iterator.hasNext()){
+        	multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+        	if(multipartFile.isEmpty() == false){
+        		originalName = multipartFile.getOriginalFilename();
+        		originalFileExtension = originalName.substring(originalName.lastIndexOf("."));
+        		storedName = getRandomString() + originalFileExtension;
+        		
+        		file = new File(upath +originalName);
+        		multipartFile.transferTo(file);
+        		
+        		listMap = new HashMap<String,Object>();
+        		listMap.put("name", name);
+        		listMap.put("code", code);
+        		listMap.put("timg", originalName);
+        		
+        		list.add(listMap);
+        	}
+        }
+		return list;
+	}
 	
 	
 	
