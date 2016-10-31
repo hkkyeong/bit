@@ -14,7 +14,7 @@
 		<div class="panel panel-success">
 			<div class="panel-heading">to do list</div>
 			<div class="panel-body">
-			<a href="todo?pno=${pno }"><img src="img/pic01.png" style=" width: 100%;"></a> 
+			<a href="todo?pno=${pno }"><img src="img/pic001.jpg" style=" width: 100%;"></a> 
 			</div>
 			<div class="panel-footer">&nbsp;</div>
 		</div>
@@ -23,7 +23,7 @@
 		<div class="panel panel-success">
 			<div class="panel-heading">project progress</div>
 			<div class="panel-body">
-			<a href="wholeprogress?pno=${pno }"><img src="img/pic02.png" style=" width: 100%;"></a> 
+			<a href="wholeprogress?pno=${pno }"><img src="img/pic002.png" style=" width: 100%;"></a> 
 			</div>
 			<div class="panel-footer">&nbsp;</div>
 		</div>
@@ -32,7 +32,7 @@
 		<div class="panel panel-success">
 			<div class="panel-heading">sharing data</div>
 			<div class="panel-body">
-			<a href="sharedscrapList?pno=${pno }"><img src="img/pic03.png" style=" width: 100%;"></a> 
+			<a href="sharedscrapList?pno=${pno }"><img src="img/pic003.png" style=" width: 100%;"></a> 
 
 			</div>
 			<div class="panel-footer">&nbsp;</div>
