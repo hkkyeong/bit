@@ -48,8 +48,8 @@
 									
 									<c:choose>
 											<c:when test="${sessionScope.id eq tinfo.leader }">
-												<a href="teamout?tno=${tinfo.tno}&id=${members.id}"
-													class="btn btn-danger btn-sm">Member out</a>
+												<%-- <a href="teamout?tno=${tinfo.tno}&id=${members.id}"	class="btn btn-danger btn-sm">Member out</a> --%>
+												<a href="javascript:teamOut('=${tinfo.tno}&id=${members.id}')"	class="btn btn-danger btn-sm">Member out</a>
 											</c:when>
 
 										</c:choose>
@@ -64,8 +64,8 @@
 						<td><b>Team delete</b></td>
 						<td><c:choose>
 								<c:when test="${sessionScope.id eq tinfo.leader }">
-									<a href="teamdelete?tno=${tinfo.tno }"
-										class="btn btn-danger btn-sm">Team delete</a>
+									<%-- <a href="teamdelete?tno=${tinfo.tno }"	class="btn btn-danger btn-sm">Team delete</a> --%>
+									<a href="javascript:delTeam('=${tinfo.tno }')"	class="btn btn-danger btn-sm">Team delete</a>
 								</c:when>
 								<c:otherwise>
 							권한 X
@@ -74,16 +74,18 @@
 						<td></td>
 					</tr>
 					<tr>
-						<form action="inviteMember">
-							<c:choose>
+						<form action="javascript:addM('=${tinfo.tno}&tname=${tinfo.name}')">
+							<c:choose> 
 								<c:when test="${sessionScope.id eq tinfo.leader }">
 									<td><b>Add member</b></td>
-									<td><input type="text" name="id" class="form-control"
-										placeholder="input id.."> <input type="hidden"
-										value="${tinfo.tno }" name="tno"> <input type="hidden"
-										value="${tinfo.name }" name="tname"></td>
-									<td><input type="submit" class="btn btn-danger btn-sm"
-										value="Add"></td>
+									<td>
+									<input type="text" id ="id" name="id" class="form-control" placeholder="input id..">
+										
+										<input type="hidden" value="${tinfo.tno }" name="tno"> 
+										<input type="hidden" value="${tinfo.name }" name="tname">
+										</td>
+									<td>
+									<input type="submit" class="btn btn-danger btn-sm" value="Add"></td>
 									<td></td>
 								</c:when>
 							</c:choose>

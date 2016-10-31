@@ -2,34 +2,32 @@ package winder.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import winder.dao.FilterDAOImpl;
 import winder.service.MemberService;
-import winder.service.ScrapServiceImpl;
+import winder.service.NoteService;
 import winder.service.UploadFileService;
 import winder.vo.MemberVO;
+import winder.vo.NoteVO;
 import winder.vo.OutMemberVO;
 import winder.vo.UploadfileVO;
 
 @Controller
 public class ManageController {
-	
+
 	@Autowired
 	private MemberService memberService;
 	@Autowired
 	private UploadFileService uploadFileService; 
-	@Autowired 
-	private ScrapServiceImpl scrapService;
 	@Autowired
 	private FilterDAOImpl filterService;
-	
+	@Autowired 
+	private NoteService noteService;
+
 	//manage member
 	@RequestMapping(value="/manage")
 	public String manage(Model model){
@@ -39,7 +37,7 @@ public class ManageController {
 		model.addAttribute("outmember", memberService.outMemberList());
 		return "manage/manage_member";
 	}
-	
+
 	//member out
 	@RequestMapping(value="/memberout")
 	public String memberOut(HttpServletRequest request){
@@ -71,7 +69,7 @@ public class ManageController {
 		}
 
 	}
-	
+
 	//manage check
 	@RequestMapping(value="/check")
 	public String report(Model model){
@@ -84,11 +82,11 @@ public class ManageController {
 				if(filelist.get(i).getOriginalname().matches(".*"+filter.get(j)+".*") || filelist.get(i).getUtitle().matches(".*"+filter.get(j)+".*")){
 					System.out.println("");
 					ulist.add(filelist.get(i));
-				//	filelist.remove(i);
+					//	filelist.remove(i);
 				}
 			}
 		}
-		
+
 		for(int i=0; i<filelist.size(); i++){
 			for(int j=0; j<ulist.size(); j++){
 				if(filelist.get(i)==ulist.get(j)){
@@ -102,7 +100,7 @@ public class ManageController {
 		model.addAttribute("filterfile", ulist);
 		return "manage/manage_check";
 	}
-	
+
 	//manage check
 	@RequestMapping(value="/filter")
 	public String filter(HttpServletRequest request){
@@ -113,10 +111,44 @@ public class ManageController {
 		}
 		return "redirect:/check";
 	}
-	
+
 	//manage notice
 	@RequestMapping(value="/notice")
-	public String notice(Model model){
+	public String notice(Model model){		
 		return "manage/manage_notice";
 	}
+
+	//insertNotice
+	@RequestMapping(value="/insertNotice")
+	public String insertNotice( HttpServletRequest request){		
+
+		String ntitle =request.getParameter("ntitle");
+		String sid =request.getParameter("sid");
+		String nC =request.getParameter("ncontent");
+		
+		List<MemberVO> mL =memberService.selectAllMember();
+
+		for(int i =0; i<mL.size();i++){
+			NoteVO note =new NoteVO();
+
+			MemberVO m =mL.get(i);
+			String mId =m.getId();
+			System.out.println(mId);
+
+			note.setNtitle(ntitle);
+			note.setNcontent(nC);
+			note.setSid(sid);
+			note.setRid(mId);
+			
+			noteService.insertNote(note);
+			
+
+		}
+
+		return "redirect:/notice";
+
+	}
+
+
+
 }

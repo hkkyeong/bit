@@ -9,9 +9,7 @@
 <footer>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-                    &copy; 2016 Winder
-                </div>
+			<div class="col-md-12">&copy; 2016 Winder</div>
 
 
 		</div>
@@ -47,13 +45,52 @@ function unosubmit(obj){
 	}
 	
 	
-	
-	
-	
-	
-	
-	
+	////////////////////////////////////////막기
+	function addM(tno, tname)
+	{
+		var add
+		var id =document.getElementById('id').value
 
+		add = confirm("팀으로 초대 요청 메시지를 보내시겠습니까?")
+
+		if (add == true) {
+			location.href = "inviteMember?tno" + tno +"&id="+id
+		} else {
+			alert("취소되었습니다!")
+			location.href = "redirect:/mypage"
+		}
+	}
+	
+	function delTeam(tno)
+	{
+		var del
+	
+		del = confirm("정말 삭제하시겠습니까?")
+
+		if (del == true) {
+			location.href = "teamdelete?tno" + tno
+		} else {
+			alert("취소되었습니다!")
+			location.href = "redirect:/teaminfo"
+		}
+	}
+	
+	function teamOut(tno,id)
+	{
+		var out
+
+		out = confirm("정말 팀에서 "+id+"를 삭제하시겠습니까?")
+
+		if (out == true) {
+			location.href = "teamout?tno" + tno
+		} else {
+			alert("취소되었습니다!")
+			location.href = "redirect:/teaminfo"
+		}
+	}
+	
+	
+	
 	
 </script>
 </body>

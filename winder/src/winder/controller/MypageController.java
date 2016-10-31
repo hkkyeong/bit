@@ -223,7 +223,7 @@ public class MypageController {
 			System.out.println("Out of team fail.");
 			e.printStackTrace();
 		}
-		return "redirect:/mypage";
+		return "redirect:/teaminfo";
 	}
 
 
@@ -280,7 +280,7 @@ public class MypageController {
 	@RequestMapping(value="acceptMember")
 	public String acceptMember(HttpServletRequest req,HttpSession session,Model model){
 
-		String id =(String) session.getAttribute("id");
+		String id =(String) session.getAttribute("id"); 
 		String sid =req.getParameter("sid");
 
 		MembersVO mvo=membersService.selectMembersTnoS(id);
