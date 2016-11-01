@@ -11,8 +11,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Team<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                	<li><a href="teamList">팀 목록</a></li>
-                                	<li><a href="teamList">팀 관리</a></li>
+                                	<li><a href="teamList">Team List</a></li>
+                                	<li><a href="teamList">Team Management</a></li>
                                   <%--   <li><a href="teamCreateform">팀 생성</a></li>
                                     <c:forEach items="${teammenu }" var="tmenu">
                                     <li><a href="projectlist?tno=${tmenu.tno }">${tmenu.name }</a></li>
@@ -22,8 +22,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Project<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="projectlist">프로젝트 목록</a></li>
-                                    <li><a href="projectform">프로젝트 생성</a></li>
+                                    <li><a href="projectlist">Project List</a></li>
+                                    <li><a href="projectform">Project Create</a></li>
                                 </ul>
                             </li>
                              <li><a class="menu-top-active" href="mypage">My Page</a></li>

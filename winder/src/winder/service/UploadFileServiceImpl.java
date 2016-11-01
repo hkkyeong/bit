@@ -85,6 +85,13 @@ public class UploadFileServiceImpl implements UploadFileService {
 			int count=uploadDAO.insertFile3(list.get(i));
 		}
 	}
+
+
+	@Override
+	public int deleteFile(int uno) throws Exception {
+		return uploadDAO.deleteFile(uno);
+	}
+	
 } 
 
 

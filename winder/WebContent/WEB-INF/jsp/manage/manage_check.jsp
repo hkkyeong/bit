@@ -74,14 +74,19 @@
 					</table>
 				</div>
 					<a href="" style="text-align: right; margin: auto; display: block;">
-					<button type="submit" id="my-button" class="btn btn-default" onclick="idsend()">강제 탈퇴</button>
+					<button type="submit" id="my-button" class="btn btn-default" onclick="unosend()">삭제</button>
 					</a>
 				</form>
 			</div>
 		</div>
 	</div>
-	
-	
 </div>
 
-<jsp:include page="footer.jsp" />
+<div id="element_to_pop_up">
+<div class="b-close" style="color: #000;">x</div>
+<form action="filedelete" id="out">
+
+</form>
+</div>
+
+<jsp:include page="footer_manage.jsp" />

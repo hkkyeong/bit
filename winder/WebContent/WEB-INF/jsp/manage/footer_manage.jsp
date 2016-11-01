@@ -33,6 +33,7 @@
    });  
 
 var id;
+var uno;
 //멤버 선택시 호출 함수
 function idsend(){
 	size=document.all.id.length;
@@ -47,6 +48,21 @@ function idsend(){
 	$("#out").append("<label name="+id+" value="+id+"> ID: "+id+
 			"</label><br><label>강제 탈퇴 사유</label><textarea class='form-control' rows='3' name='reason' ></textarea><br><button type='submit' class='btn btn-default'>강제 탈퇴</button>"+
 			"<input type='hidden' name='id' value="+id+">");
+};
+
+//파일 선택시 호출 함수
+function unosend(){
+	size=document.all.uno.length;
+	console.log(size);
+	for(var i=0; i<size; i++){
+		if(document.all.uno[i].checked){
+			var uno=document.all.uno[i].value;
+			break;
+		}
+	}
+	$("#out").empty();
+	$("#out").append("<lablel> 버튼을 누르면  해당 파일이 삭제됩니다. </label><br><br><br><button type='submit' class='btn btn-default'>확인</button>"+
+			"<input type='hidden' name='uno' value="+uno+">");
 };
 
 </script>

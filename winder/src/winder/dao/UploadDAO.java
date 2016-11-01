@@ -15,4 +15,5 @@ public interface UploadDAO {
 	public List<UploadfileVO> listFile() throws RuntimeException;
 	public int insertFile2(Map<String, Object> map) throws Exception;
 	public int insertFile3(Map<String, Object> map) throws Exception;
+	public int deleteFile(int uno) throws Exception;
 }

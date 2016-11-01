@@ -60,5 +60,9 @@
 	<select id="listFile" resultType="Uploadfile">
 		select uno, utitle, originalname, usize, to_char(udate, 'yyyy/mm/dd') udate, id from uploadfile
 	</select>
+	
+	<delete id="deleteFile" parameterType="int">
+		delete uploadfile where uno=#{uno}
+	</delete>
 
 </mapper>

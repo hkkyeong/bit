@@ -21,7 +21,7 @@
 					<thead>
 					</thead>
 					<tr>
-						<td rowspan="5" width="30%"><img src="img/${tinfo.timg}"></td>
+						<td rowspan="5" width="30%"><img src="upload/${tinfo.timg}" style=" width: 100%;"></td>
 					</tr>
 					<tr>
 						<td><b>Team name</b></td>

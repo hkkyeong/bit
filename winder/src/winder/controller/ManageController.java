@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import winder.dao.FilterDAOImpl;
+import winder.service.FilterServiceImpl;
 import winder.service.MemberService;
 import winder.service.NoteService;
 import winder.service.UploadFileService;
@@ -24,7 +24,7 @@ public class ManageController {
 	@Autowired
 	private UploadFileService uploadFileService; 
 	@Autowired
-	private FilterDAOImpl filterService;
+	private FilterServiceImpl filterService;
 	@Autowired 
 	private NoteService noteService;
 
@@ -74,7 +74,7 @@ public class ManageController {
 	@RequestMapping(value="/check")
 	public String report(Model model){
 		List<UploadfileVO> filelist=uploadFileService.listFile();
-		List<String> filter=filterService.listFilster();
+		List<String> filter=filterService.listFilter();
 		//필터링 된 리스트 따로 뽑기
 		List<UploadfileVO> ulist=new ArrayList<>();
 		for(int i=0; i<filelist.size(); i++){
@@ -148,7 +148,17 @@ public class ManageController {
 		return "redirect:/notice";
 
 	}
-
+	
+	//file delete
+	@RequestMapping(value="/filedelete")
+	public String fileDelete(HttpServletRequest request){
+		try {
+			int count=uploadFileService.deleteFile(Integer.parseInt(request.getParameter("uno")));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "redirect:/check";
+	}
 
 
 }

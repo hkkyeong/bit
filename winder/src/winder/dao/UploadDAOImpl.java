@@ -61,4 +61,10 @@ public class UploadDAOImpl implements UploadDAO {
 		return sqlSession.insert("winder.Team.teamInsert", map);
 	}
 
+
+	@Override
+	public int deleteFile(int uno) throws Exception {
+		return sqlSession.delete("winder.Uploadfile.deleteFile", uno);
+	}
+
 }

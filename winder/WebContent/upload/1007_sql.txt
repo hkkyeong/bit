@@ -1,0 +1,259 @@
+drop table uploadfile;
+drop table scrap;
+-- 추가 안 했으면 이 부분 테이블 없을 수도 있음
+drop table report;
+drop table note;
+drop table reply;
+drop table board;
+-----------------------------------------
+drop table todolist;
+drop table todo;
+drop table project;
+
+--여기부터는 지우고 다시 만들 필요 없을 듯
+drop table members;
+drop table team;
+drop table member;
+----------------------------------------
+drop sequence todo_seq;
+drop sequence todolist_seq;
+drop sequence team_seq;
+drop sequence members_seq;
+drop sequence project_seq;
+
+
+
+create table member(
+id varchar2(20) constraint member_id_pk primary key,
+password varchar2(20),
+name varchar2(20),
+email varchar2(30),
+phone varchar2(20),
+mimg varchar2(100),
+joindate date);
+
+create table team(
+tno number(10) constraint team_tno_pk primary key,
+name varchar2(20),
+timg varchar2(100),
+code varchar2(20));
+
+create sequence team_seq increment by 1 start with 1;
+
+create table members(
+mno number(10) constraint members_mno_pk primary key,
+state varchar2(10),
+id varchar2(20),
+position varchar2(20),
+tno number(10),
+constraint members_id_fk foreign key(id) references member(id) on delete cascade,
+constraint members_tno_fk foreign key(tno) references team(tno) on delete cascade);
+
+create sequence members_seq increment by 1 start with 1;
+
+--startdate 추가
+
+create table project(
+pno number(10) constraint project_pno_pk primary key,
+name varchar(20),
+content varchar2(200),
+exdate date,
+pdate date, 
+tno number(10),
+pstart date,
+constraint project_tno_fk foreign key(tno) references team(tno) on delete cascade);
+
+create sequence project_seq increment by 1 start with 1;
+
+--startdate 추가
+
+create table todo(
+tdno number(10) constraint todo_tdno_pk primary key,
+content varchar(200),
+state varchar(10),
+tddate date,
+pno number(10),
+tdstart date,
+constraint todo_pno_fk foreign key(pno) references project(pno) on delete cascade);
+
+create sequence todo_seq increment by 1 start with 1;
+
+--startdate 추가
+
+create table todolist(
+tlno number(10) constraint tl_tlno_pk primary key,
+content varchar(1000),
+state varchar(10),
+tldate date,
+tdno number(10),
+id varchar2(20),
+tlstart date,
+datechk varchar(10),
+constraint todolist_tdno_fk foreign key(tdno) references todo(tdno) on delete cascade,
+constraint todolist_id_fk foreign key(id) references member(id) on delete cascade);
+
+create sequence todolist_seq increment by 1 start with 1;
+
+create table outmember(
+id varchar2(20) constraint outmember_id_pk primary key,
+name varchar2(20),
+joindate date,
+outdate date,
+reason varchar2(200));
+
+CREATE TABLE uploadfile
+(
+  uno   NUMBER constraint uploadfile_uno_pk primary key,
+  boardno NUMBER,
+  utitle varchar2(260 BYTE),
+  originalname VARCHAR2(260 BYTE),
+  storedname VARCHAR2(36 BYTE),
+  usize NUMBER,
+  udate  DATE DEFAULT SYSDATE,
+  id   VARCHAR2(30 BYTE) NOT NULL,
+  delfile    VARCHAR2(1 BYTE) DEFAULT 'N' NOT NULL
+);
+
+create sequence uploadfile_seq increment by 1 start with 1;
+
+--scontent 삭제
+
+create table scrap(
+sno number(10) constraint scrap_sno_pk primary key,
+url varchar2(200),
+stitle varchar2(200),
+sdate date,
+id varchar2(20),
+pno number(10),
+constraint scrap_id_fk foreign key(id) references member(id) on delete cascade,
+constraint scrap_pno_fk foreign key(pno) references project(pno) on delete cascade);
+
+create sequence scrap_seq increment by 1 start with 1;
+
+
+create table note(
+nno number(10) constraint note_nno_pk primary key,
+ntitle varchar2(200),
+ncontent varchar2(1000),
+ndate date,
+sid varchar2(20),
+rid varchar2(20),
+constraint note_sid_fk foreign key(sid) references member(id) on delete cascade,
+constraint note_rid_fk foreign key(rid) references member(id) on delete cascade);
+
+create sequence note_seq increment by 1 start with 1;
+
+
+create table datecheck(
+tlno number(10) constraint datecheck_tlno_pk primary key,
+tldate date,
+constraint datecheck_tlno_fk foreign key(tlno) references todolist(tlno) on delete cascade);
+
+
+-- 안 쓸 확률 높으니까 테이블 생성은 x
+create table board(
+bno number(10) constraint board_bno_pk primary key,
+btitle varchar2(200),
+bcontent varchar2(1000),
+bstate varchar2(10),
+bdate date,
+id varchar2(20),
+constraint board_id_fk foreign key(id) references member(id) on delete cascade);
+
+create sequence board_seq increment by 1 start with 1;
+
+create table reply(
+reno number(10) constraint reply_rno_pk primary key,
+retitle varchar2(200),
+recontent varchar2(1000),
+redate date,
+id varchar2(20),
+bno number(10),
+constraint reply_id_fk foreign key(id) references member(id) on delete cascade,
+constraint reply_bno_fk foreign key(bno) references board(bno) on delete cascade);
+
+create sequence reply_seq increment by 1 start with 1;
+
+
+create table report(
+rno number(10) constraint report_rno_pk primary key,
+rcontent varchar2(1000),
+rimg varchar2(200),
+rdate date,
+id varchar2(20),
+reno number(10),
+constraint report_id_fk foreign key(id) references member(id) on delete cascade,
+constraint report_reno_fk foreign key(reno) references reply(reno) on delete cascade);
+
+create sequence report_seq increment by 1 start with 1;
+
+
+
+
+
+--insert
+insert into member values ('cc','cc','cc','cc@naver.com','010-1234-1234','',sysdate);
+insert into member values ('abc','abc','abc','abc@naver.com','010-1234-1234','',sysdate);
+insert into member values ('aa','aa','aa','aa@naver.com','010-1234-1234','',sysdate);
+insert into member values ('bb','bb','bb','bb@naver.com','010-1234-1234','',sysdate);
+
+insert into team(tno, name, timg, code) values(team_seq.nextval, 'team_001', 'nn.jpg', 'tnorandtno');
+insert into team(tno, name, timg, code) values(team_seq.nextval, 'team_sku', 'gew.jpg', 'tnorandtno');
+
+insert into members(mno, state, id, position, tno) values(members_seq.nextval, '1', 'abc', 'leader', 1);
+insert into members(mno, state, id, position, tno) values(members_seq.nextval, '1', 'aa', 'member', 1);
+insert into members(mno, state, id, position, tno) values(members_seq.nextval, '1', 'bb', 'member', 1);
+insert into members(mno, state, id, position, tno) values(members_seq.nextval, '1', 'cc', 'member', 1);
+
+insert into members(mno, state, id, position, tno) values(members_seq.nextval, '1', 'aa', 'leader', 2);
+insert into members(mno, state, id, position, tno) values(members_seq.nextval, '1', 'bb', 'member', 2);
+insert into members(mno, state, id, position, tno) values(members_seq.nextval, '1', 'cc', 'member', 2);
+
+insert into project(pno, name, content, exdate, pdate, tno, pstart) values(project_seq.nextval, 'winder', '비트 프로젝트(bit project)', '16/12/02', sysdate, 1, '16/08/02');
+insert into project(pno, name, content, exdate, pdate, tno, pstart) values(project_seq.nextval, 'winder2', '비트 프로젝트(bit project)', '16/12/11', sysdate, 1, '16/08/02');
+insert into project(pno, name, content, exdate, pdate, tno, pstart) values(project_seq.nextval, 'test', '테스트 프로젝트(test project)', '16/11/28', sysdate, 2, '16/09/02')
+
+insert into todo(tdno, content, state, tddate, pno) values(todo_seq.nextval, '컨트롤러 만들기', '1', '16/09/30', 1);
+insert into todo(tdno, content, state, tddate, pno) values(todo_seq.nextval, 'UI 완성', '1', '16/10/28', 1);
+insert into todo(tdno, content, state, tddate, pno) values(todo_seq.nextval, '안드로이드 만들기', '1', '16/11/11', 1);
+
+insert into todo(tdno, content, state, tddate, pno) values(todo_seq.nextval, '컨트롤러 만들기', '1', '16/11/30', 2);
+insert into todo(tdno, content, state, tddate, pno) values(todo_seq.nextval, 'UI 완성', '1', '16/12/11', 2);
+
+insert into todo(tdno, content, state, tddate, pno) values(todo_seq.nextval, '컨트롤러 만들기', '1', '16/10/30', 3);
+insert into todo(tdno, content, state, tddate, pno) values(todo_seq.nextval, 'UI 완성', '1', '16/11/11', 3);
+
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'login controller', '2', '16/08/20', 1, 'abc');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'member controller', '2', '16/08/28', 1, 'aa');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'team controller', '1', '16/09/30', 1, 'bb');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'main ui', '1', '16/08/22', 2, 'abc');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'team ui', '1', '16/08/22', 2, 'cc');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'project ui', '1', '16/08/22', 2, 'bb');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'mypage ui', '1', '16/08/22', 2, 'cc');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'android 1', '1', '16/11/01', 3, 'cc');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'android 2', '1', '16/11/11', 3, 'bb');
+
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'login controller', '2', '16/08/20', 4, 'abc');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'member controller', '2', '16/08/28', 4, 'aa');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'team controller', '2', '16/09/30', 4, 'bb');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'main ui', '2', '16/11/22', 5, 'bb');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'team ui', '2', '16/10/22', 5, 'cc');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'project ui', '1', '16/10/22', 5, 'bb');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'mypage ui', '1', '16/12/11', 5, 'cc');
+
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'login controller', '2', '16/08/20', 6, 'aa');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'member controller', '2', '16/08/28', 6, 'aa');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'team controller', '2', '16/09/30', 6, 'bb');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'main ui', '1', '16/11/01', 7, 'bb');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'team ui', '1', '16/11/02', 7, 'cc');
+insert into todolist(tlno, content, state, tldate, tdno, id) values(todolist_seq.nextval, 'project ui', '1', '16/11/10', 7, 'bb');
+
+commit;
+
+
+select * from member;
+select * from team;
+select * from members;
+select * from project;
+select * from todo;
+select * from todolist;
