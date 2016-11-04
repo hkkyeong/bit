@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 public class FileUtils {
-	private static final String upath= "C:\\비트\\file\\";
+	private static final String upath= "C:\\bit\\file\\";
 	
 	public static String getRandomString(){
 		return UUID.randomUUID().toString().replaceAll("-", "");
@@ -27,9 +27,7 @@ public class FileUtils {
     	String originalName  = null;
     	String originalFileExtension = null;
     	String storedName = null;
-    	//String utitle =multipartHttpServletRequest.getParameter("utitle");
-    	
-    	//System.out.println(utitle);
+
     	
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null; 

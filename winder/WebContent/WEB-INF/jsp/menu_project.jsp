@@ -12,7 +12,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Team<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                 	<li><a href="teamList">Team List</a></li>
-                                	<li><a href="teamList">Team Management</a></li>
+                                	<li><a href="teaminfo">Team Management</a></li>
                                   <%--   <li><a href="teamCreateform">팀 생성</a></li>
                                     <c:forEach items="${teammenu }" var="tmenu">
                                     <li><a href="projectlist?tno=${tmenu.tno }">${tmenu.name }</a></li>

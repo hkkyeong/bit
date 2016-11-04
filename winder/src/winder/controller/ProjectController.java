@@ -29,7 +29,6 @@ public class ProjectController {
 	//프로젝트 관리 form
 	@RequestMapping(value="projectmanage")
 	public String projectmanage(Model model, HttpServletRequest request){
-		System.out.println("pno: "+request.getParameter("pno"));
 		try {
 			ProjectVO vo=projectService.selectProject(Integer.parseInt(request.getParameter("pno")));
 			model.addAttribute("p", vo);
@@ -93,7 +92,6 @@ public class ProjectController {
 		@RequestMapping(value="projectmanagement")
 		public String projectupdate(Model model,HttpSession session,HttpServletRequest req,ProjectVO vo){
 			
-			System.out.println("(controller)project management tno value check :"+req.getParameter("tno")); 
 			model.addAttribute("pno", (String)req.getParameter("pno"));
 			
 			int pno=Integer.parseInt(req.getParameter("pno"));
@@ -102,7 +100,6 @@ public class ProjectController {
 				model.addAttribute("pvo", vo);
 				return "project/projectupdate";
 			}catch(Exception e){
-				System.out.println("project select error.!");
 				return "redirect:/home";
 			}
 			//System.out.println(vo);
@@ -122,13 +119,10 @@ public class ProjectController {
 				//System.out.println("(controller)project management members get vo value : "+members);
 			}catch(Exception e){
 				e.printStackTrace();
-				System.out.println("members's table access fail.");
 				return "redirect:/home";
 			}
 			
 			if(members.getPosition().equals("leader")){
-				
-				System.out.println("현재 접속된 id="+session.getAttribute("id")+"의 position="+members.getPosition()+",접근 권한 o");
 				model.addAttribute("pno", (String)req.getParameter("pno"));
 				int pno=Integer.parseInt(req.getParameter("pno"));
 				
@@ -144,8 +138,7 @@ public class ProjectController {
 				}
 				
 			}else{	// position 값이 member라면,
-				
-				    System.out.println("현재 접속된 id="+session.getAttribute("id")+"의 position="+members.getPosition()+",접근 권한 없음.");
+
 				    return "redirect:/home";		
 			}
 			
@@ -160,7 +153,6 @@ public class ProjectController {
 				model.addAttribute("pvo", vo);
 				return "project/projectupdate";
 			}catch(Exception e){
-				System.out.println("project select error.!");
 				return "redirect:/home";
 			}
 		}
@@ -171,15 +163,12 @@ public class ProjectController {
 			try{
 				int count=projectService.deleteProject(pno);
 				if(count>=1){
-					System.out.println("delete count : "+count);
 					return "redirect:/home";
 				}
 				else{
-					System.out.println("delete count : 0");
 					return "redirect:/project/projectselect";
 				}
 			}catch(Exception e){
-				System.out.println("delete fail");
 				return "redirect:/home";
 			}
 		}
@@ -201,15 +190,12 @@ public class ProjectController {
 			try{
 				int count=projectService.updateProject(vo);
 				if(count>=1){
-					System.out.println("update count : "+count);
 					return "project/projectmain";
 				}
 				else{
-					System.out.println("update fail");
 					return "redirect:/project/projectupdate";
 				}
 			}catch(Exception e){
-				System.out.println(pno+"'s project update fail");
 				return "redirect:/project/projectupdate";
 			}
 			

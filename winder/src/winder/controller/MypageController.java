@@ -77,10 +77,8 @@ public class MypageController {
 			member.setId((String)session.getAttribute("id"));
 			int count=memberService.updateMember(member);
 			if(count==1){
-				System.out.println(session.getAttribute("id")+" profile update success");
 				return "redirect:/home";
 			}else{
-				System.out.print(session.getAttribute("id")+" profile update fail");
 				return "redirect:/home";
 			}
 
@@ -116,15 +114,12 @@ public class MypageController {
 				member.setPassword(updatepassword);
 				try{
 					int count=memberService.updatePassword(member);
-					System.out.println("password update success. count : "+count);
 					return "redirect:/mypage";
 				}catch(Exception e){
 					e.printStackTrace();
-					System.out.println("password update fail.");
 					return "redirect:/home";
 				}
 			}else{
-				System.out.println("again input new password");
 				return "redirect:/passwordupdate";
 			}
 
@@ -157,8 +152,6 @@ public class MypageController {
 			return "redirect:/mypage";
 			
 		}else{
-			
-			System.out.println("**tno: "+teamlist.get(0).getTno());
 			List<List<MembersVO>> m=new ArrayList<>();
 			List<List<MembersVO>> ms=new ArrayList<>();
 
@@ -218,9 +211,7 @@ public class MypageController {
 			members.setId((String)req.getParameter("id"));
 
 			int count = membersService.deleteMembersTeamOut(members);
-			System.out.println("delete team count : "+count);
 		}catch(Exception e){
-			System.out.println("Out of team fail.");
 			e.printStackTrace();
 		}
 		return "redirect:/teaminfo";
@@ -232,9 +223,7 @@ public class MypageController {
 
 		try{
 			int count = teamService.deleteTeam(Integer.parseInt(req.getParameter("tno")));
-			System.out.println("delete team count : "+count);
 		}catch(Exception e){
-			System.out.println("delete team fail.");
 			e.printStackTrace();
 		}
 		return "redirect:/teaminfo";
@@ -263,13 +252,11 @@ public class MypageController {
 		members.setTno(tno);
 		members.setPosition("member");
 		members.setState("1");   
-		
-		System.out.println(members);
+
 
 		int result = membersService.inviteM(members);
 
 		if(result ==1){			
-			System.out.println("members state 1로 추가 완료");
 			return "redirect:/teaminfo";
 		}
  
@@ -286,12 +273,10 @@ public class MypageController {
 		MembersVO mvo=membersService.selectMembersTnoS(id);
 		
 		mvo.setState("2");
-		System.out.println(mvo);
 		
 		int s = membersService.updateMembers(mvo);
 
 		if(s ==1){
-			System.out.println("members state2로 변경");
 		}
 
 		return "redirect:/mypage";

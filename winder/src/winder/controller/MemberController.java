@@ -50,7 +50,6 @@ public class MemberController {
 			if (count == 1) {
 				return "redirect:/home";
 			} else {
-				System.out.println("else");
 				return "redirect:/signupForm";
 			}
 		} catch (Exception e) {

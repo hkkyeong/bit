@@ -80,7 +80,6 @@ public class ManageController {
 		for(int i=0; i<filelist.size(); i++){
 			for(int j=0; j<filter.size(); j++){
 				if(filelist.get(i).getOriginalname().matches(".*"+filter.get(j)+".*") || filelist.get(i).getUtitle().matches(".*"+filter.get(j)+".*")){
-					System.out.println("");
 					ulist.add(filelist.get(i));
 					//	filelist.remove(i);
 				}
@@ -133,7 +132,6 @@ public class ManageController {
 
 			MemberVO m =mL.get(i);
 			String mId =m.getId();
-			System.out.println(mId);
 
 			note.setNtitle(ntitle);
 			note.setNcontent(nC);

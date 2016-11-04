@@ -123,7 +123,6 @@ public class ProgressController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName(url);        
         try{
-            System.out.println("binary file   "  + binaryData);
             if(binaryData == null || binaryData=="") {
                 throw new Exception();    
             }
@@ -132,7 +131,6 @@ public class ProgressController {
             binaryData = binaryData.replaceAll("data:image/png;base64,", "");
             byte[] file = Base64.decode(binaryData);
             //byte[] file = Base64.decodeBase64(binaryData);
-            System.out.println("file  :::::::: " + file + " || " + file.length);
             String fileName=  UUID.randomUUID().toString();
             
             stream = new FileOutputStream("c:\\bit\\"+fileName+".png");

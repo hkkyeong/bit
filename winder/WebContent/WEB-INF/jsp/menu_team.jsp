@@ -12,7 +12,7 @@
                                 <a href="#" class="menu-top-active" data-toggle="dropdown">Team<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                 	<li><a href="teamList">Team List</a></li>
-                                	<li><a href="teamList">Team Management</a></li>
+                                	<li><a href="teaminfo">Team Management</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">

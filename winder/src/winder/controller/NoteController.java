@@ -72,7 +72,6 @@ public class NoteController {
 					int count=todolistService.countCheck(tllist.get(i).getTlno());
 					if(count==1){//이미 알림 갔을 때
 					}else{//알림 안 갔을 때 알림 추가
-						System.out.println(i+" : "+tllist.get(i));
 						todolistService.insertCheck(tllist.get(i));
 						vo.setNcontent(tllist.get(i).getContent()+" 일정이 7일 남았습니다.");
 						vo.setNdate(tllist.get(i).getTldate());
@@ -118,16 +117,12 @@ public class NoteController {
 		try {
 			int count=noteService.insertNote(vo);
 			if(count==1){
-				System.out.println("성공");
-				//return "redirect:/noteList";
 				return "redirect:/wholeprogress?pno="+pno;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			//return "redirect:/noteList";
 			return "redirect:/wholeprogress?pno="+pno;
 		}
-		//return "redirect:/noteList";
 		return "redirect:/wholeprogress?pno="+pno;
 	}
 

@@ -55,58 +55,6 @@ public class TeamController {
 		return "team/teamCreateform";
 	}
   
-	/*//팀 생성
-	@RequestMapping(value="teamCreate",method = { RequestMethod.POST, RequestMethod.GET } )
-	public String teamCreate(TeamVO vo,HttpServletRequest request, HttpSession session) throws IOException{
-
-		vo =new TeamVO();
-		String path ="C:\\bit\\git\\winder\\WebContent\\upload\\";
-		int size = 1024*1024*5;
-		String enc ="utf-8";
-		
-
-		MultipartRequest multi =new MultipartRequest(request,path,size,enc,dfrp);
-		String name =multi.getParameter("name");
-		String timg =multi.getFilesystemName("timg");
-		
-		Date d= new Date(); 
-		int code = (int) d.getTime();
-		
-		vo.setName(name);
-		vo.setTimg(timg);
-		vo.setCode(Integer.toString(code));
-
-		try {
-
-			int count=teamService.insertTeam(vo);
-			System.out.println("team 추가 완료");
-
-			if(count==1){
-
-				vo =teamService.selectTno(Integer.toString(code));
-				int getTno =vo.getTno();
-
-				MembersVO members = new MembersVO();
-				members.setId((String)session.getAttribute("id"));
-				members.setPosition("leader");
-				members.setTno(getTno);
-
-
-				int result = membersService.insertMembers(members);
-				 
-				if(result ==1){			
-					System.out.println("members 추가 완료");
-					return "redirect:/teamList";
-				}
-
-			}else{
-				return "redirect:/index";
-			}
-		} catch (Exception e) {
-			return "redirect:/signupForm";
-		}
-		return "";
-	}*/
 
 	//팀 삭제
 	@RequestMapping(value="teamDelete")

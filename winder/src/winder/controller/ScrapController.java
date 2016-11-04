@@ -101,9 +101,7 @@ public class ScrapController {
   
 		Elements el = doc.select("div.post_ct span._img fx");  
 		for(Element element : el){
-			System.out.println(element.attr("src").toString().concat("w2"));
 			request.setAttribute("img",element.attr("src").toString());
-			System.out.println("22");
 		}
   
 		String titleS = title.text();                            // 값 저장
@@ -141,10 +139,8 @@ public class ScrapController {
 		model.addAttribute("sharedscrapList",scrapService.sharedscrapList(pno));
 		
 		int boardno =Integer.parseInt(request.getParameter("pno"));
-		System.out.println(boardno);
 		request.setAttribute("boardno",boardno);
 		model.addAttribute("sharedFileList",uploadFileService.sharedFileList(boardno));
-		System.out.println(uploadFileService.sharedFileList(boardno));
 
 		return "project/sharingdata";
 	}

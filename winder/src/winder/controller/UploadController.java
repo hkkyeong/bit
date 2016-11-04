@@ -54,7 +54,6 @@ public class UploadController {
 	        Entry<String,Object> entry = null;
 	        while(iterator.hasNext()){
 	            entry = iterator.next();
-	            System.out.println("key : "+entry.getKey()+", value : "+entry.getValue());
 	        }
 	    }
 	    return mv;
@@ -66,7 +65,6 @@ public class UploadController {
 		commandMap.put("UNO", request.getParameter("UNO"));
 		
 		int uno =Integer.parseInt(request.getParameter("UNO"));
-		System.out.println("uno:"+uno);
 		Map<String,Object> map = uploadFileService.selectFileInfo(uno);
 		
 		String storedName = (String)map.get("STOREDNAME");
@@ -168,7 +166,6 @@ public class UploadController {
 		commandMap.put("name",request.getParameter("name"));
 		commandMap.put("email",request.getParameter("email"));
 		commandMap.put("phone",request.getParameter("phone"));
-		System.out.println("###### "+commandMap.getMap());
 		uploadFileService.insertFile2(commandMap.getMap(), request, session);
 		return mv;
 	}
@@ -198,7 +195,6 @@ public class UploadController {
 		int result = membersService.insertMembers(members);
 		 
 		if(result ==1){			
-			System.out.println("members 추가 완료");
 			mv.setViewName("redirect:/teamList");
 		}
 		
