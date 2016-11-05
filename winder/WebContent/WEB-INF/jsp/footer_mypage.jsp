@@ -14,10 +14,12 @@
             </div>
         </div>
     </footer>
+<form id="commonForm" name="commonForm"></form>
     <!-- script -->
 <script src="js/jquery-2.2.3.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/jquery.bpopup.min.js"></script>
+<script src="js/common.js"></script>
 
 <script type="text/javascript">
      $(function() {
@@ -49,6 +51,13 @@
          });
    });  
      
+     function fn_downloadFile(obj) {
+ 		var comSubmit = new ComSubmit();
+ 		comSubmit.setUrl("downloadFile");
+ 		comSubmit.addParam("UNO", uno);
+ 		comSubmit.submit();
+ 	}
+     
      var uno;
      function unosubmit(obj){
     	 x=obj.attr('id');
@@ -63,22 +72,6 @@
  		});
  	});
 
-var id;
-//멤버 선택시 호출 함수
-function idsend(){
-	size=document.all.id.length;
-	console.log(size);
-	for(var i=0; i<size; i++){
-		if(document.all.id[i].checked){
-			var id=document.all.id[i].value;
-			break;
-		}
-	}
-	$("#out").empty();
-	$("#out").append("<label name="+id+" value="+id+"> ID: "+id+
-			"</label><br><label>강제 탈퇴 사유</label><textarea class='form-control' rows='3' name='reason' ></textarea><br><button type='submit' class='btn btn-default'>강제 탈퇴</button>"+
-			"<input type='hidden' name='id' value="+id+">");
-};
 
 </script>
 </body>

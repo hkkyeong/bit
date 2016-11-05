@@ -38,13 +38,18 @@ public class MypageController {
 	// mypage form 
 	@RequestMapping(value="/mypage")
 	public String mypage(Model model,HttpSession session,MemberVO vo){
-		String id = (String)session.getAttribute("id");
-		model.addAttribute("teammenu", teamService.selectTeamList(id));
-		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
-		vo=memberService.selectMember(id);
-		model.addAttribute("member", vo);
+		if(session.getAttribute("loginchk").equals("loginno")){
+			return "guest";
+		}else{
+			String id = (String)session.getAttribute("id");
+			model.addAttribute("teammenu", teamService.selectTeamList(id));
+			model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
+			vo=memberService.selectMember(id);
+			model.addAttribute("member", vo);
 
-		return "mypage/mypagemain";
+			return "mypage/mypagemain";
+		}
+		
 	}
 	@RequestMapping(value="/profilemain")
 	public String profilemain(HttpSession session,Model model,MemberVO vo){
@@ -131,76 +136,80 @@ public class MypageController {
 	}
 	@RequestMapping(value="teaminfo")
 	public String teaminfo(HttpSession session,Model model,MemberVO vo) throws Exception{
-
-		String id = (String)session.getAttribute("id");
-		model.addAttribute("teammenu", teamService.selectTeamList(id));
-		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
-		vo=memberService.selectMember(id);
-		model.addAttribute("id",id);
-
-		TeamVO team = new TeamVO();
-		MypageTeamInfoVO teaminfovo = null;
-		List<MypageTeamInfoVO> teaminfo = new ArrayList<>();
-
-		List<TeamVO> teamlist =  teamService.selectTeamList(id);
-		List<MembersVO> memberslist = new ArrayList<>();
-		List<MembersVO> memberslist2 = null;
-		List<MembersVO> memberslist3 =new ArrayList<>();
-
-		if(teamlist.size() ==0){
-			
-			return "redirect:/mypage";
-			
+		if(session.getAttribute("loginchk").equals("loginno")){
+			return "guest";
 		}else{
-			List<List<MembersVO>> m=new ArrayList<>();
-			List<List<MembersVO>> ms=new ArrayList<>();
+			String id = (String)session.getAttribute("id");
+			model.addAttribute("teammenu", teamService.selectTeamList(id));
+			model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
+			vo=memberService.selectMember(id);
+			model.addAttribute("id",id);
 
-			for(int i=0; i<teamlist.size(); i++){
-				List<MembersVO> li=membersService.selectAllMembersTno(teamlist.get(i).getTno());
-				m.add(i, li);
-			}
-			model.addAttribute("abc", m);
+			TeamVO team = new TeamVO();
+			MypageTeamInfoVO teaminfovo = null;
+			List<MypageTeamInfoVO> teaminfo = new ArrayList<>();
 
-			//List<Map<String,Object>> map =null;
+			List<TeamVO> teamlist =  teamService.selectTeamList(id);
+			List<MembersVO> memberslist = new ArrayList<>();
+			List<MembersVO> memberslist2 = null;
+			List<MembersVO> memberslist3 =new ArrayList<>();
 
-			for (TeamVO teamvo : teamlist) {	//teamlist의 팀들을 하나씩 꺼내서 각각의 tno를 통해 tname을 구함.
+			if(teamlist.size() ==0){
+				
+				return "redirect:/mypage";
+				
+			}else{
+				List<List<MembersVO>> m=new ArrayList<>();
+				List<List<MembersVO>> ms=new ArrayList<>();
 
-				teaminfovo = new MypageTeamInfoVO();
-				memberslist2 = new ArrayList<>();
-				team = teamService.selectTeamName(teamvo.getTno());
-				teaminfovo.setName(teamvo.getName());
-				teaminfovo.setTno(teamvo.getTno());
-				teaminfovo.setTimg(teamvo.getTimg());
-				memberslist = membersService.selectAllMembersTno(teamvo.getTno());
+				for(int i=0; i<teamlist.size(); i++){
+					List<MembersVO> li=membersService.selectAllMembersTno(teamlist.get(i).getTno());
+					m.add(i, li);
+				}
+				model.addAttribute("abc", m);
+
+				//List<Map<String,Object>> map =null;
+
+				for (TeamVO teamvo : teamlist) {	//teamlist의 팀들을 하나씩 꺼내서 각각의 tno를 통해 tname을 구함.
+
+					teaminfovo = new MypageTeamInfoVO();
+					memberslist2 = new ArrayList<>();
+					team = teamService.selectTeamName(teamvo.getTno());
+					teaminfovo.setName(teamvo.getName());
+					teaminfovo.setTno(teamvo.getTno());
+					teaminfovo.setTimg(teamvo.getTimg());
+					memberslist = membersService.selectAllMembersTno(teamvo.getTno());
 
 
-				for (MembersVO membersvo : memberslist) {
-					if(membersvo.getPosition().equals("leader")){
-						teaminfovo.setLeader(membersvo.getId());					
-						List<MembersVO> lmvo=new ArrayList<>();
-						lmvo=membersService.selectTeamMember(teamvo.getTno());
-						for(int i=0; i<lmvo.size(); i++){
+					for (MembersVO membersvo : memberslist) {
+						if(membersvo.getPosition().equals("leader")){
+							teaminfovo.setLeader(membersvo.getId());					
+							List<MembersVO> lmvo=new ArrayList<>();
+							lmvo=membersService.selectTeamMember(teamvo.getTno());
+							for(int i=0; i<lmvo.size(); i++){
 
-							memberslist3.add(lmvo.get(i));
+								memberslist3.add(lmvo.get(i));
+							}
+						}
+						else{
+							memberslist2.add(membersvo);
+
 						}
 					}
-					else{
-						memberslist2.add(membersvo);
 
-					}
+					teaminfo.add(teaminfovo);
+
 				}
-
-				teaminfo.add(teaminfovo);
-
+				
 			}
-			
+
+			model.addAttribute("teaminfo", teaminfo);
+			model.addAttribute("memberslist",memberslist3);
+
+
+			return "mypage/teaminfolist";
 		}
-
-		model.addAttribute("teaminfo", teaminfo);
-		model.addAttribute("memberslist",memberslist3);
-
-
-		return "mypage/teaminfolist";
+		
 	}
 
 	@RequestMapping(value="teamout")

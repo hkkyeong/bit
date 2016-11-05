@@ -44,9 +44,13 @@ public class TeamController {
 	//팀 리스트
 	@RequestMapping(value="teamList")
 	public String teamList(Model model, HttpSession session, HttpServletRequest request){
-		String id=(String)session.getAttribute("id");
-		model.addAttribute("teamList",teamService.selectTeamList(id));
-		return "team/teamList";
+		if(session.getAttribute("loginchk").equals("loginno")){
+			return "guest";
+		}else{			
+			String id=(String)session.getAttribute("id");
+			model.addAttribute("teamList",teamService.selectTeamList(id));
+			return "team/teamList";
+		}
 	}
 
 	//팀 생성 form
