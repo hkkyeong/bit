@@ -76,7 +76,8 @@ function unosubmit(obj){
 	function teamOut(tno,id)
 	{
 		var out
-
+		var id =document.getElementById('id').value
+		
 		out = confirm("정말 팀에서 "+id+"를 삭제하시겠습니까?")
 
 		if (out == true) {
