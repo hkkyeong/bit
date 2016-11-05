@@ -41,11 +41,15 @@ public class ProjectController {
 	//프로젝트 생성 form
 	@RequestMapping(value="projectform")
 	public String projectForm(Model model, HttpSession session,HttpServletRequest req){
-		String id=(String)session.getAttribute("id");
-		model.addAttribute("teammenu", teamService.selectTeamList(id));
-		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
-		model.addAttribute("tno",req.getParameter("tno"));
-		return "project/projectCreate";
+		if(session.getAttribute("loginchk").equals("loginno")){
+			return "guest";
+		}else{
+			String id=(String)session.getAttribute("id");
+			model.addAttribute("teammenu", teamService.selectTeamList(id));
+			model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
+			model.addAttribute("tno",req.getParameter("tno"));
+			return "project/projectCreate";
+		}
 	}
 	
 	//프로젝트 생성
@@ -65,27 +69,35 @@ public class ProjectController {
 	//프로젝트 목록
 	@RequestMapping(value="projectlist")
 	public String projectlist(Model model, HttpSession session, HttpServletRequest request){
-		String id = (String) session.getAttribute("id");
-		if(request.getParameter("tno")==null){
-		}else{
-			model.addAttribute("plist", projectService.selectProjectList(request.getParameter("tno")));
-			//추가 -- 근데 tno 왜 넘기지???
-			model.addAttribute("tno",request.getParameter("tno"));
+		if(session.getAttribute("loginchk").equals("loginno")){
+			return "guest";
+		}else{			
+			String id = (String) session.getAttribute("id");
+			if(request.getParameter("tno")==null){
+			}else{
+				model.addAttribute("plist", projectService.selectProjectList(request.getParameter("tno")));
+				//추가 -- 근데 tno 왜 넘기지???
+				model.addAttribute("tno",request.getParameter("tno"));
+			}
+			model.addAttribute("teammenu", teamService.selectTeamList(id));
+			model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
+			return"project/projectselect";
 		}
-		model.addAttribute("teammenu", teamService.selectTeamList(id));
-		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
-		return"project/projectselect";
 	}
 	//프로젝트 메인
 	@RequestMapping(value="projectmain")
 	public String projectmain(Model model, HttpSession session, HttpServletRequest request){
-		String id = (String) session.getAttribute("id");
-		String pno=(String)request.getParameter("pno");
-		model.addAttribute("pno", pno);
-		model.addAttribute("teammenu", teamService.selectTeamList(id));
-		model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
-		model.addAttribute("tno",projectService.selectProjectTno(Integer.parseInt(pno)));
-		return"project/projectmain";
+		if(session.getAttribute("loginchk").equals("loginno")){
+			return "guest";
+		}else{
+			String id = (String) session.getAttribute("id");
+			String pno=(String)request.getParameter("pno");
+			model.addAttribute("pno", pno);
+			model.addAttribute("teammenu", teamService.selectTeamList(id));
+			model.addAttribute("projectmenu", projectService.selectProjectMenu(id));
+			model.addAttribute("tno",projectService.selectProjectTno(Integer.parseInt(pno)));
+			return"project/projectmain";
+		}
 	}
 	
 	// 프로젝트 관리

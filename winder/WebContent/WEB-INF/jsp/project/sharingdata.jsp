@@ -88,28 +88,12 @@
 							</div>
 						</div>
 					</div>
-
-
-
-
-					<div class="col-md-12" style="text-align: right;">
-						<br> <br> <input type="button" id="scrap"
-							value="스크랩  올리기"> <input type="button" id="file"
-							value="파일 올리기">
-					</div>
-
 				</div>
 			</div>
 		</div>
+	</form>
 </div>
 
-
-</div>
-</div>
-</div>
-
-</form>
-</div>
 
 
 <jsp:include page="../footer.jsp" />
