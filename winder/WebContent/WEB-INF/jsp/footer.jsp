@@ -10,8 +10,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">&copy; 2016 Winder</div>
-
-
 		</div>
 	</div>
 </footer>
@@ -88,9 +86,6 @@ function unosubmit(obj){
 			location.href = "redirect:/teaminfo"
 		}
 	}
-	
-	
-	
 	
 </script>
 </body>

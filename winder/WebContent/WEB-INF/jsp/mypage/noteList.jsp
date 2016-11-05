@@ -37,9 +37,9 @@
 							</thead>
 
 							<tbody id="div1">
-								<c:forEach items="${noteList}" var="note">
+								<c:forEach items="${noteList}" var="note" varStatus="index">
 									<tr>
-										<td>${note.nno }</td>
+										<td>${index.count }</td>
 										<td><a href="noteDetail?nno=${note.nno}" onclick="">${note.ntitle}</a></td>
 										<td>${note.ndate}</td>
 										<td>${note.sid}</td>
