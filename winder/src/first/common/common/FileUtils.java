@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public class FileUtils {
 	private static final String upath= "C:\\bit\\file\\";
+	private static final String uupath= "C:\\bit\\git\\winder\\WebContent\\upload\\";
 	
 	public static String getRandomString(){
 		return UUID.randomUUID().toString().replaceAll("-", "");
@@ -27,7 +28,6 @@ public class FileUtils {
     	String originalName  = null;
     	String originalFileExtension = null;
     	String storedName = null;
-
     	
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null; 
@@ -65,12 +65,7 @@ public class FileUtils {
         }
 		return list;
 	}
-	
-	
-	
-	
-	
-	
+
 	
 	
 	public List<Map<String,Object>> parseInsertFileInfo2(Map<String,Object> map, HttpServletRequest request, HttpSession session) throws Exception{
@@ -93,7 +88,7 @@ public class FileUtils {
     	String email =(String)map.get("email");
     	String phone =(String)map.get("phone");
         
-        File file = new File(upath);
+        File file = new File(uupath);
         if(file.exists() == false){
         	file.mkdirs(); 
         }
@@ -105,7 +100,7 @@ public class FileUtils {
         		originalFileExtension = originalName.substring(originalName.lastIndexOf("."));
         		storedName = getRandomString() + originalFileExtension;
         		
-        		file = new File(upath +originalName);
+        		file = new File(uupath +originalName);
         		multipartFile.transferTo(file);
         		
         		listMap = new HashMap<String,Object>();
@@ -132,16 +127,15 @@ public class FileUtils {
     	String originalName  = null;
     	String originalFileExtension = null;
     	String storedName = null;
-
-   
     	
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null; 
 
     	String name =(String)map.get("name");
+    	
     	String code =(String)map.get("code");
         
-        File file = new File(upath);
+        File file = new File(uupath);
         if(file.exists() == false){
         	file.mkdirs(); 
         }
@@ -153,7 +147,7 @@ public class FileUtils {
         		originalFileExtension = originalName.substring(originalName.lastIndexOf("."));
         		storedName = getRandomString() + originalFileExtension;
         		
-        		file = new File(upath +originalName);
+        		file = new File(uupath +originalName);
         		multipartFile.transferTo(file);
         		
         		listMap = new HashMap<String,Object>();
@@ -166,10 +160,5 @@ public class FileUtils {
         }
 		return list;
 	}
-	
-	
-	
-	
-	
 	
 }
