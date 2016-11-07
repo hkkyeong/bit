@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%
+response.setStatus(HttpServletResponse.SC_OK);
+%>
+<jsp:include page="header_basic.jsp" />
+<jsp:include page="nav.jsp" />
+<jsp:include page="menu_basic.jsp" />
+<div class="row">
+<div class="form-group">
+	<img src="img/error.jpg" style=" width: 100%;">
+</div>
+</div>
 
-</body>
-</html>
+
+<jsp:include page="footer.jsp" />
